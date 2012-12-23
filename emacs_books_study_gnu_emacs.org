@@ -1,0 +1,73 @@
+#+TITLE: 学习Gnu Emacs 读书笔记
+#+AUTHOR: liweilijie
+#+EMAIL: liweilijie@gmail.com
+#+DATE: 2012-12-23
+#+DESCRIPTION: 学习Gnu Emacs 读书笔记
+#+CATEGORIES: Emacs
+#+KEYWORDS: Emacs, org-mode, cnblogs
+#+LANGUAGE: en
+#+OPTIONS: H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTOINS: Tex:t LaTex:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_exclude_TAGS: noexport
+#+LINK_UP: /liweilijie
+#+LINK_HONE: /liweilijie
+#+XSLT:
+
+* Emacs的基本概念
+
+| 快捷键  | 命令                    | 功能                                   |
+|---------+-------------------------+----------------------------------------|
+| C-x C-v | find-alternate-file     | 读取另一个文件来代替刚才诗篇的那一个。 |
+| C-x i   |                         | 输入文件。                             |
+| C-c C-f | find-file               | 查找文件并且打开它。                   |
+| C-x C-s | save-buffer             | 保存文件.                              |
+| C-x C-w | write-file              | 把缓冲区内容写入一个文件。             |
+| C-x C-c | save-buffers-kill-emacs | 退出emacs                              |
+| C-h     | help-command            | 进入emacs的在线帮助系统。              |
+| C-h f   |                         |                                        |
+| C-h k   |                         |                                        |
+| C-h t   |                         |                                        |
+| C-h i   |                         |                                        |
+
+* 文件编辑
+
+
+| 快捷键                   | 命令                              | 功能                                                                         |
+|--------------------------+-----------------------------------+------------------------------------------------------------------------------|
+| ESC x goto-line n RET    |                                   | 把光标移动到文件的第N行                                                      |
+| ESC x goto-char n RET    |                                   | 把光标移动到文件的第N个字符                                                  |
+| ESC 500 C-n              |                                   | 光标移动500行，ESC n 是重复执行命令的意思。                                  |
+| C-u                      |                                   | C-u 等于4， C-u C-u 等于16次重复的意思。                                     |
+| C-x u                    |                                   | 撤消; 同命令还有： *C-_* *C-/*                                               |
+| ESC - C-k                |                                   | 删除行首到光标位置之间的东西。                                               |
+| ESC d                    | kill-word                         | 删除光标后面的单词。                                                         |
+| ESC DEL                  | backward-kill-word                | 删除光标前面的单词。                                                         |
+| ESC k                    | kill-sentence                     | 删除光标后面的句子。                                                         |
+|--------------------------+-----------------------------------+------------------------------------------------------------------------------|
+| ESC y                    |                                   | 恢复上次删除的操作内容。                                                     |
+|--------------------------+-----------------------------------+------------------------------------------------------------------------------|
+| C-t                      | transpose-chars                   | 交换两个字符的位置。                                                         |
+| ESC t                    | transpose-words                   | 交换两个单词的位置。                                                         |
+| C-x C-t                  | transpose-lines                   | 交换两个文本行的位置。                                                       |
+|--------------------------+-----------------------------------+------------------------------------------------------------------------------|
+| ESC c                    | capitalize-word                   | 把单词的首字母改为大写。                                                     |
+| ESC u                    | upcase-word                       | 把单词的字母全部改为大写。                                                   |
+| ESC l                    | downcase-word                     | 把单词的字母全部改为小写。                                                   |
+| ESC - ESC c              | negtive-argument; capitalize-word | 把前一个单词的首字母改为大写。                                               |
+| ESC - ESC u              | negtive-argument; upcase-word     | 把前一个单词的字母全部改为大写。                                             |
+| ESC - ESC l              | negtive-argument; downcase-word   | 把前一个单词的字母全部改为小写。                                             |
+|--------------------------+-----------------------------------+------------------------------------------------------------------------------|
+| ESC x overwirte-mode RET |                                   | 文本的改写模式，再次输入则取消。实际上直接输入: *ESC x ov* 用TAB键可以补全。 |
+|--------------------------+-----------------------------------+------------------------------------------------------------------------------|
+| C-x C-w                  |                                   | 文件另存为.                                                                  |
+
+
+#+BEGIN_SRC cpp
+int main(int argc, char *argv[])
+{
+   return 0;
+}
+
+#+END_SRC
