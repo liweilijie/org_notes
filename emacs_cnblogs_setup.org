@@ -1,0 +1,94 @@
+#+TITLE: 用emacs写cnblogs博客。
+#+AUTHOR: liweilijie
+#+EMAIL: liweilijie@gmail.com
+#+DATE: 2012-12-23
+#+DESCRIPTION: study emacs cnblogs
+#+CATEGORIES: Emacs
+#+KEYWORDS: Emacs, org-mode, cnblogs
+#+LANGUAGE: en
+#+OPTIONS: H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTOINS: Tex:t LaTex:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+LINK_UP: /liweilijie
+#+link_HONE: /liweilijie
+#+XSLT:
+
+这是我的一次写org-mode cnblogs的文章。
+在cnblogs-minor-mode副模式下工作的。据说可以直接发布org-mode的文件。(C-c c p)
+
+* 安装org-mode
+  下载org-7.9.2目前为止最新版本。然后解压到'~/.emacs.d/site-lisp/'目录下。在.emacs中配置如下：
+
+  #+BEGIN_SRC lisp
+  ;;;;配置org-mode
+  (setq load-path (cons "~/.emacs.d/site-lisp/org-7.9.2/lisp" load-path))
+  (require 'org-install)
+  #+END_SRC
+  现在如果新建一个.org格式的文件，如果在minibuffer中显示Org的字样，就意味着安装成功了。
+* 安装cnblogs
+  下载之后将其中的el文件放到一个目录中，如(~/.emacs.d/misc/),然后将这个目录加入到.emacs中。
+#+BEGIN_SRC lisp
+(add-to-list 'load-path
+            ("~/.emacs.d/misc"))
+(require 'cnblogs)
+#+END_SRC
+
+
+启动cnblogs副模式可以 *M-x cnblogs-minor-mode*, 也可以自动启动：
+#+BEGIN_SRC lisp
+(add-hook 'org-mode-hook (lambda ()
+        (cnblogs-minor-mode)))
+#+END_SRC
+
+* 在cnblogs中使用其提供的代码高亮功能。
+
+  #+begin_html
+  <div class="cnblogs_Highlighter">
+  <pre class="brush:cpp">
+  int main()
+  {
+     return 0;
+  }
+  </pre>
+  </div>
+  #+end_html
+
+
+* 功能快捷键
+
+  | 快捷键  | 命令                     | 功能             | 备注                 |
+  |---------+--------------------------+------------------+----------------------|
+  | C-c c c | cnblogs-get-categories   | 将分类获取至本地 | 目前没有什么实际用处 |
+  | C-c c d | cnblogs-delete-post      | 删除博文         | 常用                 |
+  | C-c c e | cnblogs-edit-post        | 更新博文         | 常用                 |
+  | C-c c g | cnblogs-get-post         | 获取指定ID的博文 | 估计用户不会用到     |
+  | C-c c p | cnblogs-new-post         | 发布博文         | 常用                 |
+  | C-c c r | cnblogs-get-recent-posts | 获取最近N篇博文  | 一般只在配置扩展时使用 |
+  | C-c c s | cnblogs-save-draft       | 将草稿保存至服务器 | 不知道有什么实际用途 |
+  | C-c c u | cnblogs-get-users-blogs  | 获取用户信息     | 对用户没什么用处             | 
+
+
+  
+* 内容元数据
+
+org-mode中有以下几种：
+| 快捷键字母 | 代码                              | 功能                                           |
+|------------+-----------------------------------+------------------------------------------------|
+| s          | #+begin_src ... #+end_src         | 代码                                           |
+| e          | #+begin_example ... #+end_example | 单行的例子以冒号开头。                         |
+| q          | #+begin_quote ... #+end_quote     | 通常用于引用，与默认格式相比左右都会留出缩进。 |
+| v          | #+bigin_verse ... #+end_verse     | 默认内容不换行，需要留出空行才换行。           |
+| l          | #+begin_latex ... #+end_latex     |                                                |
+| L          | #+latex:                          |                                                |
+| h          | #+begin_html ... #+end_html       |                                                |
+| H          | #+html:                           |                                                |
+| a          | #+begin_ascii ... #+end_ascii     |                                                |
+| A          | #+ascii:                          |                                                |
+| i          | #+index: line                     |                                                |
+| I          | #+include: line                   |                                                |
+
+
++ 代码
+  上面的单字母为快捷键字母，如输入一个<s然后TAB后就变成：
+       #+BEGIN_SRC 
+
+       #+END_SRC
