@@ -2,7 +2,7 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Mon Dec 24 19:41:13 2012
+;; Created Mon Dec 24 20:39:19 2012
 ;; Desktop file format version 206
 ;; Emacs version 24.2.1
 
@@ -13,9 +13,31 @@
 (setq search-ring nil)
 (setq regexp-search-ring nil)
 (setq register-alist nil)
-(setq file-name-history nil)
+(setq file-name-history '("/home/liwei/git/org_notes/tmp.org" "/root/.emacs.d/site-lisp/misc/cnblogs.el" "/home/liwei/git/org_notes/tmp.org"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_books_study_gnu_emacs.org"
+  "emacs_books_study_gnu_emacs.org"
+  'org-mode
+  '(cnblogs-minor-mode)
+  8728
+  '(1502 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/root/.emacs.d/site-lisp/misc/cnblogs.el"
+  "cnblogs.el"
+  'emacs-lisp-mode
+  nil
+  16507
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
 (desktop-create-buffer 206
   "/home/liwei/git/org_notes/emacs_cnblogs_setup.org"
   "emacs_cnblogs_setup.org"
