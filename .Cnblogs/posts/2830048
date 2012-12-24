@@ -1,0 +1,301 @@
+
+(("dateCreated" :datetime (20695 14780)) ("description" . "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
+               \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
+<head>
+<title>用emacs写cnblogs博客。</title>
+
+
+
+
+
+
+
+<style type=\"text/css\">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type=\"text/javascript\">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = \"code-highlighted\";
+     elem.className   = \"code-highlighted\";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id=\"org-div-home-and-up\" style=\"text-align:right;font-size:70%;white-space:nowrap;\">
+ <a accesskey=\"h\" href=\"/liweilijie\"> UP </a>
+ |
+ <a accesskey=\"H\" href=\"/liweilijie\"> HOME </a>
+</div>
+
+<div id=\"preamble\">
+
+</div>
+
+<div id=\"content\">
+<h1 class=\"title\">用emacs写cnblogs博客。</h1>
+
+<p>这是我的一次写org-mode cnblogs的文章。
+在cnblogs-minor-mode副模式下工作的。据说可以直接发布org-mode的文件。(C-c c p)
+</p>
+
+<div id=\"outline-container-1\" class=\"outline-2\">
+<h2 id=\"sec-1\"><span class=\"section-number-2\">1</span> 安装org-mode</h2>
+<div class=\"outline-text-2\" id=\"text-1\">
+
+<p>  下载org-7.9.2目前为止最新版本。然后解压到'~/.emacs.d/site-lisp/'目录下。在.emacs中配置如下：
+</p>
+
+
+
+<pre class=\"example\">;;;;配置org-mode
+(setq load-path (cons \"~/.emacs.d/site-lisp/org-7.9.2/lisp\" load-path))
+(require 'org-install)
+</pre>
+
+<p>
+  现在如果新建一个.org格式的文件，如果在minibuffer中显示Org的字样，就意味着安装成功了。
+</p></div>
+
+</div>
+
+<div id=\"outline-container-2\" class=\"outline-2\">
+<h2 id=\"sec-2\"><span class=\"section-number-2\">2</span> 安装cnblogs</h2>
+<div class=\"outline-text-2\" id=\"text-2\">
+
+<p>  下载之后将其中的el文件放到一个目录中，如(~/.emacs.d/misc/),然后将这个目录加入到.emacs中。
+</p>
+
+
+<pre class=\"example\">(add-to-list 'load-path
+            (\"~/.emacs.d/misc\"))
+(require 'cnblogs)
+</pre>
+
+
+
+<p>
+启动cnblogs副模式可以 <b>M-x cnblogs-minor-mode</b>, 也可以自动启动：
+</p>
+
+
+<pre class=\"example\">(add-hook 'org-mode-hook (lambda ()
+        (cnblogs-minor-mode)))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-3\" class=\"outline-2\">
+<h2 id=\"sec-3\"><span class=\"section-number-2\">3</span> 在cnblogs中使用其提供的代码高亮功能。</h2>
+<div class=\"outline-text-2\" id=\"text-3\">
+
+
+
+
+  <div class=\"cnblogs_Highlighter\">
+  <pre class=\"brush:cpp\">
+  int main()
+  {
+     return 0;
+  }
+  </pre>
+  </div>
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-4\" class=\"outline-2\">
+<h2 id=\"sec-4\"><span class=\"section-number-2\">4</span> 功能快捷键</h2>
+<div class=\"outline-text-2\" id=\"text-4\">
+
+
+<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
+<colgroup><col class=\"left\" /><col class=\"left\" /><col class=\"left\" /><col class=\"left\" />
+</colgroup>
+<thead>
+<tr><th scope=\"col\" class=\"left\">快捷键</th><th scope=\"col\" class=\"left\">命令</th><th scope=\"col\" class=\"left\">功能</th><th scope=\"col\" class=\"left\">备注</th></tr>
+</thead>
+<tbody>
+<tr><td class=\"left\">C-c c c</td><td class=\"left\">cnblogs-get-categories</td><td class=\"left\">将分类获取至本地</td><td class=\"left\">目前没有什么实际用处</td></tr>
+<tr><td class=\"left\">C-c c d</td><td class=\"left\">cnblogs-delete-post</td><td class=\"left\">删除博文</td><td class=\"left\">常用</td></tr>
+<tr><td class=\"left\">C-c c e</td><td class=\"left\">cnblogs-edit-post</td><td class=\"left\">更新博文</td><td class=\"left\">常用</td></tr>
+<tr><td class=\"left\">C-c c g</td><td class=\"left\">cnblogs-get-post</td><td class=\"left\">获取指定ID的博文</td><td class=\"left\">估计用户不会用到</td></tr>
+<tr><td class=\"left\">C-c c p</td><td class=\"left\">cnblogs-new-post</td><td class=\"left\">发布博文</td><td class=\"left\">常用</td></tr>
+<tr><td class=\"left\">C-c c r</td><td class=\"left\">cnblogs-get-recent-posts</td><td class=\"left\">获取最近N篇博文</td><td class=\"left\">一般只在配置扩展时使用</td></tr>
+<tr><td class=\"left\">C-c c s</td><td class=\"left\">cnblogs-save-draft</td><td class=\"left\">将草稿保存至服务器</td><td class=\"left\">不知道有什么实际用途</td></tr>
+<tr><td class=\"left\">C-c c u</td><td class=\"left\">cnblogs-get-users-blogs</td><td class=\"left\">获取用户信息</td><td class=\"left\">对用户没什么用处</td></tr>
+</tbody>
+</table>
+
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-5\" class=\"outline-2\">
+<h2 id=\"sec-5\"><span class=\"section-number-2\">5</span> 内容元数据</h2>
+<div class=\"outline-text-2\" id=\"text-5\">
+
+
+<p>
+org-mode中有以下几种：
+</p><table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
+<colgroup><col class=\"left\" /><col class=\"left\" /><col class=\"left\" />
+</colgroup>
+<thead>
+<tr><th scope=\"col\" class=\"left\">快捷键字母</th><th scope=\"col\" class=\"left\">代码</th><th scope=\"col\" class=\"left\">功能</th></tr>
+</thead>
+<tbody>
+<tr><td class=\"left\">s</td><td class=\"left\">#+begin<sub>src</sub> &hellip; #+end<sub>src</sub></td><td class=\"left\">代码</td></tr>
+<tr><td class=\"left\">e</td><td class=\"left\">#+begin<sub>example</sub> &hellip; #+end<sub>example</sub></td><td class=\"left\">单行的例子以冒号开头。</td></tr>
+<tr><td class=\"left\">q</td><td class=\"left\">#+begin<sub>quote</sub> &hellip; #+end<sub>quote</sub></td><td class=\"left\">通常用于引用，与默认格式相比左右都会留出缩进。</td></tr>
+<tr><td class=\"left\">v</td><td class=\"left\">#+bigin<sub>verse</sub> &hellip; #+end<sub>verse</sub></td><td class=\"left\">默认内容不换行，需要留出空行才换行。</td></tr>
+<tr><td class=\"left\">l</td><td class=\"left\">#+begin<sub>latex</sub> &hellip; #+end<sub>latex</sub></td><td class=\"left\"></td></tr>
+<tr><td class=\"left\">L</td><td class=\"left\">#+latex:</td><td class=\"left\"></td></tr>
+<tr><td class=\"left\">h</td><td class=\"left\">#+begin<sub>html</sub> &hellip; #+end<sub>html</sub></td><td class=\"left\"></td></tr>
+<tr><td class=\"left\">H</td><td class=\"left\">#+html:</td><td class=\"left\"></td></tr>
+<tr><td class=\"left\">a</td><td class=\"left\">#+begin<sub>ascii</sub> &hellip; #+end<sub>ascii</sub></td><td class=\"left\"></td></tr>
+<tr><td class=\"left\">A</td><td class=\"left\">#+ascii:</td><td class=\"left\"></td></tr>
+<tr><td class=\"left\">i</td><td class=\"left\">#+index: line</td><td class=\"left\"></td></tr>
+<tr><td class=\"left\">I</td><td class=\"left\">#+include: line</td><td class=\"left\"></td></tr>
+</tbody>
+</table>
+
+
+
+<ul>
+<li>代码
+  上面的单字母为快捷键字母，如输入一个&lt;s然后TAB后就变成想要的代码。
+</li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-6\" class=\"outline-2\">
+<h2 id=\"sec-6\"><span class=\"section-number-2\">6</span> 自己的一些配置</h2>
+<div class=\"outline-text-2\" id=\"text-6\">
+
+<p>我将利用git-hub来保存所有的.org文件，这样做的目的是利用版本控制仓库来保存我的博文，而且在公司与家之间同步起来高效且安全。
+ 另外博文也进行了备份。
+</p>
+<p>
+我不喜欢折腾html这种东西，于是用纯文档的方式写笔记让自己感觉很爽。
+</p>
+<p>
+以前利用vimwiki写了一个博客，并且在 <a href=\"http://www.liwei.tk\">http://www.liwei.tk</a> liwei.tk里面有保存以前的一些笔记。现在还没有时间整理过来。
+</p>
+<p>
+有时候再弄吧。最近开始由vim转向emacs了，原因很简单-扩展性。
+</p></div>
+</div>
+</div>
+
+<div id=\"postamble\">
+<p class=\"date\">Date: 2012-12-23</p>
+<p class=\"author\">Author: liweilijie</p>
+<p class=\"creator\"><a href=\"http://orgmode.org\">Org</a> version 7.9.2 with <a href=\"http://www.gnu.org/software/emacs/\">Emacs</a> version 23</p>
+<a href=\"http://validator.w3.org/check?uri=referer\">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
+") ("title" . "用emacs写cnblogs博客。") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/23/2830048.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/23/2830048.html") ("postid" . 2830048) ("source") ("mt_excerpt" . "study emacs cnblogs") ("mt_keywords" . "Emacs,org-mode,cnblogs"))
