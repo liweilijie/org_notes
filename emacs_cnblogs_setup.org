@@ -55,16 +55,17 @@
 
 * 功能快捷键
 
-  | 快捷键  | 命令                     | 功能             | 备注                 |
-  |---------+--------------------------+------------------+----------------------|
-  | C-c c c | cnblogs-get-categories   | 将分类获取至本地 | 目前没有什么实际用处 |
-  | C-c c d | cnblogs-delete-post      | 删除博文         | 常用                 |
-  | C-c c e | cnblogs-edit-post        | 更新博文         | 常用                 |
-  | C-c c g | cnblogs-get-post         | 获取指定ID的博文 | 估计用户不会用到     |
-  | C-c c p | cnblogs-new-post         | 发布博文         | 常用                 |
-  | C-c c r | cnblogs-get-recent-posts | 获取最近N篇博文  | 一般只在配置扩展时使用 |
-  | C-c c s | cnblogs-save-draft       | 将草稿保存至服务器 | 不知道有什么实际用途 |
-  | C-c c u | cnblogs-get-users-blogs  | 获取用户信息     | 对用户没什么用处             | 
+  | 快捷键    | 命令                     | 功能               | 备注                   |
+  |-----------+--------------------------+--------------------+------------------------|
+  | C-c c c   | cnblogs-get-categories   | 将分类获取至本地   | 目前没有什么实际用处   |
+  | C-c c d   | cnblogs-delete-post      | 删除博文           | 常用                   |
+  | C-c c e   | cnblogs-edit-post        | 更新博文           | 常用                   |
+  | C-c c g   | cnblogs-get-post         | 获取指定ID的博文   | 估计用户不会用到       |
+  | C-c c p   | cnblogs-new-post         | 发布博文           | 常用                   |
+  | C-c c r   | cnblogs-get-recent-posts | 获取最近N篇博文    | 一般只在配置扩展时使用 |
+  | C-c c s   | cnblogs-save-draft       | 将草稿保存至服务器 | 不知道有什么实际用途   |
+  | C-c c u   | cnblogs-get-users-blogs  | 获取用户信息       | 对用户没什么用处       |
+  | C-c C-e t |                          | 插入模块。         |                        |
 
 
   
@@ -73,10 +74,10 @@
 org-mode中有以下几种：
 | 快捷键字母 | 代码                              | 功能                                           |
 |------------+-----------------------------------+------------------------------------------------|
-| s          | #+begin_src ... #+end_src         | 代码                                           |
-| e          | #+begin_example ... #+end_example | 单行的例子以冒号开头。                         |
+| s          | #+begin_src ... #+end_src         | 代码                                         |
+| e          | #+begin_example ... #+end_example | 单行的例子以冒号开头。              |
 | q          | #+begin_quote ... #+end_quote     | 通常用于引用，与默认格式相比左右都会留出缩进。 |
-| v          | #+bigin_verse ... #+end_verse     | 默认内容不换行，需要留出空行才换行。           |
+| v          | #+bigin_verse ... #+end_verse     | 默认内容不换行，需要留出空行才换行。 |
 | l          | #+begin_latex ... #+end_latex     |                                                |
 | L          | #+latex:                          |                                                |
 | h          | #+begin_html ... #+end_html       |                                                |
