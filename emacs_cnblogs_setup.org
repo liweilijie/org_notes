@@ -100,3 +100,12 @@ org-mode中有以下几种：
 以前利用vimwiki写了一个博客，并且在 http://www.liwei.tk liwei.tk里面有保存以前的一些笔记。现在还没有时间整理过来。
 
 有时候再弄吧。最近开始由vim转向emacs了，原因很简单-扩展性。
+
+
+
+* 特别注意同步的问题
+  
+  在多台电脑上同步时应该注意如下事项：
+  + 创建的文件目录一定要一致。一定要与.Cnblogs/entry-list-file内容里面的目录一致。
+  + 修改cnblogs.el脚本里面的.Cnblogs路径，将其路径设置在你的github仓库里面。
+  + 每次同步之后记得push到github上去进行同步。
