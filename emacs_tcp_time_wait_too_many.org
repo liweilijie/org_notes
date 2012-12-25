@@ -1,0 +1,120 @@
+#+TITLE:     time_wait过多的优化
+#+AUTHOR:    liweijijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2012-12-25 Tue
+#+DESCRIPTION: TIME_WAIT 在服务器侧过多的优化方法
+#+CATEGORIES: C
+#+KEYWORDS: TIME_WAIT TCP
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+
+* 查看一下服务器的压力
+
+今天在一个服务器上发现连接太多，尤其是 *TIME_WAIT* 状态的连接更多，这可能主要是由于增加了端口映射。
+而且服务器侧是短连接造成的这种现象。
+用一条命令查看一下：
+
+#+BEGIN_HTML
+  <div class="cnblogs_Highlighter">
+  <pre class="brush:bash">
+
+[root@qzt ~]# netstat -nat | awk '{++S[$NF]} END {for(a in S) print a, S[a]}'
+LAST_ACK 6
+LISTEN 34
+SYN_RECV 12
+CLOSE_WAIT 4
+State 1
+ESTABLISHED 60
+established) 1
+FIN_WAIT1 29
+FIN_WAIT2 1
+CLOSING 3
+TIME_WAIT 101
+
+
+
+  </pre>
+  </div>
+
+#+END_HTML
+
+
+   该TIME_WAIT的默认值为2 * MSL, *MSL* 即max segment lifetime, 是一个tcp包的最大生存时间。
+
+MSL值在linux上好像默认是30秒， 所以从 *TIME_WAIT* 状态变化到 *CLOSED* 大约需要60秒时间。
+
+另外一方面，本机可用的发起连接的socket端口是有限的，可通过以下命令查看：
+
+#+BEGIN_HTML
+  <div class="cnblogs_Highlighter">
+  <pre class="brush:bash">
+[root@ ~]# cat /proc/sys/net/ipv4/ip_local_port_range
+32768   61000
+
+
+  </pre>
+  </div>
+
+#+END_HTML
+
+
+也即大约只有2万多个端口可用，如果处于 *TIME_WIAT* 状态的连接很多，
+很有可能会影响本机向处发起的连接,比如ftp的主动模式就会深受影响。
+
+出现端口不够用的情况。
+
+
+-----
+
+* 优化方法
+
+可以通过以下参数减少 *TIME_WAIT* 的连接：
+
+- 方法一：
+#+BEGIN_HTML
+  <div class="cnblogs_Highlighter">
+  <pre class="brush:bash">
+
+[root@ ~] vi /etc/sysctl.conf
+
+#开启time_wait状态的socket重用
+net.ipv4.tcp_tw_reuse = 1
+
+#开启time_wait状态的socket快速回收
+net.ipv4.tcp_tw_recycle = 1
+
+[root@ ~] /sbin/sysctl -p
+
+  </pre>
+  </div>
+
+#+END_HTML
+
+
+- 方法二：
+#+BEGIN_HTML
+  <div class="cnblogs_Highlighter">
+  <pre class="brush:bash">
+
+# 或者直接修改time_wait的等待时间
+[root@ ~]echo 30 > /proc/sys/net/ipv4/tcp_fin_timeout
+
+
+  </pre>
+  </div>
+
+#+END_HTML
+
+#+BEGIN_SRC shell
+
+[root@ ~] ifconfig
+
+#+END_SRC

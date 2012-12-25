@@ -110,3 +110,17 @@ org-mode中有以下几种：
   + 创建的文件目录一定要一致。一定要与.Cnblogs/entry-list-file内容里面的目录一致。
   + 修改cnblogs.el脚本里面的.Cnblogs路径，将其路径设置在你的github仓库里面。
   + 每次同步之后记得push到github上去进行同步。
+
+
+* 版本问题
+  注意在使用时最新版本可能在发布出去的表格显示上有一些问题。我用的是Emacs23.2 + org7.9.2没有问题。而用Emacs24.2 + org7.9.2有一些排版上的问题。
+
+
+#+BEGIN_HTML
+  <div class="cnblogs_Highlighter">
+  <pre class="brush:bash">
+
+[root@ ~] cat
+</pre>
+</div>
+#+END_HTML

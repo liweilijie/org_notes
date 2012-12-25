@@ -1,0 +1,21 @@
+#+TITLE:     开发中遇到的一些BUG
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2012-12-25 Tue
+#+DESCRIPTION: 开发中遇到的一些c程序的bug。有些不一定解决了。所以在这里记录一下。
+#+CATEGORIES: C
+#+KEYWORDS: C
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+* gsoap互斥冲突
+
+  最近在windows上发现gsoap利用ssl进行通信时，如果一个环境变量被多线程使用。这个时候就会发生内存错误的提示。
+  后来调试的时候避免两个线程同时使用gsoap的环境变量之后，此问题不再出现，看来gsoap的环境变量不能同时被多个线程使用。

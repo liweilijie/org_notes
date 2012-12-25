@@ -1,0 +1,39 @@
+#+TITLE:     HTTP协议中的keep-alive
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2012-12-25 Tue
+#+DESCRIPTION: HTTP协议中的keep-alive
+#+CATEGORIES: C
+#+KEYWORDS: HTTP keep-alive
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:  /liweilijie 
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+
+* 概述
+
+通常，我们说的http长连接，实际上是包含2种不同的含义：
+
+   1. comet，是服务器和浏览器之间维持一个长时间的http连接，用于服务器消息的实时推送，见Web应用中的Comet技术，这种模式下，浏览器只会发送一次request请求，而server端会不断吐出消息给浏览器端，直到超时或者手工终止连接
+   2. keep-alive，是http协议中定义的一个规范，它是利用同一个tcp连接处理多个http请求和响应，节省了tcp连接3次握手的开销，同时也就减少了后续请求的延时
+
+** HTTP/1.0
+在HTTP/1.0版本中，并没有官方的标准来规定Keep-Alive如何工作，因此实际上它是被附加到HTTP/1.0协议上，如果客户端浏览器支持 Keep-Alive，那么就在HTTP请求头中添加一个字段 Connection: Keep-Alive，当服务器收到附带有Connection: Keep-Alive的请求时，它也会在响应头中添加一个同样的字段来使用Keep-Alive。这样一来，客户端和服务器之间的HTTP连接就会被保持，不会断开（超过Keep-Alive规定的时间，意外断电等情况除外），当客户端发送另外一个请求时，就使用这条已经建立的连接
+ 
+** HTTP/1.1
+在HTTP/1.1版本中，默认情况下所在HTTP1.1中所有连接都被保持，除非在请求头或响应头中指明要关闭： *Connection: Close* ，所以在1.1版本中，Connection: Keep-Alive字段实际上已经意义不大了
+
+如果想关闭keepalive，在某些服务器上，只需将keepalive_timeout设为0即可.
+
+resin/tomcat等容器也都是支持Keepalive的，JDK中的URL类同样默认支持keepalive
+
+ 
+要想真正理解keep-alive长连接模式，我们可以使用wireshark或tcpdump去抓包
+
+对于一个没有开启keep-alive的server，response会返回Connection: Close，然后tcp连接马上就关闭了.

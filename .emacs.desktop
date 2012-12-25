@@ -2,9 +2,9 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Mon Dec 24 20:39:19 2012
+;; Created Tue Dec 25 17:15:48 2012
 ;; Desktop file format version 206
-;; Emacs version 24.2.1
+;; Emacs version 23.2.1
 
 ;; Global section:
 (setq desktop-missing-file-warning nil)
@@ -13,16 +13,71 @@
 (setq search-ring nil)
 (setq regexp-search-ring nil)
 (setq register-alist nil)
-(setq file-name-history '("/home/liwei/git/org_notes/tmp.org" "/root/.emacs.d/site-lisp/misc/cnblogs.el" "/home/liwei/git/org_notes/tmp.org"))
+(setq file-name-history '("/root/.emacs.d/site-lisp/org-7.9.2/doc/texinfo.tex" "/home/liwei/git/org_notes/emacs_tcp_http-keep-alive.org" "/home/liwei/git/org_notes/emacs_cnblogs_setup.org" "/home/liwei/git/org_notes/emacs_books_study_gnu_emacs.org" "/home/liwei/git/org_notes/emacs_c_bugs.org" "/home/liwei/git/org_notes/tmp.org" "/root/.emacs.d/site-lisp/misc/cnblogs.el" "/home/liwei/git/org_notes/tmp.org"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_tcp_time_wait_too_many.org"
+  "emacs_tcp_time_wait_too_many.org"
+  'org-mode
+  '(cnblogs-minor-mode)
+  1978
+  '(1421 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/root/.emacs.d/site-lisp/org-7.9.2/doc/texinfo.tex"
+  "texinfo.tex"
+  'plain-tex-mode
+  nil
+  16686
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_tcp_http-keep-alive.org"
+  "emacs_tcp_http-keep-alive.org"
+  'org-mode
+  '(cnblogs-minor-mode)
+  1487
+  '(581 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_cnblogs_setup.org"
+  "emacs_cnblogs_setup.org"
+  'org-mode
+  '(cnblogs-minor-mode)
+  4156
+  '(4064 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
 (desktop-create-buffer 206
   "/home/liwei/git/org_notes/emacs_books_study_gnu_emacs.org"
   "emacs_books_study_gnu_emacs.org"
   'org-mode
   '(cnblogs-minor-mode)
-  8728
+  142
   '(1502 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_c_bugs.org"
+  "emacs_c_bugs.org"
+  'org-mode
+  '(cnblogs-minor-mode)
+  178
+  '(163 nil)
   nil
   nil
   '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
@@ -37,15 +92,4 @@
   nil
   nil
   '((buffer-file-coding-system . utf-8-unix)))
-
-(desktop-create-buffer 206
-  "/home/liwei/git/org_notes/emacs_cnblogs_setup.org"
-  "emacs_cnblogs_setup.org"
-  'org-mode
-  '(cnblogs-minor-mode)
-  3838
-  '(1 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
 

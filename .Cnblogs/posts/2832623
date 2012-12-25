@@ -1,0 +1,259 @@
+
+(("dateCreated" :datetime (20697 53808)) ("description" . "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
+               \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
+<head>
+<title>time<sub>wait过多的优化</sub></title>
+
+wait过多的优化</sub>\"/>
+
+
+
+WAIT</sub> 在服务器侧过多的优化方法\"/>
+WAIT</sub> TCP\"/>
+<style type=\"text/css\">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type=\"text/javascript\">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = \"code-highlighted\";
+     elem.className   = \"code-highlighted\";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id=\"preamble\">
+
+</div>
+
+<div id=\"content\">
+<h1 class=\"title\">time<sub>wait过多的优化</sub></h1>
+
+
+
+<div id=\"table-of-contents\">
+<h2>Table of Contents</h2>
+<div id=\"text-table-of-contents\">
+<ul>
+<li><a href=\"#sec-1\">1 查看一下服务器的压力</a></li>
+<li><a href=\"#sec-2\">2 优化方法</a></li>
+</ul>
+</div>
+</div>
+
+<div id=\"outline-container-1\" class=\"outline-2\">
+<h2 id=\"sec-1\"><span class=\"section-number-2\">1</span> 查看一下服务器的压力</h2>
+<div class=\"outline-text-2\" id=\"text-1\">
+
+
+<p>
+今天在一个服务器上发现连接太多，尤其是 <b>TIME<sub>WAIT</sub></b> 状态的连接更多，这可能主要是由于增加了端口映射。
+而且服务器侧是短连接造成的这种现象。
+用一条命令查看一下：
+</p>
+
+
+  <div class=\"cnblogs_Highlighter\">
+  <pre class=\"brush:bash\">
+
+[root@qzt ~]# netstat -nat | awk '{++S[$NF]} END {for(a in S) print a, S[a]}'
+LAST_ACK 6
+LISTEN 34
+SYN_RECV 12
+CLOSE_WAIT 4
+State 1
+ESTABLISHED 60
+established) 1
+FIN_WAIT1 29
+FIN_WAIT2 1
+CLOSING 3
+TIME_WAIT 101
+
+
+
+  </pre>
+  </div>
+
+
+
+<p>
+该TIME<sub>WAIT的默认值为2</sub>*MSL, MSL即max segment lifetime, 是一个tcp包的最大生存时间。
+</p>
+<p>
+MSL值在linux上好像默认是30秒， 所以从TIME<sub>WAIT状态变化到CLOSED大约需要60秒时间。</sub>
+</p>
+<p>
+另外一方面，本机可用的发起连接的socket端口是有限的，可通过以下命令查看：
+  <div class=\"cnblogs_Highlighter\">
+  <pre class=\"brush:bash\">
+[root@ ~]# cat /proc/sys/net/ipv4/ip_local_port_range
+32768   61000
+
+
+  </pre>
+  </div>
+
+
+
+也即大约只有2万多个端口可用，如果处于 <b>TIME<sub>WIAT</sub></b> 状态的连接很多，
+很有可能会影响本机向处发起的连接,比如ftp的主动模式就会深受影响。
+</p>
+<p>
+出现端口不够用的情况。
+</p>
+</div>
+
+</div>
+
+<div id=\"outline-container-2\" class=\"outline-2\">
+<h2 id=\"sec-2\"><span class=\"section-number-2\">2</span> 优化方法</h2>
+<div class=\"outline-text-2\" id=\"text-2\">
+
+
+<p>
+可以通过以下参数减少 <b>TIME<sub>WAIT</sub></b> 的连接：
+</p>
+<ul>
+<li>方法一：
+</li>
+</ul>
+
+
+  <div class=\"cnblogs_Highlighter\">
+  <pre class=\"brush:bash\">
+
+[root@ ~] vi /etc/sysctl.conf
+
+#开启time_wait状态的socket重用
+net.ipv4.tcp_tw_reuse = 1
+
+#开启time_wait状态的socket快速回收
+net.ipv4.tcp_tw_recycle = 1
+
+[root@ ~] /sbin/sysctl -p
+
+  </pre>
+  </div>
+
+
+
+<ul>
+<li>方法二：
+</li>
+</ul>
+
+
+  <div class=\"cnblogs_Highlighter\">
+  <pre class=\"brush:bash\">
+
+# 或者直接修改time_wait的等待时间
+[root@ ~]echo 30 > /proc/sys/net/ipv4/tcp_fin_timeout
+
+
+  </pre>
+  </div>
+
+
+</div>
+</div>
+</div>
+
+<div id=\"postamble\">
+<p class=\"date\">Date: 2012-12-25 Tue</p>
+<p class=\"author\">Author: liweijijie</p>
+<p class=\"creator\"><a href=\"http://orgmode.org\">Org</a> version 7.9.2 with <a href=\"http://www.gnu.org/software/emacs/\">Emacs</a> version 23</p>
+<a href=\"http://validator.w3.org/check?uri=referer\">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
+") ("title" . "time_wait过多的优化") ("categories" "[随笔分类]C") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/25/2832623.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/25/2832623.html") ("postid" . 2832623) ("source") ("mt_excerpt" . "TIME_WAIT 在服务器侧过多的优化方法") ("mt_keywords" . "TIME_WAIT TCP"))
