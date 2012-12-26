@@ -83,15 +83,15 @@ MSL值在linux上好像默认是30秒， 所以从 *TIME_WAIT* 状态变化到 *
   <div class="cnblogs_Highlighter">
   <pre class="brush:bash">
 
-[root@ ~] vi /etc/sysctl.conf
+    [root@ ~] vi /etc/sysctl.conf
 
-#开启time_wait状态的socket重用
-net.ipv4.tcp_tw_reuse = 1
+    #开启time_wait状态的socket重用
+    net.ipv4.tcp_tw_reuse = 1
 
-#开启time_wait状态的socket快速回收
-net.ipv4.tcp_tw_recycle = 1
+    #开启time_wait状态的socket快速回收
+    net.ipv4.tcp_tw_recycle = 1
 
-[root@ ~] /sbin/sysctl -p
+    [root@ ~] /sbin/sysctl -p
 
   </pre>
   </div>
@@ -101,15 +101,15 @@ net.ipv4.tcp_tw_recycle = 1
 
 - 方法二：
 #+BEGIN_HTML
-  <div class="cnblogs_Highlighter">
-  <pre class="brush:bash">
+      <div class="cnblogs_Highlighter">
+      <pre class="brush:bash">
 
-# 或者直接修改time_wait的等待时间
-[root@ ~]echo 30 > /proc/sys/net/ipv4/tcp_fin_timeout
+      # 或者直接修改time_wait的等待时间
+      [root@ ~]echo 30 > /proc/sys/net/ipv4/tcp_fin_timeout
 
 
-  </pre>
-  </div>
+      </pre>
+      </div>
 
 #+END_HTML
 

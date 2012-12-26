@@ -1,0 +1,44 @@
+#+TITLE:     emacs 代码缩进
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2012-12-26 Wed
+#+DESCRIPTION: emacs 下代码缩进方法。
+#+CATEGORIES: Emacs
+#+KEYWORDS: Emacs
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+
+* 代码缩进两种方法
+
+**  用命令 *indent-rigidly* 并且带上需要缩进的空格数。
+例如，当选择好一个区域后，用命令 *C-u 4 M-x indent-rigidly* 就可以让这个区域缩进4个空格。用命令 *C-u -4 M-x indent-rigidly* 就可以让这个区域减少4个空格的缩进。
+
+** 第二种方法
+先选择好一个区域，然后通过下面的列编辑方式来添加4个空格的缩进:
+    1. 跳转到想缩进的第一列；
+    2. 用C-<space>来标记起始位置。
+    3. 把光标移动到需要编辑结束的地方。
+    4. 用命令 *C-x r t* 来进入列编辑模式， 然后输入四个空格， 回车后即可完成编辑操作。
+ 
+** 例子：
+
+#+BEGIN_SRC c
+    #include <stdio.h>
+    #include <string.h>
+
+    int main(int argc, char *argv[])
+    {
+      printf("hello world.\n");
+
+      return 0;
+    }
+
+#+END_SRC
