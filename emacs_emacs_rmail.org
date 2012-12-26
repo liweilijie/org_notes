@@ -1,0 +1,151 @@
+#+TITLE:     Emacs 电子邮件组件RMAIL
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2012-12-25 Tue
+#+DESCRIPTION: 在Emacs下发送电子邮件
+#+CATEGORIES: Emacs
+#+KEYWORDS: Emacs RMAIL
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+
+* Emacs的电子邮件功能
+
+   本文主要介绍利用Emacs发送电子邮件的基本命令，和它的电子邮件阅读器基本组件RMAIL的功能。
+
+
+* Send Mail
+
+** 命令:
+
+| 快捷键      | 功能                                          |
+|-------------+-----------------------------------------------|
+| C-x m       | 攒写邮件。                                    |
+| C-c C-c     | 发送                                          |
+| C-c C-s     | 发送后回头邮件编辑缓冲里                      |
+| C-c C-f C-c | CC:                                           |
+| C-c C-f C-b | BCC:                                          |
+|-------------+-----------------------------------------------|
+|             | FCC:filename 自动地把一份邮件副本发送到某文件 |
+|             |                                               |
+|-------------+-----------------------------------------------|
+| C-x i       | 插入文本                                      |
+|             |                                               |
+|-------------+-----------------------------------------------|
+| C-c C-w     | 给邮件加上签名                                       |
+
+
+** 基本步骤:
+- C-x m
+- To: 写上收件人，多个收件人用逗号隔开。如果收信人不止一行，别忘记在第二行和以后各行的开始加上一个空格(只要是用来填写电子邮件的地址的地址栏，比如 *CC:* , *BCC:* 栏等都适用于这条规则).
+- --text follows this line-- ： 移动光标到这一行下面写内容，千万不要删除这一行。Emacs是靠它来分隔邮件信头与信体的。
+- C-c C-c : 写好邮件之后，按下 *C-c C-c* 进行发送。而 C-c C-s 这个命令的作用是送出邮件但仍然停留在邮件编辑缓冲区里.
+
+** 例子:
+
+#+BEGIN_SRC shell
+
+To: lijieliwei@126.com
+Subject: Emacs send mail Test.
+From: root <root@liwei.i-did-not-set--mail-host-address--so-tickle-me>
+--text follows this line--
+
+Hi Jie:
+    This is one mail by Emacs edit it.
+
+
+#+END_SRC
+
+
+** 从窗口或窗格里发送邮件
+
+1 窗口：
+    - C-x 4 m
+    - 写邮件内容
+    - C-c C-c
+    - C-x 0
+    - C-x k 如果想放弃发送邮件。
+
+2 窗格：
+    - C-x 5 m
+    - C-c C-c
+    - C-x 5 0
+
+** 给邮件加上签名
+ 
+  首先将一个签名内容放在主目录里一个名为 *.signature* 的文件里面。
+
+  写完邮件内容后再按 *C-c C-w* 组合键即可。
+
+** 使用别名
+
+在.emacs里面定义即可：
+
+#+BEGIN_SRC emacs-lisp
+
+(define-mail-alias "liw" "liw@qzt360.com")
+(define-mail-alias "liwgmail" "liweilijie@gmail.com")
+
+#+END_SRC
+
+** 回信地址(Reply-to)栏的用法
+
+快捷键：C-c C-f C-r
+
+在.emacs文件里面配置：
+
+#+BEGIN_SRC emacs-lisp
+
+(setq mail-default-reply-to "lijieliwei@126.com")
+
+#+END_SRC
+
+
+-----
+
+* 用Emacs读取邮件
+
+- 进入读取邮件模式：ESC x rmail RET
+- 邮件消息默认保存在'~/RMAIL' 里，而修改则只需要在.emacs里加:
+#+BEGIN_SRC emacs-lisp
+
+(setq rmail-file-name "~/mail/inbox.rmail")
+
+#+END_SRC
+ 
+** RAMIL命令
+
+| 快捷键 | 命令                             | 功能                                        |
+|--------+----------------------------------+---------------------------------------------|
+| SPACE  | scroll-up                        | 卷屏，查看此消息的下一个画面                |
+| DEL    | scroll-down                      | 卷屏，查看此消息的上一个画面                |
+| .      | rmail-beginning-of-message       | 移动到此消息的开头                          |
+| n      | rmail-next-undeleted-message     | 移动到下一条消息                            |
+| p      | rmail-previous-undeleted-message | 移动到上一条消息                            |
+| <      | rmail-first-message              | 移动到第一条消息                            |
+| >      | rmail-last-message               | 移动到最后一条消息                          |
+| j      | rmail-show-message               | 如果这个命令的前面有一个数字n,跳到第n条消息 |
+|--------+----------------------------------+---------------------------------------------|
+| g      | refresh                          | 刷新,获取新邮件                             |
+
+
+** 邮件删除命令
+
+| 快捷键 | 命令                            | 功能                                           |
+|--------+---------------------------------+------------------------------------------------|
+| d      | rmail-delete-forward            | 给邮件加上待删除标记，然后移动到下一个         |
+| C-d    | rmail-delete-backward           | 给邮件加上待删除标记，然后移动到上一个         |
+| ESC n  | rmail-next-message              | 移动到下一条消息；不管它是否已经加上待删除标记 |
+| ESC p  | rmail-previous-message          | 移动到上一条消息；不管它是否已经加上待删除标记 |
+| u      | rmail-undelete-previous-message | 去掉邮件消息上的待删除标记                     |
+| x      | rmail-expunge                   | 删除已经加有待删除标记的全部消息               |
+| s      | rmail-expunge-and-save          | 删除加有待删除标记的消息并保存RMAIL文件        |
+
+

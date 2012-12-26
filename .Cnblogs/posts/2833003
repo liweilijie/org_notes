@@ -1,0 +1,183 @@
+
+(("dateCreated" :datetime (20698 2552)) ("description" . "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
+               \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
+<head>
+<title>Emacs 电子邮件组件RMAIL</title>
+
+
+
+
+
+
+
+<style type=\"text/css\">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type=\"text/javascript\">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = \"code-highlighted\";
+     elem.className   = \"code-highlighted\";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id=\"org-div-home-and-up\" style=\"text-align:right;font-size:70%;white-space:nowrap;\">
+ <a accesskey=\"h\" href=\"/liweilijie\"> UP </a>
+ |
+ <a accesskey=\"H\" href=\"/liweilijie\"> HOME </a>
+</div>
+
+<div id=\"preamble\">
+
+</div>
+
+<div id=\"content\">
+<h1 class=\"title\">Emacs 电子邮件组件RMAIL</h1>
+
+
+
+<div id=\"table-of-contents\">
+<h2>Table of Contents</h2>
+<div id=\"text-table-of-contents\">
+<ul>
+<li><a href=\"#sec-1\">1 Emacs的电子邮件功能</a></li>
+<li><a href=\"#sec-2\">2 Send Mail</a></li>
+</ul>
+</div>
+</div>
+
+<div id=\"outline-container-1\" class=\"outline-2\">
+<h2 id=\"sec-1\"><span class=\"section-number-2\">1</span> Emacs的电子邮件功能</h2>
+<div class=\"outline-text-2\" id=\"text-1\">
+
+
+<p>
+   本文主要介绍利用Emacs发送电子邮件的基本命令，和它的电子邮件阅读器基本组件RMAIL的功能。
+</p>
+
+</div>
+
+</div>
+
+<div id=\"outline-container-2\" class=\"outline-2\">
+<h2 id=\"sec-2\"><span class=\"section-number-2\">2</span> Send Mail</h2>
+<div class=\"outline-text-2\" id=\"text-2\">
+
+
+<ul>
+<li>C-x m
+</li>
+<li>To: 写上收件人，多个收件人用逗号隔开。如果收信人不止一行，别忘记在第二行和以后各行的开始加上一个空格(只要是用来填写电子邮件的地址的地址栏，比如 <b>CC:</b> , <b>BCC:</b> 栏等都适用于这条规则).
+</li>
+<li>&ndash;text follows this line&ndash; ： 移动光标到这一行下面写内容，千万不要删除这一行。Emacs是靠它来分隔邮件信头与信体的。
+</li>
+<li>C-c C-c : 写好邮件之后，按下 <b>C-c C-c</b> 进行发送。而 C-c C-s 这个命令的作用是送出邮件但仍然停留在邮件编辑缓冲区里.
+</li>
+</ul>
+
+
+
+
+</div>
+</div>
+</div>
+
+<div id=\"postamble\">
+<p class=\"date\">Date: 2012-12-25 Tue</p>
+<p class=\"author\">Author: liweilijie</p>
+<p class=\"creator\"><a href=\"http://orgmode.org\">Org</a> version 7.9.2 with <a href=\"http://www.gnu.org/software/emacs/\">Emacs</a> version 23</p>
+<a href=\"http://validator.w3.org/check?uri=referer\">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
+") ("title" . "Emacs 电子邮件组件RMAIL") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/25/2833003.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/25/2833003.html") ("postid" . 2833003) ("source") ("mt_excerpt" . "在Emacs下发送电子邮件") ("mt_keywords" . "Emacs RMAIL"))

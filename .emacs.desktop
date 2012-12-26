@@ -2,7 +2,7 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Tue Dec 25 17:15:48 2012
+;; Created Tue Dec 25 23:11:07 2012
 ;; Desktop file format version 206
 ;; Emacs version 23.2.1
 
@@ -10,12 +10,78 @@
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
-(setq search-ring nil)
+(setq search-ring '("color"))
 (setq regexp-search-ring nil)
 (setq register-alist nil)
-(setq file-name-history '("/root/.emacs.d/site-lisp/org-7.9.2/doc/texinfo.tex" "/home/liwei/git/org_notes/emacs_tcp_http-keep-alive.org" "/home/liwei/git/org_notes/emacs_cnblogs_setup.org" "/home/liwei/git/org_notes/emacs_books_study_gnu_emacs.org" "/home/liwei/git/org_notes/emacs_c_bugs.org" "/home/liwei/git/org_notes/tmp.org" "/root/.emacs.d/site-lisp/misc/cnblogs.el" "/home/liwei/git/org_notes/tmp.org"))
+(setq file-name-history '("~/.gnus.el" "~/.signature" "/root/.emacs" "/root/.emacs.d/site-lisp/org-7.9.2/doc/texinfo.tex" "/home/liwei/git/org_notes/emacs_tcp_http-keep-alive.org" "/home/liwei/git/org_notes/emacs_cnblogs_setup.org" "/home/liwei/git/org_notes/emacs_books_study_gnu_emacs.org" "/home/liwei/git/org_notes/emacs_c_bugs.org" "/home/liwei/git/org_notes/tmp.org" "/root/.emacs.d/site-lisp/misc/cnblogs.el" "/home/liwei/git/org_notes/tmp.org"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/root/RMAIL"
+  "RMAIL"
+  'rmail-mode
+  nil
+  1
+  '(nil nil)
+  t
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/root/.gnus.el"
+  ".gnus.el"
+  'emacs-lisp-mode
+  nil
+  47
+  '(766 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_emacs_rmail.org"
+  "emacs_emacs_rmail.org"
+  'org-mode
+  '(cnblogs-minor-mode)
+  4499
+  '(4531 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/root/.signature"
+  ".signature"
+  'fundamental-mode
+  nil
+  84
+  '(85 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/root/.emacs.d/site-lisp/color-theme-6.6.0/themes/color-theme-example.el"
+  "color-theme-example.el"
+  'emacs-lisp-mode
+  nil
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/root/.emacs"
+  ".emacs"
+  'emacs-lisp-mode
+  nil
+  1903
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
 (desktop-create-buffer 206
   "/home/liwei/git/org_notes/emacs_tcp_time_wait_too_many.org"
   "emacs_tcp_time_wait_too_many.org"
@@ -92,4 +158,48 @@
   nil
   nil
   '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/root/Mail/drafts/*message*-20121225-202023"
+  "*sent mail to lijieliwei@126.com*"
+  'message-mode
+  '(auto-fill-mode abbrev-mode mml-mode)
+  1
+  '(1 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-emacs-unix) (fill-column . 72)))
+
+(desktop-create-buffer 206
+  "/root/Mail/drafts/*message*-20121225-203812"
+  "*sent mail to lijieliwei@126.com*<2>"
+  'message-mode
+  '(auto-fill-mode abbrev-mode mml-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-emacs-unix) (fill-column . 72)))
+
+(desktop-create-buffer 206
+  "/root/Mail/drafts/*message*-20121225-215704"
+  "*sent mail to heg@qzt360.com, zhangjl@qzt360.com*"
+  'message-mode
+  '(auto-fill-mode abbrev-mode mml-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-emacs-unix) (fill-column . 72)))
+
+(desktop-create-buffer 206
+  "/root/.newsrc-dribble"
+  ".newsrc-dribble"
+  'fundamental-mode
+  nil
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . raw-text-unix)))
 
