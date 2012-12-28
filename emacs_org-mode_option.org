@@ -1,0 +1,70 @@
+#+TITLE:     Emacs Org-Mode 标记语言
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2012-12-26 Wed
+#+DESCRIPTION: Emacs Org-Mode 标记语言的一些知识。
+#+KEYWORDS: org-mode Emacs
+#+CATEGORIES: Emacs
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+
+在org-mode里，默认情况下' *_* ' 这种字符会被当成标记语言来进行转义。
+有时候自己写的文章里面确实想用下划线这个符号，怎么办？
+
+如何设置让 *Org-Mode* 在默认情况下不转义 *_* 字符呢？
+
+* 单个org文件的解决方法
+
+可以在一个org文件的开头，用下面的设置来关闭这个功能：
+#+BEGIN_SRC emacs-lisp
+    #+OPTIONS: ^:nil
+#+END_SRC
+
+如果你需要更方便的设置，可以把上面的这个改为：
+#+BEGIN_SRC emacs-lisp
+#+OPTIONS: ^:{}
+#+END_SRC
+
+这样，当你写成：
+#+BEGIN_SRC emacs-lisp
+a_{b}
+#+END_SRC
+将会被转义成 *a_{b}* ， *_* 后被{}括起来的内容就会被转义。
+而 *a_b* 时，就按普通的方式来显示。
+
+* org 全局解决办法
+
+如果用org sites来写笔记，想让某个site的所有org文件不转义 *_* 字符，
+
+则可以直接在org sites配置文件里，配置下面这么一句：
+
+#+BEGIN_SRC emacs-lisp
+(setq org-export-with-sub-superscripts nil)
+#+END_SRC
+
+也可以在 org sites里设置这个属性，只作用于某一个site:
+
+#+BEGIN_SRC emacs-lisp
+:sub-superscript nil
+#+END_SRC
+
+如果需要像上面一样，采用相对智能的{}方式，可以设置成：
+#+BEGIN_SRC emacs-lisp
+:sub-superscript {}
+#+END_SRC
+
+或者直接用elisp来设置全局的属性：
+#+BEGIN_SRC emacs-lisp
+(setq org-export-with-sub-superscripts '{})
+
+#+END_SRC
+
+是不是解决了？

@@ -21,7 +21,7 @@
 |---------+-------------------------+----------------------------------------|
 | C-x C-v | find-alternate-file     | 读取另一个文件来代替刚才诗篇的那一个。 |
 | C-x i   |                         | 输入文件。                             |
-| C-c C-f | find-file               | 查找文件并且打开它。                   |
+| C-x C-f | find-file               | 查找文件并且打开它。                   |
 | C-x C-s | save-buffer             | 保存文件.                              |
 | C-x C-w | write-file              | 把缓冲区内容写入一个文件。             |
 | C-x C-c | save-buffers-kill-emacs | 退出emacs                              |
@@ -98,6 +98,52 @@
 | ESC C-c    | 退出递归编辑状态，继续完成查询－替换操作。                   |
 | C-]        | 退出递归编辑状态和查询－替换操作。                           |
 
+** 删除命令
+
+    | 快捷键      | 功能                   |
+    |-------------+------------------------|
+    | C-d         | 向前detele字符         |
+    | DEL         | 向后detele字符         |
+    | ESC d       | 向前delete到字首       |
+    | ESC DEL     | 向后delete到字尾       |
+    | ESC 0 C-k   | 向前delte到行首        |
+    | C-k         | 向后delete到行尾       |
+    | C-x DEL     | 向前delete到句首       |
+    | ESC k       | 向后delete到句尾       |
+    | ESC - C-M-k | 向前delete到表达式首部 |
+    | C-M-k       | 向后delete到表达式尾部 |
+    | C-w         | kill 区域              |
+
+** 标记(Marking)
+
+    | 快捷键      | 功能                                 |
+    |-------------+--------------------------------------|
+    | C-SPC (C-@) | 标记当前位置                         |
+    | C-x C-x     | 以字符为单位使用移动命令动态标记区域 |
+    | ESC @       | 以字为单位使用移动命令动态标记区域   |
+    | ESC h       | 标记一段                             |
+    | C-x C-p     | 标记一页                             |
+    | ESC C-@     | 标记一个表达式                       |
+    | ESC C-h     | 标记一个函数                         |
+    | C-x h       | 标记整个缓冲区                       |
+
+** 缩进格式
+
+    | 快捷键  | 功能                                  |
+    |---------+---------------------------------------|
+    | TAB     | 缩进当前行(与模式有关)                |
+    | ESC C-\ | 缩进区域(与模式有关)                  |
+    | ESC C-q | 缩进表达式(与模式有关)                |
+    | C-x TAB | Indent region rigidly arg. Columns    |
+    | C-o     | 在光标后插入一个新的行(有点像vi的'o') |
+    | ESC C-o | 静态地将一行下移                      |
+    | C-x C-o | 删除光标附近的空行(留下一行)          |
+    | ESC ^   | 与上一行合并成一行                    |
+    | ESC -   | 删除光标附近的所有空格                |
+    | ESC SPC | 删除光标附近的空格(留下一格)          |
+    | ESC q   | Fill paragraph                        |
+    | C-x f   | Set fill column                       |
+    | C-x     | 设置每一行开始的前缀                  |
 
 
 ** 递增查找
@@ -105,5 +151,12 @@
  - 用复制办法得到的查找字符串会把原文中的大写字母都转换成小写字母。
 
 
+* 使.emacs立即生效
+
+#+BEGIN_SRC emacs-lisp
+
+    ESC x eval-current-buffer
+
+#+END_SRC
 
 Go On. heheh

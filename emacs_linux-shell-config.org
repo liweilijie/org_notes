@@ -1,0 +1,24 @@
+#+TITLE:     自己喜欢的shell终端配置
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2012-12-27 Thu
+#+DESCRIPTION: 在linux上的shell终端有时候配置得适合自己喜欢的，工作起来才会更爽哦。
+#+CATEGORIES: shell linux
+#+KEYWORDS: shell linux
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweiljie
+#+XSLT:
+
+
+- 字体: Courier
+- 大小: 12
+- 内置方案: 黑底灰字 + XTerm
+- 回滚无限制. 
+
+

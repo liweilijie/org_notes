@@ -2,7 +2,7 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Wed Dec 26 17:34:39 2012
+;; Created Fri Dec 28 11:41:31 2012
 ;; Desktop file format version 206
 ;; Emacs version 23.2.1
 
@@ -10,19 +10,63 @@
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
-(setq search-ring '("color"))
+(setq search-ring '("color-name-to-rgb" "load-path" "yes" "make-ba" "org" "color"))
 (setq regexp-search-ring nil)
 (setq register-alist nil)
-(setq file-name-history '("/home/liwei/git/org_notes/emacs_emacs_indent_codes.org" "/home/liwei/git/org_notes/emacs_tcp_time_wait_too_many.org" "~/.gnus.el" "~/.signature" "/root/.emacs" "/root/.emacs.d/site-lisp/org-7.9.2/doc/texinfo.tex" "/home/liwei/git/org_notes/emacs_tcp_http-keep-alive.org" "/home/liwei/git/org_notes/emacs_cnblogs_setup.org" "/home/liwei/git/org_notes/emacs_books_study_gnu_emacs.org" "/home/liwei/git/org_notes/emacs_c_bugs.org" "/home/liwei/git/org_notes/tmp.org" "/root/.emacs.d/site-lisp/misc/cnblogs.el" "/home/liwei/git/org_notes/tmp.org"))
+(setq file-name-history '("~/.emacs.d/site-lisp/tabbar-ruler.el" "~/.emacs.d/site-lisp/tabbar.el" "~/s9.c" "~/.emacs" "/root/.emacs" "/home/liwei/git/org_notes/emacs_tcp_time_wait_too_many.org" "~/.emacs" "/home/liwei/git/org_notes/emacs_org-mode_option.org" "/home/liwei/git/org_notes/emacs_emacs_indent_codes.org" "/home/liwei/git/org_notes/emacs_tcp_time_wait_too_many.org" "~/.gnus.el" "~/.signature" "/root/.emacs" "/root/.emacs.d/site-lisp/org-7.9.2/doc/texinfo.tex" "/home/liwei/git/org_notes/emacs_tcp_http-keep-alive.org" "/home/liwei/git/org_notes/emacs_cnblogs_setup.org" "/home/liwei/git/org_notes/emacs_books_study_gnu_emacs.org" "/home/liwei/git/org_notes/emacs_c_bugs.org" "/home/liwei/git/org_notes/tmp.org" "/root/.emacs.d/site-lisp/misc/cnblogs.el" "/home/liwei/git/org_notes/tmp.org"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 206
-  "/home/liwei/git/org_notes/emacs_emacs_indent_codes.org"
-  "emacs_emacs_indent_codes.org"
+  "/root/.emacs"
+  ".emacs"
+  'emacs-lisp-mode
+  nil
+  1910
+  '(4160 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/root/.emacs.d/site-lisp/tabbar-ruler.el"
+  "tabbar-ruler.el"
+  'emacs-lisp-mode
+  nil
+  13816
+  '(201 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/root/.emacs.d/site-lisp/tabbar.el"
+  "tabbar.el"
+  'emacs-lisp-mode
+  nil
+  4163
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_books_study_gnu_emacs.org"
+  "emacs_books_study_gnu_emacs.org"
   'org-mode
   '(cnblogs-minor-mode)
-  1054
-  '(908 nil)
+  8823
+  '(1501 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_linux-shell-config.org"
+  "emacs_linux-shell-config.org"
+  'org-mode
+  '(cnblogs-minor-mode)
+  598
+  '(507 nil)
   nil
   nil
   '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
@@ -32,19 +76,41 @@
   "emacs_tcp_time_wait_too_many.org"
   'org-mode
   '(cnblogs-minor-mode)
-  1738
-  '(1551 nil)
+  513
+  '(1552 nil)
   nil
   nil
   '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
 
 (desktop-create-buffer 206
-  "/home/liwei/git/org_notes/emacs_books_study_gnu_emacs.org"
-  "emacs_books_study_gnu_emacs.org"
+  "/home/liwei/git/org_notes/emacs_plugin_org-mode.org"
+  "emacs_plugin_org-mode.org"
+  'org-mode
+  '(cnblogs-minor-mode org-indent-mode)
+  1496
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_org-mode_option.org"
+  "emacs_org-mode_option.org"
   'org-mode
   '(cnblogs-minor-mode)
-  3528
-  '(142 nil)
+  1409
+  '(1366 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_emacs_indent_codes.org"
+  "emacs_emacs_indent_codes.org"
+  'org-mode
+  '(cnblogs-minor-mode)
+  1054
+  '(908 nil)
   nil
   nil
   '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
@@ -100,17 +166,6 @@
   nil
   1
   '(nil nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/root/.emacs"
-  ".emacs"
-  'emacs-lisp-mode
-  nil
-  1903
-  '(1 nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix)))
