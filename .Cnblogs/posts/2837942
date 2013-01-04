@@ -1,0 +1,261 @@
+
+(("dateCreated" :datetime (20702 5668)) ("description" . "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
+               \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
+<head>
+<title>程序员的Emacs</title>
+
+
+
+
+
+
+
+<style type=\"text/css\">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type=\"text/javascript\">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = \"code-highlighted\";
+     elem.className   = \"code-highlighted\";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id=\"org-div-home-and-up\" style=\"text-align:right;font-size:70%;white-space:nowrap;\">
+ <a accesskey=\"h\" href=\"/liweilijie\"> UP </a>
+ |
+ <a accesskey=\"H\" href=\"/liweilijie\"> HOME </a>
+</div>
+
+<div id=\"preamble\">
+
+</div>
+
+<div id=\"content\">
+<h1 class=\"title\">程序员的Emacs</h1>
+
+
+<p>
+这主要是跟编辑有关的Emacs按键。
+</p>
+
+<div id=\"table-of-contents\">
+<h2>Table of Contents</h2>
+<div id=\"text-table-of-contents\">
+<ul>
+<li><a href=\"#sec-1\">1 格式</a></li>
+<li><a href=\"#sec-2\">2 C 和 C++ 模式</a>
+<ul>
+<li><a href=\"#sec-2-1\">2.1 C 模式下的移动命令</a></li>
+<li><a href=\"#sec-2-2\">2.2 etags</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id=\"outline-container-1\" class=\"outline-2\">
+<h2 id=\"sec-1\"><span class=\"section-number-2\">1</span> 格式</h2>
+<div class=\"outline-text-2\" id=\"text-1\">
+
+
+<ul>
+<li>Emacs的缩进是靠变量 <b>left-margin</b> 来控制的。
+</li>
+</ul>
+
+
+<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
+<colgroup><col class=\"left\" /><col class=\"left\" /><col class=\"left\" />
+</colgroup>
+<thead>
+<tr><th scope=\"col\" class=\"left\">键盘操作</th><th scope=\"col\" class=\"left\">命令名称</th><th scope=\"col\" class=\"left\">动作</th></tr>
+</thead>
+<tbody>
+<tr><td class=\"left\">ESC C-\\</td><td class=\"left\">indent-region</td><td class=\"left\">对光标和文本块标记之间的每一行进行缩进</td></tr>
+<tr><td class=\"left\">ESC m</td><td class=\"left\">back-to-indentation</td><td class=\"left\">把光标移到当前行的第一个非空白字符上</td></tr>
+<tr><td class=\"left\">ESC ^</td><td class=\"left\">delete-indentation</td><td class=\"left\">把当前行合并到上一行去</td></tr>
+</tbody>
+<tbody>
+<tr><td class=\"left\">ESC ;</td><td class=\"left\">indent-for-comment</td><td class=\"left\">注释</td></tr>
+<tr><td class=\"left\">ESC j</td><td class=\"left\">indent-new-comment-line</td><td class=\"left\">如果注释的内容用一个文本行容纳不下，就需要在下一行继续写完注释；也可能将写好的注释分为两行。</td></tr>
+</tbody>
+</table>
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-2\" class=\"outline-2\">
+<h2 id=\"sec-2\"><span class=\"section-number-2\">2</span> C 和 C++ 模式</h2>
+<div class=\"outline-text-2\" id=\"text-2\">
+
+
+<ul>
+<li>进入 <b>C</b> 模式： <b>ESC x c-mode RET</b>
+</li>
+<li>进入 <b>C++</b> 模式： <b>ESC x c++mode RET</b>
+</li>
+</ul>
+
+
+
+</div>
+
+<div id=\"outline-container-2-1\" class=\"outline-3\">
+<h3 id=\"sec-2-1\"><span class=\"section-number-3\">2.1</span> C 模式下的移动命令</h3>
+<div class=\"outline-text-3\" id=\"text-2-1\">
+
+<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
+<colgroup><col class=\"left\" /><col class=\"left\" /><col class=\"left\" />
+</colgroup>
+<thead>
+<tr><th scope=\"col\" class=\"left\">键盘操作</th><th scope=\"col\" class=\"left\">命令名称</th><th scope=\"col\" class=\"left\">动作</th></tr>
+</thead>
+<tbody>
+<tr><td class=\"left\">ESC a</td><td class=\"left\">c-beginning-of-statement</td><td class=\"left\">移动到当前语句的开头</td></tr>
+<tr><td class=\"left\">ESC e</td><td class=\"left\">c-end-of-statement</td><td class=\"left\">移动到当前语句的末尾</td></tr>
+<tr><td class=\"left\">ESC q</td><td class=\"left\">c-fill-paragraph</td><td class=\"left\">如果光标在注释文本中间，则进行段落重排，保留缩进和前导字母</td></tr>
+<tr><td class=\"left\">ESC C-a</td><td class=\"left\">beginning-of-defun</td><td class=\"left\">移动到光标所在函数的开头</td></tr>
+<tr><td class=\"left\">ESC C-e</td><td class=\"left\">end-of-defun</td><td class=\"left\">移动到光标所在函数的末尾</td></tr>
+<tr><td class=\"left\">ESC C-h</td><td class=\"left\">c-mark-function</td><td class=\"left\">把光标放到函数的开头，把文本块标记放到函数的末尾，即把函数整个选取为一个文本块</td></tr>
+<tr><td class=\"left\">C-c C-q</td><td class=\"left\">c-indent-defun</td><td class=\"left\">按缩进样式对整个函数进行缩进</td></tr>
+<tr><td class=\"left\">C-c C-u</td><td class=\"left\">c-up-conditional</td><td class=\"left\">移动到当前预处理条件的开始位置</td></tr>
+<tr><td class=\"left\">C-c C-p</td><td class=\"left\">c-backward-conditional</td><td class=\"left\">移动到上一个预处理条件</td></tr>
+<tr><td class=\"left\">C-c C-n</td><td class=\"left\">C-forwrad-conditional</td><td class=\"left\">移动到下一个预处理器条件</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-2-2\" class=\"outline-3\">
+<h3 id=\"sec-2-2\"><span class=\"section-number-3\">2.2</span> etags</h3>
+<div class=\"outline-text-3\" id=\"text-2-2\">
+
+
+<ul>
+<li>etags *.[ch]
+</li>
+<li>ESC x visit-tags-table RET
+</li>
+<li>ESC .
+</li>
+<li>C-x 4 .
+</li>
+<li>ESC ,
+</li>
+</ul>
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+<div id=\"postamble\">
+<p class=\"date\">Date: 2012-12-28 Fri</p>
+<p class=\"author\">Author: liweilijie</p>
+<p class=\"creator\"><a href=\"http://orgmode.org\">Org</a> version 7.9.2 with <a href=\"http://www.gnu.org/software/emacs/\">Emacs</a> version 23</p>
+<a href=\"http://validator.w3.org/check?uri=referer\">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
+") ("title" . "程序员的Emacs") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/28/2837942.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/28/2837942.html") ("postid" . 2837942) ("source") ("mt_excerpt" . "程序员的Emacs") ("mt_keywords" . "Emacs"))

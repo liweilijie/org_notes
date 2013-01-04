@@ -1,0 +1,27 @@
+#+TITLE:     Emacs 矩形编辑
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2012-12-31 Mon
+#+DESCRIPTION: Emacs
+#+KEYWORDS: Emacs
+#+CATEGORIES: Emacs
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+*  Emacs的矩形操作命令
+
+| 键盘操作 | 命令             | 动作                             |
+|----------+------------------+----------------------------------|
+| C-x r k  | kill-rectangle   | 删除一个矩形并把它保存起来       |
+| C-x r d  | delete-rectangle | 删除一个矩形但不把它保存起来     |
+| C-x r y  | yank-rectangle   | 在光标位置插入最后一次删除的矩形 |
+| C-x r c  | clear-rectangle  | 清除矩形区域的内容,并且不保存它  |
+| C-x r o  | open-rectangle   | 在矩形区域里插入一个空白矩形     |
+

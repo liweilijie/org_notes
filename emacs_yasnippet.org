@@ -1,0 +1,134 @@
+#+TITLE:     Emacs 使用YASnippet
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:       2012-12-30 Sun
+#+DESCRIPTION: Emacs 使用YASnippet
+#+KEYWORDS: Emacs
+#+CATEGORIES: Emacs
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+
+* 安装YASnippent
+
+#+BEGIN_EXAMPLE
+    $ cd ~/.emacs.d/plugins
+    $ git clone https://github.com/capitaomorte/yasnippet
+#+END_EXAMPLE
+
+Add the following in your =.emacs= file:
+
+#+BEGIN_EXAMPLE
+    (add-to-list 'load-path
+                  "~/.emacs.d/plugins/yasnippet")
+    (require 'yasnippet)
+    (yas/global-mode 1)
+#+END_EXAMPLE
+
+* 安装 org-mode字典
+
+#+source: shell
+  #+begin_src shell
+  # git clone git://github.com/rvf0068/yasnippets.git
+  ## 复制yasnippets/org-mode目录到yasnippet/snippets/目录下
+  # cp -r yasnippets/org-mode /root/.emacs.d/site-lisp/yasnippet/snippets/
+  
+  #+end_src
+
+* org-mode中使用教程
+
+Snippets for org-mode. See [[https://github.com/capitaomorte/yasnippet][Yasnippet in Github]].
+
+They have bindings ~C-c y~ plus an extra letter.
+
+I have added a ~condition~ statement so that the snippets can be
+expanded only at the beginning of the line.
+
+| name                                | key        | letter | explanation                            |
+|-------------------------------------+------------+--------+----------------------------------------|
+| #+begin_ ...#+end_                  | block      | b      |                                        |
+| #+srcname:..#+begin_src...#+end_src | sb         | s      | source block with name                 |
+| attr_html                           | ath        |        | alt="$1" img class="aligncenter"       |
+| attr_latex                          | atl        |        | ${1:width=$2\textwidth}                |
+| author                              | aut        | a      | inserts ~#+author:~                    |
+| corollary                           | cor        | c      | (uses reftex)                          |
+| definition                          | def        | d      | (uses reftex)                          |
+| ditaa                               | dit        |        | #+begin_ditaa,+end_ditaa               |
+| el                                  | el         |        | #+begin_src emacs-lisp,+end_src        |
+| email                               | email      |        | inserts ~#+email:~                     |
+| equation                            | eqn        | e      | (uses reftex)                          |
+| figure                              | fig        | f      | asks for image file                    |
+| language                            | lan        |        | inserts ~#+language:~ (with choice)    |
+| LaTeX class                         | lcl        |        | inserts ~#+latex_class:~ (with choice) |
+| LaTeX header                        | lhe        |        | inserts ~#+latex_header:~              |
+| lemma                               | lem        | l      | (uses reftex)                          |
+| options                             | opt        | o      | inserts ~#+options:~                   |
+| proof                               | prf        |        |                                        |
+| properties folded                   | properties |        | inserts visibility folded property     |
+| proposition                         | pro        | p      | (uses reftex)                          |
+| startup                             | sta        |        | inserts ~#+startup:~                   |
+| text                                | text       |        | inserts ~#+text:~                      |
+| theorem                             | thm        | t      | (uses reftex)                          |
+| tikz-picture                        | tkz        | z      | (uses reftex)                          |
+| title                               | title      |        | inserts ~#+title:~                     |
+
+
+* YASnippet增加模板
+
+这么强大的工具要是没有定制功能简直太可惜了.不过我找了很久也没有找到.以为直接编辑文件就可以的,但是结果还是不成功.
+
+还得一步一个脚印的来.幸好有元旦的5天假期,否则不知道我会不会因为没有耐心而放弃研究它了呢.
+
+下面举个例子增加 cnblogs的bash着色模块.
+
+1. *ESC x yas/new-snippet* 来进入新建snippet的buffer,可以看到以下的内容:
+
+    #+BEGIN_QUOTE
+    :  　# -*- mode: snippet -*-
+    :  　# name: 
+    :  　# key: 
+    :  　# binding: direct-keybinding
+    :  　# expand-env: ((some-var some-value))
+    :  　# type: command
+    :  　# --
+    :
+    #+END_QUOTE
+
+	其中:
+       - name: 是在YASnippet中显示的名字.
+       - key: 是触发这个snippet所用的关键字.
+       - binding 和　expand-env, type 是一些高级特征,这里不做研究.
+
+2. 将上面的内容改为(不需要的行删掉):
+ 
+    #+BEGIN_QUOTE
+    :    # -*- mode: snippet -*-
+    :    # name: src_bash
+    :    # key: bash
+    :    # --
+    :    #+BEGIN_HTML
+    :	<div class="cnblogs_Highlighter">
+    :	<pre class="brush:bash">
+    :
+    :	${1:#!/bin/bash}
+    :	$0
+    :
+    :	</pre>
+    :	</div>
+    :    #+END_HTML
+    :
+    #+END_QUOTE
+
+	 其中: *${N: Some Text}* 的内容被称为字段, ~N~ 是tab stop序号(顺序是从$1-$N的),冒号后面的文本则是默认值.最近 ~$0~ 被称为YASnippet的退出点,即一个key被展开为snippet,并按顺序走完所有的tab stop之后光标停留的点.
+
+3. 保存: *C-x C-s* 保存在 org-mode/bash文件里面即可.
+4. 重启之后,可以使用.
+
+

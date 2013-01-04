@@ -2,7 +2,7 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Fri Dec 28 11:41:31 2012
+;; Created Thu Jan  3 18:33:19 2013
 ;; Desktop file format version 206
 ;; Emacs version 23.2.1
 
@@ -10,83 +10,138 @@
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
-(setq search-ring '("color-name-to-rgb" "load-path" "yes" "make-ba" "org" "color"))
+(setq search-ring '("color" "colo" "color-name-to-rgb" "load-path" "yes" "make-ba" "org" "color"))
 (setq regexp-search-ring nil)
 (setq register-alist nil)
-(setq file-name-history '("~/.emacs.d/site-lisp/tabbar-ruler.el" "~/.emacs.d/site-lisp/tabbar.el" "~/s9.c" "~/.emacs" "/root/.emacs" "/home/liwei/git/org_notes/emacs_tcp_time_wait_too_many.org" "~/.emacs" "/home/liwei/git/org_notes/emacs_org-mode_option.org" "/home/liwei/git/org_notes/emacs_emacs_indent_codes.org" "/home/liwei/git/org_notes/emacs_tcp_time_wait_too_many.org" "~/.gnus.el" "~/.signature" "/root/.emacs" "/root/.emacs.d/site-lisp/org-7.9.2/doc/texinfo.tex" "/home/liwei/git/org_notes/emacs_tcp_http-keep-alive.org" "/home/liwei/git/org_notes/emacs_cnblogs_setup.org" "/home/liwei/git/org_notes/emacs_books_study_gnu_emacs.org" "/home/liwei/git/org_notes/emacs_c_bugs.org" "/home/liwei/git/org_notes/tmp.org" "/root/.emacs.d/site-lisp/misc/cnblogs.el" "/home/liwei/git/org_notes/tmp.org"))
+(setq file-name-history '("/home/liwei/git/org_notes/emacs_linux-shell-config.org" "/root/.emacs.d/site-lisp/yasnippet/snippets/org-mode/image" "/root/.emacs.d/site-lisp/yasnippet/snippets/org-mode/cpp" "/root/.emacs.d/site-lisp/yasnippet/snippets/org-mode/bash" "/home/liwei/git/org_notes/emacs_cnblogs-coder-color.org" "~/.emacs.d/site-lisp/yasnippet/snippets/org-mode/source_bash" "/root/.emacs.d/site-lisp/yasnippet/snippets/org-mode/sourceblock" "/home/liwei/git/org_notes/emacs_cnblogs-coder-color.org" "/root/he.c" "/home/liwei/git/org_notes/emacs_emacs_edit-picture.org" "/root/.emacs" "/home/liwei/git/org_notes/emacs_w3.org" "/root/.emacs" "~/.emacs.d/site-lisp/tabbar-ruler.el" "~/.emacs.d/site-lisp/tabbar.el" "~/s9.c" "~/.emacs" "/root/.emacs" "/home/liwei/git/org_notes/emacs_tcp_time_wait_too_many.org" "~/.emacs" "/home/liwei/git/org_notes/emacs_org-mode_option.org" "/home/liwei/git/org_notes/emacs_emacs_indent_codes.org" "/home/liwei/git/org_notes/emacs_tcp_time_wait_too_many.org" "~/.gnus.el" "~/.signature" "/root/.emacs" "/root/.emacs.d/site-lisp/org-7.9.2/doc/texinfo.tex" "/home/liwei/git/org_notes/emacs_tcp_http-keep-alive.org" "/home/liwei/git/org_notes/emacs_cnblogs_setup.org" "/home/liwei/git/org_notes/emacs_books_study_gnu_emacs.org"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 206
-  "/root/.emacs"
-  ".emacs"
-  'emacs-lisp-mode
+  "/home/liwei/git/org_notes/emacs_linux-shell-config.org"
+  "emacs_linux-shell-config.org"
+  'org-mode
+  '(cnblogs-minor-mode yas-minor-mode)
+  184
+  '(647 nil)
   nil
-  1910
-  '(4160 nil)
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_sed_awk_basic_1.org"
+  "emacs_sed_awk_basic_1.org"
+  'org-mode
+  '(cnblogs-minor-mode yas-minor-mode)
+  184
+  '(680 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_cnblogs_setup.org"
+  "emacs_cnblogs_setup.org"
+  'org-mode
+  '(cnblogs-minor-mode yas-minor-mode)
+  4204
+  '(4353 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/root/.emacs.d/site-lisp/yasnippet/snippets/org-mode/image"
+  "image"
+  'snippet-mode
+  '(yas-minor-mode)
+  129
+  '(53 nil)
   nil
   nil
   '((buffer-file-coding-system . utf-8-unix)))
 
 (desktop-create-buffer 206
-  "/root/.emacs.d/site-lisp/tabbar-ruler.el"
-  "tabbar-ruler.el"
-  'emacs-lisp-mode
+  "/home/liwei/git/org_notes/emacs_cnblogs-coder-color.org"
+  "emacs_cnblogs-coder-color.org"
+  'org-mode
+  '(cnblogs-minor-mode yas-minor-mode)
+  1773
+  '(1601 nil)
   nil
-  13816
-  '(201 nil)
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/root/.emacs.d/site-lisp/yasnippet/snippets/org-mode/cpp"
+  "cpp"
+  'snippet-mode
+  '(yas-minor-mode)
+  137
+  '(53 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/root/.emacs.d/site-lisp/yasnippet/snippets/org-mode/bash"
+  "bash"
+  'snippet-mode
+  '(yas-minor-mode)
+  206
+  '(59 nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix)))
 
 (desktop-create-buffer 206
-  "/root/.emacs.d/site-lisp/tabbar.el"
-  "tabbar.el"
-  'emacs-lisp-mode
+  "/home/liwei/git/org_notes/emacs_rectangle_command.org"
+  "emacs_rectangle_command.org"
+  'org-mode
+  '(cnblogs-minor-mode yas-minor-mode)
+  955
+  '(550 nil)
   nil
-  4163
-  '(1 nil)
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/root/.emacs.d/site-lisp/yasnippet/snippets/org-mode/sourceblock"
+  "sourceblock"
+  'snippet-mode
+  '(yas-minor-mode)
+  1
+  '(229 nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix)))
 
 (desktop-create-buffer 206
-  "/home/liwei/git/org_notes/emacs_books_study_gnu_emacs.org"
-  "emacs_books_study_gnu_emacs.org"
+  "/home/liwei/git/org_notes/emacs_yasnippet.org"
+  "emacs_yasnippet.org"
   'org-mode
-  '(cnblogs-minor-mode)
-  8823
-  '(1501 nil)
+  '(cnblogs-minor-mode yas-minor-mode)
+  37
+  '(nil nil)
   nil
   nil
   '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
 
 (desktop-create-buffer 206
-  "/home/liwei/git/org_notes/emacs_linux-shell-config.org"
-  "emacs_linux-shell-config.org"
-  'org-mode
-  '(cnblogs-minor-mode)
-  598
-  '(507 nil)
+  "/root/he.c"
+  "he.c"
+  'c-mode
+  '(abbrev-mode yas-minor-mode)
+  126
+  '(nil nil)
   nil
   nil
-  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
-
-(desktop-create-buffer 206
-  "/home/liwei/git/org_notes/emacs_tcp_time_wait_too_many.org"
-  "emacs_tcp_time_wait_too_many.org"
-  'org-mode
-  '(cnblogs-minor-mode)
-  513
-  '(1552 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+  '((buffer-file-coding-system . undecided-unix)))
 
 (desktop-create-buffer 206
   "/home/liwei/git/org_notes/emacs_plugin_org-mode.org"
   "emacs_plugin_org-mode.org"
   'org-mode
-  '(cnblogs-minor-mode org-indent-mode)
+  '(cnblogs-minor-mode yas-minor-mode org-indent-mode)
   1496
   '(nil nil)
   nil
@@ -94,21 +149,10 @@
   '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
 
 (desktop-create-buffer 206
-  "/home/liwei/git/org_notes/emacs_org-mode_option.org"
-  "emacs_org-mode_option.org"
-  'org-mode
-  '(cnblogs-minor-mode)
-  1409
-  '(1366 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
-
-(desktop-create-buffer 206
   "/home/liwei/git/org_notes/emacs_emacs_indent_codes.org"
   "emacs_emacs_indent_codes.org"
   'org-mode
-  '(cnblogs-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode)
   1054
   '(908 nil)
   nil
@@ -119,7 +163,7 @@
   "/root/RMAIL"
   "RMAIL"
   'rmail-mode
-  nil
+  '(yas-minor-mode)
   1
   '(nil nil)
   t
@@ -130,7 +174,7 @@
   "/root/.gnus.el"
   ".gnus.el"
   'emacs-lisp-mode
-  nil
+  '(yas-minor-mode)
   47
   '(766 nil)
   nil
@@ -141,7 +185,7 @@
   "/home/liwei/git/org_notes/emacs_emacs_rmail.org"
   "emacs_emacs_rmail.org"
   'org-mode
-  '(cnblogs-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode)
   4499
   '(4531 nil)
   nil
@@ -152,7 +196,7 @@
   "/root/.signature"
   ".signature"
   'fundamental-mode
-  nil
+  '(yas-minor-mode)
   84
   '(85 nil)
   nil
@@ -163,7 +207,7 @@
   "/root/.emacs.d/site-lisp/color-theme-6.6.0/themes/color-theme-example.el"
   "color-theme-example.el"
   'emacs-lisp-mode
-  nil
+  '(yas-minor-mode)
   1
   '(nil nil)
   nil
@@ -174,7 +218,7 @@
   "/root/.emacs.d/site-lisp/org-7.9.2/doc/texinfo.tex"
   "texinfo.tex"
   'plain-tex-mode
-  nil
+  '(yas-minor-mode)
   16686
   '(nil nil)
   nil
@@ -185,20 +229,9 @@
   "/home/liwei/git/org_notes/emacs_tcp_http-keep-alive.org"
   "emacs_tcp_http-keep-alive.org"
   'org-mode
-  '(cnblogs-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode)
   1487
   '(581 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
-
-(desktop-create-buffer 206
-  "/home/liwei/git/org_notes/emacs_cnblogs_setup.org"
-  "emacs_cnblogs_setup.org"
-  'org-mode
-  '(cnblogs-minor-mode)
-  4156
-  '(4064 nil)
   nil
   nil
   '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
@@ -207,7 +240,7 @@
   "/home/liwei/git/org_notes/emacs_c_bugs.org"
   "emacs_c_bugs.org"
   'org-mode
-  '(cnblogs-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode)
   178
   '(163 nil)
   nil
@@ -218,7 +251,7 @@
   "/root/.emacs.d/site-lisp/misc/cnblogs.el"
   "cnblogs.el"
   'emacs-lisp-mode
-  nil
+  '(yas-minor-mode)
   16507
   '(nil nil)
   nil
@@ -229,7 +262,7 @@
   "/root/Mail/drafts/*message*-20121225-202023"
   "*sent mail to lijieliwei@126.com*"
   'message-mode
-  '(auto-fill-mode abbrev-mode mml-mode)
+  '(auto-fill-mode abbrev-mode yas-minor-mode mml-mode)
   1
   '(1 nil)
   nil
@@ -240,7 +273,7 @@
   "/root/Mail/drafts/*message*-20121225-203812"
   "*sent mail to lijieliwei@126.com*<2>"
   'message-mode
-  '(auto-fill-mode abbrev-mode mml-mode)
+  '(auto-fill-mode abbrev-mode yas-minor-mode mml-mode)
   1
   '(nil nil)
   nil
@@ -251,7 +284,7 @@
   "/root/Mail/drafts/*message*-20121225-215704"
   "*sent mail to heg@qzt360.com, zhangjl@qzt360.com*"
   'message-mode
-  '(auto-fill-mode abbrev-mode mml-mode)
+  '(auto-fill-mode abbrev-mode yas-minor-mode mml-mode)
   1
   '(nil nil)
   nil
@@ -262,7 +295,7 @@
   "/root/.newsrc-dribble"
   ".newsrc-dribble"
   'fundamental-mode
-  nil
+  '(yas-minor-mode)
   1
   '(nil nil)
   nil

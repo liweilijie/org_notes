@@ -1,0 +1,211 @@
+#+TITLE:     sed与awk基本知识<1>
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-01-01 Tue
+#+DESCRIPTION: sed 与　awk 基本知识学习
+#+KEYWORDS: sed awk
+#+CATEGORIES: sedawk
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+* sed awk 基础知识
+ 
+*awk* 起源于 *sed* 和 *grep* , 而不是ed
+
+但是ed很古老也很经典.这里特意地学习一下 *ed* 编辑器.
+
+
+** ed 
+
+1. ed 的替换命令是 *s* : 
+    #+BEGIN_HTML
+    <div class="cnblogs_Highlighter">
+    <pre class="brush:bash">
+
+    #!/bin/bash
+    #TODO(1): [address]s/pattern/replacement/flag
+    #pattern是一个正则表达式
+    #为了寻找同一行上的多次出现,必须指定 g 作为标志
+    s/regular/complex/g
+
+    #TODO(2):上面的命令只能在当前行上操作.而如果要在其他地方操作,则必须指定一个地址.
+    /regular/s/regular/complex/g
+    #记住:第一个"regular"是一个地址,第二个是匹配替换命令的模式.
+    #TODO(3): 要将它使用于全局命令,即在地址前放置:g
+    g/regular/s/regular/complex/g
+
+    #TODO(3): 地址和模式不必相同:
+    g/regular expression/s/regular/complex/g
+    #表示在包含字符串"regular expression"的任意行上,用"complex"代替"regular".
+    #如果地址与模式相同,可以指定两个连接的定界符(//)来告诉ed
+    g/regular/s//complex/g
+
+
+    </pre>
+    </div>
+    #+END_HTML
+2. sed与ed的区别:
+   - sed面向流,而ed是一个编辑器.
+   - sed命令是隐式的全局命令,因为它的每一条命令都应该一个流的一行.而ed默认是单行命令.
+
+
+-----
+
+
+** 命令行的语法
+可以大致相同的方式调用sed和awk,命令行语法是:
+*command [options] script filename*
+
+另外还有一个共同的处理脚本命令:
+*sed -f scriptfile inputfile*
+
+
+** 脚本化
+在sed和awk中,每个指令都包括两个部分:模式和过程.
+
+模式是由斜杠(/)分隔的正则表达式,过程指定一个或多个将被执行的动作.
+
+-----
+
+
+** 使用sed
+
+*sed [-e] 'instruction' file*
+
+只有在命令行上给出多个指令时才需要用 *-e* 选项,它告诉sed将下一个参数解释为指令,当只有一个指令时,sed可以自己做决定.
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+#!/bin/bash
+# TODO(1): 加上单引号是个很好习惯
+sed 's/MA/Massachusetts/' list
+sed 's/ MA/, Massachusetts/' list
+
+#有三种方式可以指定命令行上的多重指令:
+#TODO(2.1):用分号分隔指令:
+sed 's/ MA/,Massachusets/;s/ PA/, Pennsylvania/' list
+
+#TODO(2.2):在每个指令前放置 -e
+sed -e 's/ MA/, Massachusetts/' -e 's/ PA/, Pennsylvania/' list
+
+#TODO(2.3):脚本方式
+
+
+</pre>
+</div>
+#+END_HTML
+
+*** 脚本文件
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+#!/bin/bash
+#查看一下脚本内容
+cat sedsrc
+s/ MA/, Massachusetts/
+s/ PA/, Pennsylvaniz/
+s/ CA/, California/
+s/ VA/, Virginia/
+
+#运行脚本命令
+sed -f sedsrc list
+
+</pre>
+</div>
+#+END_HTML
+   
+*** 保存输出
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+#!/bin/bash
+sed -f sedsrc list > newlist
+
+</pre>
+</div>
+#+END_HTML
+    
+*** 防止输入行的自动显示
+sed的默认操作是输出每个输入行, *-n* 选项可以阻止自动输出,当指定该选项时,每个要生成输出的指令都必须包含打印命令 *p* .
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+#!/bin/bash
+sed -n -e 's/MA/Massachusetts/p' list
+
+</pre>
+</div>
+#+END_HTML
+
+-----
+
+
+** 使用awk
+
+awk 'instructions' files
+
+awk -f script files
+
+awk可以用与sed相同方式的输入多重命令行:用分号分隔命令.
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+#!/bin/bash
+#$0:代表整个输入行;
+#$1,$2....表示输入行上的各个字段,应用脚本之前,awk先拆分输入记录
+
+#TODO(1): 这个命令没有指定模式,所以打印语句应用于所有行
+awk '{print $1}' list
+
+#TODO(2): 这个命令没有过程,这个默认操作是打印匹配这种模式的每一行:
+awk '/MA/' list
+
+#TODO(3): 下面这条命令只输入匹配到的每条记录的第一个字段
+awk '/MA/ {print $1}' list
+
+#TODO(4): 用 -F 选项来改变分隔符
+awk -F, '/MA/ {print $1}' list
+
+#TODO(5): 将每一个字段单独打印在每一行上,多重命令由分号来分隔:
+awk -F, '{print $1; print $2; print $3}' list
+
+
+</pre>
+</div>
+#+END_HTML
+
+-----
+
+
+** 同时使用sed与awk
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+#!/bin/bash
+sed -f nameState list | awk -F, '{print $4}'
+
+sed -f nameState list | awk -F, '{print $4 ", " $0}'
+
+</pre>
+</div>
+#+END_HTML
+   
+

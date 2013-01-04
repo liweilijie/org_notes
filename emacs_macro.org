@@ -1,0 +1,51 @@
+#+TITLE:     emacs 宏操作
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2012-12-30 Sun
+#+DESCRIPTION: emacs下的宏操作
+#+KEYWORDS: Emacs
+#+CATEGORIES: Emacs
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+
+宏操作在工作中太常用了,所以这里一定要记录一下.它确实比vim要麻烦一点点.
+
+
+
+*  命令:
+
+| 键盘操作                     | 命令                | 动作                                      |
+|------------------------------+---------------------+-------------------------------------------|
+| C-x (                        |                     | 开始录制一个宏;状态行上将出现 "Def" 字样. |
+| C-e                          |                     | 移动到当前行尾                            |
+| C-f                          |                     | 移动到下一行的第一个字符                  |
+| RET                          |                     | 插入一个空白行                            |
+| C-f                          |                     | 向右移动一个字符(　到达下一行的行首)      |
+| C-x )                        |                     | 结束宏的录制工作                          |
+|                              |                     |                                           |
+|------------------------------+---------------------+-------------------------------------------|
+| C-x e                        | call-last-kbd-macro | 执行已经录制好的宏.                       |
+| C-g                          |                     | 取消宏的录制.                             |
+| C-u C-x e                    |                     | 执行4次宏操作.                            |
+| ESC x count-lines-region RET |                     | 找出准备设置的行有多少行文本              |
+| C-x u                        |                     | 撤消                                        |
+
+
+* 如何创建良好的宏
+
+1. 应该在宏里使用绝对型命令而非相对型命令,比如 'ESC f' 来移动一个单词
+2. 有时候给宏额外增加几个并非严格必要的命令是很有好处的,它们的作用是确保操作发生在文本行上正确位置.　比如　"C-a" , "C-e" .
+
+
+一般来说,好的宏由3个部分组成:
+1. 找到准备开始工作的地方(通常利用查找操作来实现).
+2. 对文本进行预定的编辑处理.
+3. 做好下次循环的准备工作.

@@ -1,0 +1,63 @@
+#+TITLE:     程序员的Emacs
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2012-12-28 Fri
+#+DESCRIPTION: 程序员的Emacs
+#+CATEGORIES: Emacs
+#+KEYWORDS: Emacs
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+
+这主要是跟编辑有关的Emacs按键。
+
+* 格式
+
+  - Emacs的缩进是靠变量 *left-margin* 来控制的。
+
+| 键盘操作 | 命令名称                | 动作                                                                                         |
+|----------+-------------------------+----------------------------------------------------------------------------------------------|
+| ESC C-\  | indent-region           | 对光标和文本块标记之间的每一行进行缩进                                                       |
+| ESC m    | back-to-indentation     | 把光标移到当前行的第一个非空白字符上                                                         |
+| ESC ^    | delete-indentation      | 把当前行合并到上一行去                                                                       |
+|          |                         |                                                                                              |
+|----------+-------------------------+----------------------------------------------------------------------------------------------|
+| ESC ;    | indent-for-comment      | 注释                                                                                         |
+| ESC j    | indent-new-comment-line | 如果注释的内容用一个文本行容纳不下，就需要在下一行继续写完注释；也可能将写好的注释分为两行。 |
+
+
+* C 和 C++ 模式
+
+  - 进入 *C* 模式： *ESC x c-mode RET*
+  - 进入 *C++* 模式： *ESC x c++mode RET*
+
+** C 模式下的移动命令
+| 键盘操作 | 命令名称                 | 动作                                                       |
+|----------+--------------------------+------------------------------------------------------------|
+| ESC a    | c-beginning-of-statement | 移动到当前语句的开头                                       |
+| ESC e    | c-end-of-statement       | 移动到当前语句的末尾                                       |
+| ESC q    | c-fill-paragraph         | 如果光标在注释文本中间，则进行段落重排，保留缩进和前导字母 |
+| ESC C-a  | beginning-of-defun       | 移动到光标所在函数的开头                                   |
+| ESC C-e  | end-of-defun             | 移动到光标所在函数的末尾                                   |
+| ESC C-h  | c-mark-function          | 把光标放到函数的开头，把文本块标记放到函数的末尾，即把函数整个选取为一个文本块 |
+| C-c C-q  | c-indent-defun           | 按缩进样式对整个函数进行缩进                                                   |
+| C-c C-u  | c-up-conditional         | 移动到当前预处理条件的开始位置                                                 |
+| C-c C-p  | c-backward-conditional   | 移动到上一个预处理条件                                                         |
+| C-c C-n  | C-forwrad-conditional    | 移动到下一个预处理器条件                                                                   |
+
+** etags
+
+   - etags *.[ch]
+   - ESC x visit-tags-table RET
+   - ESC .
+   - C-x 4 .
+   - ESC ,
+
+

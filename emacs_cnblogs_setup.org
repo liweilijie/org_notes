@@ -102,7 +102,16 @@ org-mode中有以下几种：
 
 有时候再弄吧。最近开始由vim转向emacs了，原因很简单-扩展性。
 
+* 上传图片方法:
+#+begin_quote
 
+: # 下面定义插入图片的标题与样式
+:    ,#+CAPTION: github中的org文件
+:    ,#+ATTR_HTML: width=800
+:     [[file:github.png]]
+
+
+#+end_quote
 
 * 特别注意同步的问题
   
@@ -116,6 +125,7 @@ org-mode中有以下几种：
   注意在使用时最新版本可能在发布出去的表格显示上有一些问题。我用的是Emacs23.2 + org7.9.2没有问题。而用Emacs24.2 + org7.9.2有一些排版上的问题。
 
 
+* 代码高亮效果测试
 #+BEGIN_HTML
   <div class="cnblogs_Highlighter">
   <pre class="brush:bash">
@@ -124,3 +134,12 @@ org-mode中有以下几种：
 </pre>
 </div>
 #+END_HTML
+
+* 最近截图github上仓库情况
+这里面保存我的一些笔记：
+#+CAPTION:github中的笔记
+#+ATTR_HTML: width=800
+  [[file:github_org_notes.png]]
+
+
+

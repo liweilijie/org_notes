@@ -1,0 +1,126 @@
+#+TITLE:     emacs用W3模式浏览WEB
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2012-12-28 Fri
+#+DESCRIPTION: emacs用W3模式浏览WEB
+#+KEYWORDS: Emacs
+#+CATEGORIES: Emacs
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+
+
+* W3浏览WEB
+
+例如收到的一封电子邮件里有一个指向某个Web站点，或FTP站点的URL地址，于是想去看一看。
+移动到该URL地址处并输入 *ESC x w3-follow-URL-at-point* 就会转到那个站点去。
+
+如果对那个站点上的东西感兴趣，则可以把它添加到收藏夹里，或者用 *C-x C-w* (另存为)组合键把该
+主页上的内容保存到一个文件里去。
+
+也可以在不退出Emacs的情况下浏览自己编写的HTML文档，输入 *ESC x w3-open-local RET filename RET* 命令即可。
+
+
+
+* emacs-w3m的安装
+
+** 首先安装w3m
+
+** 然后再通过cvs下载emacs-w3m进行安装:
+
+
+_搞了半天，发现 Emacs-w3m of this version does not support Emacs 23; try the development version_
+
+对Emacs23.2版本，需要使用cvs版本，下载如下：
+
+#+BEGIN_SRC shell
+
+    # cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m
+    ##下载完成后，将源码拷贝到/usr/local/src目录下，
+    # cp -r emacs-w3m /usr/local/src/
+    # cd /usr/local/src/emacs-w3m/
+    ##然后进入emacs-w3m目录，进行如下操作：
+    # autoconf
+    # ./configure
+    # make
+    # sudo make install
+    ##如果没有装autoconf，需要先apt安装。
+
+#+END_SRC
+
+
+** 配置.emacs
+
+#+BEGIN_SRC emacs-lisp
+
+    ;; set emacs-w3m
+    ;;设置emacs-w3m浏览器
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-w3m/")
+    (require 'w3m)
+    (require 'w3m-load)
+    ;(require 'mime-w3m)
+
+    ;; 设置w3m主页
+    (setq w3m-home-page "http://www.google.com")
+
+    ;; 默认显示图片
+    (setq w3m-default-display-inline-images t)
+    (setq w3m-default-toggle-inline-images t)
+
+    ;; 使用cookies
+    (setq w3m-command-arguments '("-cookie" "-F"))
+    (setq w3m-use-cookies t)
+    (setq browse-url-browser-function 'w3m-browse-url)                
+    (setq w3m-view-this-url-new-session-in-background t)
+
+#+END_SRC
+
+
+* Emacs-w3m 快捷键操作
+
+| 快捷键 | 功能           |
+|--------+----------------|
+| q      | 关闭窗口       |
+| Q      | 直接离开       |
+| C-x-k  | 关闭当前标签页 |
+| U      | 打开 URL     |
+| V      | 打开文件       |
+| G      | 在标签页中打开一个网址 |
+| S      | 用google进行搜索       |
+| B      | 后退                   |
+| N      | 前进                   |
+| H      | 主页                   |
+| R      | 刷新                   |
+| C-n    | 下一行                 |
+| C-p    | 向上一行               |
+| C-b    | 向后                   |
+| C-f    | 向前                   |
+| C-v    | 向下滚屏               |
+| ESC v  | 向上滚屏               |
+| 打开链接 | RET                    |
+| >        | 向右滚屏               |
+| <        | 向左滚屏               |
+| ,        | 向左移动一格           |
+| .        | 向右移动一格                 |
+
+
+** 书签
+| 快捷键  | 功能                     |
+|---------+--------------------------|
+| a       | 添加当前页到书签         |
+| ESC a   | 添加该URL到书签          |
+| v       | 显示书签                 |
+| E       | 编辑书签                 |
+| C-k     | 删除书签                 |
+| C-_     | 撤消书签                 |
+| M       | 用外部浏览器打开当前页面 |
+| ESC M   | 用外部浏览器打开链接     |
+| C-c C-k | 停止载入                 |
+

@@ -68,3 +68,20 @@ a_{b}
 #+END_SRC
 
 是不是解决了？
+
+
+* 解决org css样式问题：
+#+BEGIN_SRC lisp
+
+:style "<link rel=\"stylesheet\" href=\"/home/liwei/emacs.css\" type=\"text/css\" />"
+
+#+END_SRC
+
+* 如果要写一些容易被 "误解" 的代码，如org链接的源代码。刚可以当成代码来发布：
+#+BEGIN_SRC ascii
+
+,#+begin_src ascii
+[[link][description]] or [[link]]
+,#+end_src
+
+#+END_SRC

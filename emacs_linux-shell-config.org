@@ -3,7 +3,7 @@
 #+EMAIL:     liweilijie@gmail.com
 #+DATE:      2012-12-27 Thu
 #+DESCRIPTION: 在linux上的shell终端有时候配置得适合自己喜欢的，工作起来才会更爽哦。
-#+CATEGORIES: shell linux
+#+CATEGORIES: linux
 #+KEYWORDS: shell linux
 #+LANGUAGE:  en
 #+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
@@ -20,5 +20,7 @@
 - 大小: 12
 - 内置方案: 黑底灰字 + XTerm
 - 回滚无限制. 
+
+
 
 

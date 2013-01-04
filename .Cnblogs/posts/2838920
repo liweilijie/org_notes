@@ -1,0 +1,308 @@
+
+(("dateCreated" :datetime (20703 2112)) ("description" . "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
+               \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
+<head>
+<title>Emacs cscope</title>
+
+
+
+
+
+
+
+<style type=\"text/css\">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type=\"text/javascript\">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = \"code-highlighted\";
+     elem.className   = \"code-highlighted\";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id=\"preamble\">
+
+</div>
+
+<div id=\"content\">
+<h1 class=\"title\">Emacs cscope</h1>
+
+
+
+
+<div id=\"table-of-contents\">
+<h2>Table of Contents</h2>
+<div id=\"text-table-of-contents\">
+<ul>
+<li><a href=\"#sec-1\">1 cscope</a></li>
+<li><a href=\"#sec-2\">2 install</a></li>
+<li><a href=\"#sec-3\">3 functaion</a></li>
+<li><a href=\"#sec-4\">4 Keywordbinding</a></li>
+</ul>
+</div>
+</div>
+
+<div id=\"outline-container-1\" class=\"outline-2\">
+<h2 id=\"sec-1\"><span class=\"section-number-2\">1</span> cscope</h2>
+<div class=\"outline-text-2\" id=\"text-1\">
+
+<p>很久前(大约在09年一个夏天吧)刚开始接触到vi，就喜欢上了vi，于是写代码也就无处不vi了，后来用了vim，自然离不开cscope来查看代码。
+用了有几年了，现在换Emacs了，还是忘不了它。于是记录一下它在Emacs下的使用情况。
+</p>
+</div>
+
+</div>
+
+<div id=\"outline-container-2\" class=\"outline-2\">
+<h2 id=\"sec-2\"><span class=\"section-number-2\">2</span> install</h2>
+<div class=\"outline-text-2\" id=\"text-2\">
+
+
+
+
+<pre class=\"example\">;; Installation steps:
+;;
+;; 0. (It is, of course, assumed that cscope is already properly
+;;    installed on the current system.)
+;;
+;; 1. Install the \"cscope-indexer\" script into some convenient
+;;    directory in $PATH.  The only real constraint is that (X)Emacs
+;;    must be able to find and execute it.  You may also have to edit
+;;    the value of PATH in the script, although this is unlikely; the
+;;    majority of people should be able to use the script, \"as-is\".
+;;
+;; 2. Make sure that the \"cscope-indexer\" script is executable.  In
+;;    particular, if you had to ftp this file, it is probably no
+;;    longer executable.
+;;
+;; 3. Put this emacs-lisp file somewhere where (X)Emacs can find it.  It
+;;    basically has to be in some directory listed in \"load-path\".
+;;
+;; 4. Edit your ~/.emacs file to add the line:
+;;
+;;      (require 'xcscope)
+;;
+;; 5. If you intend to use xcscope.el often you can optionally edit your
+;;    ~/.emacs file to add keybindings that reduce the number of keystrokes
+;;    required.  For example, the following will add \"C-f#\" keybindings, which
+;;    are easier to type than the usual \"C-c s\" prefixed keybindings.  Note
+;;    that specifying \"global-map\" instead of \"cscope:map\" makes the
+;;    keybindings available in all buffers:
+;;
+;;  (define-key global-map [(control f3)]  'cscope-set-initial-directory)
+;;  (define-key global-map [(control f4)]  'cscope-unset-initial-directory)
+;;  (define-key global-map [(control f5)]  'cscope-find-this-symbol)
+;;  (define-key global-map [(control f6)]  'cscope-find-global-definition)
+;;  (define-key global-map [(control f7)]
+;;    'cscope-find-global-definition-no-prompting)
+;;  (define-key global-map [(control f8)]  'cscope-pop-mark)
+;;  (define-key global-map [(control f9)]  'cscope-next-symbol)
+;;  (define-key global-map [(control f10)] 'cscope-next-file)
+;;  (define-key global-map [(control f11)] 'cscope-prev-symbol)
+;;  (define-key global-map [(control f12)] 'cscope-prev-file)
+;;      (define-key global-map [(meta f9)]  'cscope-display-buffer)
+;;      (defin-ekey global-map [(meta f10)] 'cscope-display-buffer-toggle)
+;;
+;; 6. Restart (X)Emacs.  That's it.
+;;
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-3\" class=\"outline-2\">
+<h2 id=\"sec-3\"><span class=\"section-number-2\">3</span> functaion</h2>
+<div class=\"outline-text-2\" id=\"text-3\">
+
+
+
+
+
+<pre class=\"example\">
+;;         Find symbol
+;;         Find global definition
+;;         Find called functions
+;;         Find functions calling a function
+;;         Find text string
+;;         Find egrep pattern
+;;         Find a file
+;;         Find files #including a file
+
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-4\" class=\"outline-2\">
+<h2 id=\"sec-4\"><span class=\"section-number-2\">4</span> Keywordbinding</h2>
+<div class=\"outline-text-2\" id=\"text-4\">
+
+
+
+
+
+<pre class=\"example\">
+;; * Keybindings:
+;;
+;; All keybindings use the \"C-c s\" prefix, but are usable only while
+;; editing a source file, or in the cscope results buffer:
+;;
+;;      C-c s s         Find symbol.
+;;      C-c s d         Find global definition.
+;;      C-c s g         Find global definition (alternate binding).
+;;      C-c s G         Find global definition without prompting.
+;;      C-c s c         Find functions calling a function.
+;;      C-c s C         Find called functions (list functions called
+;;                      from a function).
+;;      C-c s t         Find text string.
+;;      C-c s e         Find egrep pattern.
+;;      C-c s f         Find a file.
+;;      C-c s i         Find files #including a file.
+;;
+;; These pertain to navigation through the search results:
+;;
+;;      C-c s b         Display *cscope* buffer.
+;;      C-c s B         Auto display *cscope* buffer toggle.
+;;      C-c s n         Next symbol.
+;;      C-c s N         Next file.
+;;      C-c s p         Previous symbol.
+;;      C-c s P         Previous file.
+;;      C-c s u         Pop mark.
+;;
+;; These pertain to setting and unsetting the variable,
+;; `cscope-initial-directory', (location searched for the cscope database
+;;  directory):
+;;
+;;      C-c s a         Set initial directory.
+;;      C-c s A         Unset initial directory.
+;;
+;; These pertain to cscope database maintenance:
+;;
+;;      C-c s L         Create list of files to index.
+;;      C-c s I         Create list and index.
+;;      C-c s E         Edit list of files to index.
+;;      C-c s W         Locate this buffer's cscope directory
+;;                      (\"W\" --&gt; \"where\").
+;;      C-c s S         Locate this buffer's cscope directory.
+;;                      (alternate binding: \"S\" --&gt; \"show\").
+;;      C-c s T         Locate this buffer's cscope directory.
+;;                      (alternate binding: \"T\" --&gt; \"tell\").
+;;      C-c s D         Dired this buffer's directory.
+;;
+
+
+</pre>
+
+</div>
+</div>
+</div>
+
+<div id=\"postamble\">
+<p class=\"date\">Date: 2012-12-29 Sat</p>
+<p class=\"author\">Author: liweilijie</p>
+<p class=\"creator\"><a href=\"http://orgmode.org\">Org</a> version 7.9.2 with <a href=\"http://www.gnu.org/software/emacs/\">Emacs</a> version 23</p>
+<a href=\"http://validator.w3.org/check?uri=referer\">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
+") ("title" . "Emacs cscope") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/29/2838920.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/29/2838920.html") ("postid" . 2838920) ("source") ("mt_excerpt" . "Emacs下使用cscope进行代码的浏览。") ("mt_keywords" . "Emacs cscope"))
