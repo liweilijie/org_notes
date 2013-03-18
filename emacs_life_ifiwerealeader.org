@@ -1,0 +1,32 @@
+#+TITLE:     If I were a leader
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-01-22 Tue
+#+DESCRIPTION: If I were a leader.
+#+KEYWORDS: life
+#+CATEGORIES: life
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+* If I were a leader
+
+  这里指的leader是像一个公司的CEO的位置，或者一个公司的大股东这个位置。不是一个小小组长，小小部门领导。
+
+
+  我们为公司打工的普通员工，时间一久就会有许多想法，其实这时候是在磨砺自己，学习更多经验的大好时间，我知道几年后我就会有属于自己的公司。
+
+
+** 员工出差
+   
+   我亲历过几次出差，都去解决很不好重现的问题，而且这些问题的过程让我学习到了很多，尤其是在代码的编写上。
+
+   我会不定期地让有潜力的员工到前言现场与客户接触，而不是在公司言听计从，纸上谈兵，很多东西根本没有用了还在花大力气拼命研发与测试。浪费时间精力。
+
+

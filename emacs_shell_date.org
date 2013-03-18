@@ -1,0 +1,62 @@
+#+TITLE:     shell date
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-01-29 Tue
+#+DESCRIPTION: shell date
+#+KEYWORDS: date
+#+CATEGORIES: shell
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+* shell下时间的转换
+  在shell这中可以利用 *date +%s* 得到时间。
+
+  但是得到时间之后如果还原回去呢？
+
+方法如下：
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+ ## 在有些系统下可以这样用
+ date -d @1359442870
+
+ ## 大部分系统支持这种命令格式
+ date -d '1970-01-01 UTC 1359442870 seconds'
+
+</pre>
+</div>
+#+END_HTML
+  
+
+
+1359442870 这个值表示从1970年1月1日0点0分到现在一共经过了多少秒。
+
+
+另外备注一个命令，查看某目录下文件大小从大到小前几个的命令
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+# 按文件大小排序
+find / -exec stat -c "%s %n" {} \; | sort -nr | head -n 10
+
+</pre>
+</div>
+#+END_HTML
+
+
+
+
+
+

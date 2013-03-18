@@ -1,0 +1,276 @@
+#+TITLE:     odbc备忘
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-01-09 WED
+#+DESCRIPTION: odbc学习
+#+KEYWORDS: odbc
+#+CATEGORIES: c
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+* odbc概述
+
+  odbc是一个应用程序与数据库之间连接的中间驱动。
+
+* 操作
+
+* Diagnostics & Error Status Codes
+
+  有关odbc函数的诊断(diagnostics)和返回的错误代码值情况如下:
+
+  http://www.easysoft.com/developer/interfaces/odbc/diagnostics_error_status_codes.html
+
+
+** Contents
+
+  - Introduction
+  - ODBC Status Returns
+  - Obtaining Diagnostics ~{[,daignostiks] n. 论断学}~
+  - Diagnostic Fields
+  - Example Diagnostic Messages
+  - Appendix A: ODBC Status Return Codes
+  - Appendix B: ODBC 2 to ODBC 3 SQLSTATE Mappings
+
+** Introduction
+
+    This document aims to provide a brief ~{[bri:f] adj. 简洁的，简明的}~ introduction to ODBC diagnostics and status return codes.
+
+    We begin with an explanation ~{[ekspleneifen] n. 说明，解释}~ of how ODBC Status return codes are formed ~{[fo:m] v. 产生，形成}~, the meaning that this form has and then move onto
+    how diagnostic information is retrieved ~{[ritri:v] v. 取回，恢复，检索}~ and dealt with.
+
+    Finally, there are links to some, rather long, pages that list all the ODBC status codes and the ODBC API functions that
+    can return them, complete with brief descriptions.
+
+** ODBC Status Returns
+
+*SQLGetDiagRec* or *SQLGetDiagField* returns *SQLSTATE* values as defined by X/Open Data Management: Structured Query Language
+(SQL), Version 2 (March 1995). *SQLSTATE* values are strings that contain five characters. Appendixes ~{[ependiks] n. 附录， 附加物}~ A & B tables lists
+*SQLSTATE* values that a driver can return for *SQLGetDiagRec*.
+
+The character string value returned for an *SQLSTATE* consists of a two-character class value followed by a three-character
+subclass value. A class value of "01" indicates a warning and is accompanied ~{[ekampeni] vt. 陪伴，附加，与...共存}~ by a return code of *SQL_SUCCESS_WITH_INFO*.
+Class values other than "01," except for the class "IM," indicate an error and are accompanied by a return value of
+*SQL_ERROR*. The class "IM" is specific to warnings and errors that derive from the implementation of ODBC itself. The
+subclass value "000" in any class indicates that there is no subclass for that SQLSTATE. The assignment of class and
+subclass values is defined by SQL-92.
+
+Note:Although successful execution of a function is normally indicated by a return value of *SQL_SUCCESS*, the *SQLSTATE* 00000
+also indicates success.
+
+All ODBC API's return a status value which may be used to check whether the function succeeded or not. In C you can test
+the return value from an ODBC function using the macro *SQL_SUCCEEDED*
+
+e.g.
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:cpp">
+
+  SQLRETURN fsts;
+  /* Assume for this example the environment has already been allocated */
+  SQLHENV envh;
+  SQLHDBC dbch;
+  fsts = SQLAllocHandle(SQL_HANDLE_DBC, envh, &dbch);
+  if (!SQL_SUCCEEDED(fsts))
+  {
+    /* an error occurred allocating the database handle */
+  }
+  else
+  {
+    /* Database handle allocated OK */
+  }
+
+
+</pre>
+</div>
+#+END_HTML
+
+
+The macro *SQL_SUCCEEDED* is defined as:
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:cpp">
+
+    #define SQL_SUCCEEDED(rc) (((rc)&(~1))==0)
+
+
+</pre>
+</div>
+#+END_HTML
+
+Virtually all ODBC functions can return two values which indicate success
+
+  - SQL_SUCCESS
+  - SQL_SUCCESS_WITH_INFO
+
+Both of these returns cause the SQL_SUCCEEDED macro to result in *1*.
+
+    If a function returns *SQL_SUCCESS_WITH_INFO* it means that the call succeeded but an informational message was produced.
+
+    e.g. with some drivers you might set the cursor type, prepare a statement and then execute it. When SQLExecute is called
+the statement is acted upon but the driver might change the cursor type to something else. In this case, SQLExecute would
+return *SQL_SUCCESS_WITH_INFO* and the driver would add a diagnostic indicating the cursor type had been changed.
+
+    You should note that a few ODBC functions return a status which fails the SQL_SUCCEEDED macro but do not indicate an error
+as such.
+
+e.g. SQLFetch can return SQL_NO_DATA indicating there is no further rows in the result set, this is not necessarily an
+error.
+
+
+** Obtaining Diagnostics
+
+When an ODBC function returns an error or *SQL_SUCCESS_WITH_INFO* then the driver will associate a diagnostic with the handle
+used in the ODBC call. You can obtain the diagnostic to find out what failed by calling *SQLGetDiagRec* with the handle you
+used in the ODBC call that failed.
+
+The driver may associate multiple diagnostic records with a handle.
+
+You can call *SQLGetDiagField* and request the *SQL_DIAG_NUMBER* attribute to find out how many diagnostics exist.
+Alternatively, as diagnostic records start at 1, you can repeatedly call *SQLGetDiagRec* asking for record 1, then 2 (and so
+on) until *SQLGetDiagRec* returns *SQL_NO_DATA*.
+
+As an example, the following C function takes a function name string, handle type and handle and retrieves all the
+diagnostics associated with that handle.
+
+    #+BEGIN_HTML
+    <div class="cnblogs_Highlighter">
+    <pre class="brush:cpp">
+
+    void extract_error(
+	  char *fn,
+	  SQLHANDLE handle,
+	  SQLSMALLINT type)
+      {
+	SQLINTEGER i = 0;
+	SQLINTEGER native;
+	SQLCHAR state[ 7 ];
+	SQLCHAR text[256];
+	SQLSMALLINT len;
+	SQLRETURN ret;
+	fprintf(stderr,
+		"\n"
+		"The driver reported the following diagnostics whilst running "
+		"%s\n\n",
+		fn);
+
+	do
+	{
+	  ret = SQLGetDiagRec(type, handle, ++i, state, &native, text,
+	  sizeof(text), &len );
+	  if (SQL_SUCCEEDED(ret))
+	  printf("%s:%ld:%ld:%s\n", state, i, native, text);
+	}
+	while( ret == SQL_SUCCESS );
+      }
+
+    </pre>
+    </div>
+    #+END_HTML
+
+
+Using the example above which attempts to allocate a database handle you could use extract_error as follows:
+
+SQLRETURN fsts;
+
+    #+BEGIN_HTML
+    <div class="cnblogs_Highlighter">
+    <pre class="brush:cpp">
+
+
+      /* Assume for this example the environment has already been allocated */
+      SQLHENV envh;
+      SQLHDBC dbch;
+      fsts = SQLAllocHandle(SQL_HANDLE_DBC, envh, &dbch);
+      if (!SQL_SUCCEEDED(fsts))
+      {
+	extract_error("SQLAllocHandle for dbc", envh, SQL_HANDLE_ENV);
+	exit(1);
+      }
+      else
+      {
+	/* Database handle allocated OK */
+      }
+
+
+    </pre>
+    </div>
+    #+END_HTML
+
+
+ODBC 2.0 applications will use SQLError instead of SQLGetDiagRec.
+
+** Diagnostic Fields
+
+When you call SQLGetDiagRec you can retrieve 3 diagnostic fields:
+
+  - State
+  - Native error code
+  - Message text
+
+The state is a five character SQLSTATE code. The first two characters indicate the class and the next three indicate the
+subclass. SQLSTATEs provide detailed information about the cause of a warning or error. You can look states up in Appendix
+A.
+
+The native error code is a code specific to the data source. This number is often extremely ~{[ikstri:mli] adv. 很，极端地，非常，去，绝}~ useful to the driver developers
+in locating an internal error or state. If you are reporting a bug in an ODBC driver for which you obtained an error you
+should always quote the ODBC function called, the error text and this native number.
+
+The message text is the text of the diagnostic. This string takes one of two forms:
+
+For errors and warnings that do not occur in a data source the format:
+
+~[vendor-identifier][ODBC-component-identifier]component-supplied-text~
+
+otherwise:
+
+~[vendor-identifier][ODBC-component-identifier][data-source-identifer]~
+
+      ~data-source-supplied-text~
+
+** Example diagnostic messages
+
+You can use the message text string to identify which piece of software reported the error. For example, here are some
+message texts and error conditions:
+
+The following three examples of diagnostic messages can be generated using the Easysoft ODBC-ODBC Bridge to access
+Microsoft SQL Server.
+
+~[Easysoft ODBC (Client)]Invalid authorization specification~
+
+This error was produced when the LogonUser/LogonAuth attributes were invalid and the connection attempt has been refused.
+The OOB alone was involved in this process.
+
+~[Easysoft ODBC (Server)][Microsoft][ODBC Driver Manager]~
+
+      Data source name not found and no default driver specified.
+
+This error was produced by the Microsoft ODBC driver manager on the OOB Server machine when the TargetDSN attribute
+specified a DSN which does not exist on the server. You can see that the last item is square brackets was the "ODBC Driver
+manager" and hence that is the component which generated the error text. As the text is prefixed with "[Easysoft ODBC
+(Server)]" you know that it was the driver manager at the server end.
+
+~[Easysoft ODBC (Server)][Microsoft][ODBC SQL Server Driver][SQL Server]~
+      Login failed for user 'demo'.
+
+This error was produced when the TargetUser/TargetAuth specified at the OOB client was passed through the DBMS which
+refused the connection. The last item in square brackets was "SQL Server" and so you know that SQL Server turned down the
+connection attempt.
+
+Appendix A: ODBC Status Return Codes
+
+A complete list of all ODBC Status Return codes can be found here.
+
+This list includes error messages and the functions that can return the status code complete with brief descriptions.
+
+Appendix B: ODBC 2.x to ODBC 3.x SQLSTATE Mappings
+
+A list of ODBC 2.x to ODBC 3.x SQLSTATE mappings can be found here.

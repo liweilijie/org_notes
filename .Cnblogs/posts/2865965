@@ -1,0 +1,435 @@
+
+(("dateCreated" :datetime (20729 8896)) ("description" . "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
+               \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
+<head>
+<title>ftp by libcurl</title>
+
+
+
+
+
+
+
+<style type=\"text/css\">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type=\"text/javascript\">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = \"code-highlighted\";
+     elem.className   = \"code-highlighted\";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id=\"org-div-home-and-up\" style=\"text-align:right;font-size:70%;white-space:nowrap;\">
+ <a accesskey=\"h\" href=\"/liweilijie\"> UP </a>
+ |
+ <a accesskey=\"H\" href=\"/liweilijie\"> HOME </a>
+</div>
+
+<div id=\"preamble\">
+
+</div>
+
+<div id=\"content\">
+<h1 class=\"title\">ftp by libcurl</h1>
+
+
+<div id=\"table-of-contents\">
+<h2>Table of Contents</h2>
+<div id=\"text-table-of-contents\">
+<ul>
+<li><a href=\"#sec-1\">1 ftp模式</a>
+<ul>
+<li><a href=\"#sec-1-1\">1.1 基础</a></li>
+<li><a href=\"#sec-1-2\">1.2 主动FTP</a></li>
+<li><a href=\"#sec-1-3\">1.3 被动FTP</a></li>
+<li><a href=\"#sec-1-4\">1.4 总结</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id=\"outline-container-1\" class=\"outline-2\">
+<h2 id=\"sec-1\"><span class=\"section-number-2\">1</span> ftp模式</h2>
+<div class=\"outline-text-2\" id=\"text-1\">
+
+
+<p>
+  首先了解一些主动与被动模式的情况。因为在实际的网络环境当中，由于防火墙，或者多WAN等情况的影响，你应该多次尝试这些情况。
+</p>
+
+</div>
+
+<div id=\"outline-container-1-1\" class=\"outline-3\">
+<h3 id=\"sec-1-1\"><span class=\"section-number-3\">1.1</span> 基础</h3>
+<div class=\"outline-text-3\" id=\"text-1-1\">
+
+
+<p>
+FTP是仅基于TCP的服务，不支持UDP。 与众不同的是FTP使用2个端口，一个数据端口和一个命令端口（也可叫做控制端口）。通常来说这两
+个端口是21－命令端口和20－数据端口。但当我们发现根据（FTP工作）方式的不同数据端口并不总是20时，混乱产生了。
+</p>
+</div>
+
+</div>
+
+<div id=\"outline-container-1-2\" class=\"outline-3\">
+<h3 id=\"sec-1-2\"><span class=\"section-number-3\">1.2</span> 主动FTP</h3>
+<div class=\"outline-text-3\" id=\"text-1-2\">
+
+
+<p>
+主动方式的FTP是这样的：客户端从一个任意的非特权端口N（N&gt;;1024）连接到FTP服务器的命令端口，也就是21端口。然后客户端开始监听
+端口N+1，并发送FTP命令“port N+1”到FTP服务器。接着服务器会从它自己的数据端口（20）连接到客户端指定的数据端口（N+1）。
+</p>
+<p>
+针对FTP服务器前面的防火墙来说，必须允许以下通讯才能支持主动方式FTP：
+</p>
+<ol>
+<li>任何端口到FTP服务器的21端口 （客户端初始化的连接 S&lt;-C）
+</li>
+<li>FTP服务器的21端口到大于1023的端口（服务器响应客户端的控制端口 S-&gt;C）
+</li>
+<li>FTP服务器的20端口到大于1023的端口（服务器端初始化数据连接到客户端的数据端口 S-&gt;C）
+</li>
+<li>大于1023端口到FTP服务器的20端口（客户端发送ACK响应到服务器的数据端口 S&lt;-C）
+
+<p>
+    画出来的话，连接过程大概是下图的样子：
+</p>
+<p>
+    在第1步中，客户端的命令端口与FTP服务器的命令端口建立连接，并发送命令“PORT 1027”。然后在第2步中，FTP服务器给客户端的命令
+    端口返回一个\"ACK\"。在第3步中，FTP服务器发起一个从它自己的数据端口（20）到客户端先前指定的数据端口（1027）的连接，最后客
+    户端在第4步中给服务器端返回一个\"ACK\"。
+</p>
+<p>
+    主动方式FTP的主要问题实际上在于客户端。FTP的客户端并没有实际建立一个到服务器数据端口的连接，它只是简单的告诉服务器自己
+    监听的端口号，服务器再回来连接客户端这个指定的端口。对于客户端的防火墙来说，这是从外部系统建立到内部客户端的连接，这是
+    通常会被阻塞的。
+</p>
+<p>
+    主动FTP的例子
+</p>
+<p>
+    下面是一个主动FTP会话的实际例子。当然服务器名、IP地址和用户名都做了改动。在这个例子中，FTP会话从
+     testbox1.slacksite.com (192.168.150.80)，一个运行标准的FTP命令行客户端的Linux工作站，发起到testbox2.slacksite.com
+    (192.168.150.90)，一个运行ProFTPd 1.2.2RC2的Linux工作站。debugging（-d）选项用来在FTP客户端显示连接的详细过程。红色的文
+    字是 debugging信息，显示的是发送到服务器的实际FTP命令和所产生的回应信息。服务器的输出信息用黑色字表示，用户的输入信息用
+    粗体字表示。
+</p>
+<p>
+    仔细考虑这个对话过程我们会发现一些有趣的事情。我们可以看到当 PORT 命令被提交时，它指定了客户端(192.168.150.80)上的一个
+    端口而不是服务器的。当我们用被动FTP时我们会看到相反的现象。我们再来关注PORT命令的格式。就象你在下面的例子看到的一样，它
+    是一个由六个被逗号隔开的数字组成的序列。前四个表示IP地址，后两个组成了用于数据连接的端口号。用第五个数乘以256再加上第六
+    个数就得到了实际的端口号。下面例子中端口号就是( (14*256) + 178) = 3762。我们可以用netstat来验证这个端口信息。
+</p></li>
+</ol>
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+    testbox1: {/home/p-t/slacker/public_html} % ftp -d testbox2
+    Connected to testbox2.slacksite.com.
+    220 testbox2.slacksite.com FTP server ready.
+    Name (testbox2:slacker): slacker
+    ---> USER slacker
+    331 Password required for slacker.
+    Password: TmpPass
+    ---> PASS XXXX
+    230 User slacker logged in.
+    ---> SYST
+    215 UNIX Type: L8
+    Remote system type is UNIX.
+    Using binary mode to transfer files.
+    ftp> ls
+    ftp: setsockopt (ignored): Permission denied
+    ---> PORT 192,168,150,80,14,178
+    200 PORT command successful.
+    ---> LIST
+    150 Opening ASCII mode data connection for file list.
+    drwx------   3 slacker    users         104 Jul 27 01:45 public_html
+    226 Transfer complete.
+    ftp> quit
+    ---> QUIT
+    221 Goodbye.
+
+</pre>
+</div>
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-1-3\" class=\"outline-3\">
+<h3 id=\"sec-1-3\"><span class=\"section-number-3\">1.3</span> 被动FTP</h3>
+<div class=\"outline-text-3\" id=\"text-1-3\">
+
+
+<p>
+    为了解决服务器发起到客户的连接的问题，人们开发了一种不同的FTP连接方式。这就是所谓的被动方式，或者叫做PASV，当客户端通知
+    服务器它处于被动模式时才启用。
+</p>
+<p>
+    在被动方式FTP中，命令连接和数据连接都由客户端，这样就可以解决从服务器到客户端的数据端口的入方向连接被防火墙过滤掉的问题
+    。当开启一个FTP连接时，客户端打开两个任意的非特权本地端口（N &gt;; 1024和N+1）。第一个端口连接服务器的21端口，但与主动方式
+    的FTP不同，客户端不会提交PORT命令并允许服务器来回连它的数据端口，而是提交PASV命令。这样做的结果是服务器会开启一个任意的
+    非特权端口（P &gt;; 1024），并发送PORT P命令给客户端。然后客户端发起从本地端口N+1到服务器的端口P的连接用来传送数据。
+</p>
+<p>
+    对于服务器端的防火墙来说，必须允许下面的通讯才能支持被动方式的FTP:
+</p>
+<ol>
+<li>从任何端口到服务器的21端口 （客户端初始化的连接 S&lt;-C）
+</li>
+<li>服务器的21端口到任何大于1023的端口 （服务器响应到客户端的控制端口的连接 S-&gt;C）
+</li>
+<li>从任何端口到服务器的大于1023端口 （入；客户端初始化数据连接到服务器指定的任意端口 S&lt;-C）
+</li>
+<li>服务器的大于1023端口到远程的大于1023的端口（出；服务器发送ACK响应和数据到客户端的数据端口 S-&gt;C）
+
+<p>
+        画出来的话，被动方式的FTP连接过程大概是下图的样子：
+        [passiv]
+</p>
+<p>
+        在第1步中，客户端的命令端口与服务器的命令端口建立连接，并发送命令“PASV”。然后在第2步中，服务器返回命令\"PORT 2024\"，
+        告诉客户端（服务器）用哪个端口侦听数据连接。在第3步中，客户端初始化一个从自己的数据端口到服务器端指定的数据端口的数
+        据连接。最后服务器在第4 步中给客户端的数据端口返回一个\"ACK\"响应。
+</p>
+<p>
+        被动方式的FTP解决了客户端的许多问题，但同时给服务器端带来了更多的问题。最大的问题是需要允许从任意远程终端到服务器高
+        位端口的连接。幸运的是，许多FTP守护程序，包括流行的WU-FTPD允许管理员指定FTP服务器使用的端口范围。详细内容参看附录1
+        。
+</p>
+<p>
+        第二个问题是客户端有的支持被动模式，有的不支持被动模式，必须考虑如何能支持这些客户端，以及为他们提供解决办法。例如
+        ，Solaris提供的FTP命令行工具就不支持被动模式，需要第三方的FTP客户端，比如ncftp。
+</p>
+<p>
+        随着WWW的广泛流行，许多人习惯用web浏览器作为FTP客户端。大多数浏览器只在访问<a href=\"ftp://这样的URL时才支持被动模式。这到底\">ftp://这样的URL时才支持被动模式。这到底</a>
+        是好还是坏取决于服务器和防火墙的配置。
+</p>
+<p>
+        被动FTP的例子
+</p>
+<p>
+        下面是一个被动FTP会话的实际例子，只是服务器名、IP地址和用户名都做了改动。在这个例子中，FTP会话从
+         testbox1.slacksite.com (192.168.150.80)，一个运行标准的FTP命令行客户端的Linux工作站，发起到testbox2.slacksite.com
+        (192.168.150.90)，一个运行ProFTPd 1.2.2RC2的Linux工作站。debugging（-d）选项用来在FTP客户端显示连接的详细过程。红色
+        的文字是 debugging信息，显示的是发送到服务器的实际FTP命令和所产生的回应信息。服务器的输出信息用黑色字表示，用户的输
+        入信息用粗体字表示。
+</p>
+<p>
+        注意此例中的PORT命令与主动FTP例子的不同。这里，我们看到是服务器(192.168.150.90)而不是客户端的一个端口被打开了。可以
+        跟上面的主动FTP例子中的PORT命令格式对比一下。
+</p></li>
+</ol>
+
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+        testbox1: {/home/p-t/slacker/public_html} % ftp -d testbox2
+        Connected to testbox2.slacksite.com.
+        220 testbox2.slacksite.com FTP server ready.
+        Name (testbox2:slacker): slacker
+        ---> USER slacker
+        331 Password required for slacker.
+        Password: TmpPass
+        ---> PASS XXXX
+        230 User slacker logged in.
+        ---> SYST
+        215 UNIX Type: L8
+        Remote system type is UNIX.
+        Using binary mode to transfer files.
+        ftp> passive
+        Passive mode on.
+        ftp> ls
+        ftp: setsockopt (ignored): Permission denied
+        ---> PASV
+        227 Entering Passive Mode (192,168,150,90,195,149).
+        ---> LIST
+        150 Opening ASCII mode data connection for file list
+        drwx------   3 slacker    users         104 Jul 27 01:45 public_html
+        226 Transfer complete.
+        ftp>; quit
+        ---> QUIT
+        221 Goodbye.
+
+</pre>
+</div>
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-1-4\" class=\"outline-3\">
+<h3 id=\"sec-1-4\"><span class=\"section-number-3\">1.4</span> 总结</h3>
+<div class=\"outline-text-3\" id=\"text-1-4\">
+
+
+<p>
+        下面的图表会帮助管理员们记住每种FTP方式是怎样工作的：
+</p>
+<ul>
+<li>主动FTP：
+<ul>
+<li>命令连接：客户端 &gt;1023端口 -&gt; 服务器 21端口
+</li>
+<li>数据连接：客户端 &gt;1023端口 &lt;- 服务器 20端口
+
+</li>
+</ul>
+
+</li>
+<li>被动FTP：
+<ul>
+<li>命令连接：客户端 &gt;1023端口 -&gt; 服务器 21端口
+</li>
+<li>数据连接：客户端 &gt;1023端口 -&gt; 服务器 &gt;1023端口
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>
+        下面是主动与被动FTP优缺点的简要总结：
+</p>
+<p>
+        主动FTP对FTP服务器的管理有利，但对客户端的管理不利。因为FTP服务器企图与客户端的高位随机端口建立连接，而这个端口很有
+        可能被客户端的防火墙阻塞掉。被动FTP对FTP客户端的管理有利，但对服务器端的管理不利。因为客户端要与服务器端建立两个连
+        接，其中一个连到一个高位随机端口，而这个端口很有可能被服务器端的防火墙阻塞掉。
+</p>
+<p>
+        幸运的是，有折衷的办法。既然FTP服务器的管理员需要他们的服务器有最多的客户连接，那么必须得支持被动FTP。我们可以通过
+        为FTP服务器指定一个有限的端口范围来减小服务器高位端口的暴露。这样，不在这个范围的任何端口会被服务器的防火墙阻塞。虽
+        然这没有消除所有针对服务器的危险，但它大大减少了危险。详细信息参看附录1。
+</p>
+<p>
+        参考资料
+</p>
+<p>
+        O'Reilly出版的《组建Internet防火墙》（第二版，Brent Chapman，Elizabeth Zwicky著）是一本很不错的参考资料。里面讲述了各
+        种Internet协议如何工作，以及有关防火墙的例子。
+</p>
+<p>
+        最权威的FTP参考资料是RFC 959，它是FTP协议的官方规范。RFC的资料可以从许多网站上下载，例如：<a href=\"ftp://nic.merit.edu/\">ftp://nic.merit.edu/</a>
+        documents/rfc/rfc0959.txt 。
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id=\"postamble\">
+<p class=\"date\">Date: 2013-01-18 FRI</p>
+<p class=\"author\">Author: liweilijie</p>
+<p class=\"creator\"><a href=\"http://orgmode.org\">Org</a> version 7.9.2 with <a href=\"http://www.gnu.org/software/emacs/\">Emacs</a> version 23</p>
+<a href=\"http://validator.w3.org/check?uri=referer\">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
+") ("title" . "ftp by libcurl") ("categories" "[随笔分类]C") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/01/18/2865965.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/01/18/2865965.html") ("postid" . 2865965) ("source") ("mt_excerpt" . "ftp by libcurl") ("mt_keywords" . "ftp"))

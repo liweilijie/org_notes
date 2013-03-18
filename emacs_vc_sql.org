@@ -1,0 +1,37 @@
+#+TITLE:     VC下操作SQL Server
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-01-06 Sun
+#+DESCRIPTION: VC下操作SQL Server数据库
+#+KEYWORDS: VC
+#+CATEGORIES: VC
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+* Why VC
+
+  公司有一些项目跟windows有关，所以必须要用到vc来操作。最讨厌windows的我也百般无耐啊。真的太让人痛苦了，不是多难，是心里抵触它。浑身不自在。
+
+* 安装备忘
+
+  1. 首先安装 *SQL Server 2000*
+  2. 然后安装 sp4 补丁包(一定要安装)
+  3. 如果需要重启的话请不断重启。
+
+当得到了xxx.mdf数据库文件时，如下操作可以打开数据库：
+
+    1. 打开SQL Server Enterprise Manager
+    2. 右击"数据库"-> "所有任务" -> "附加数据库" -> 选择你的xxx.mdf文件名，确定即可。
+  
+
+* 配置odbc数据源
+
+  
+

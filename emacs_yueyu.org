@@ -1,0 +1,73 @@
+#+TITLE:     粤语
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-01-24 Thu
+#+DESCRIPTION: 学习粤语
+#+KEYWORDS: life
+#+CATEGORIES: life
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+* 学习粤语
+  学习粤语是为了唱粤语歌.
+
+* 学习19个声母
+  
+  - b:bo
+  - c:ci
+  - d:do
+  - f:fo
+  - g:ga
+  - gw:gua
+  - h:ha
+  - j:i
+  - k:ka
+  - kw:kua
+  - l:lo
+  - m:mo
+  - n:no
+  - ng:eng
+  - p:po
+  - s:si
+  - t:to
+  - w:wa
+  - z:zi
+
+
+* 学习韵母
+
+  - aa:a:
+  - aai:ai
+  - aau:ao
+  - aam:a:m
+  - aan:a:n
+  - aang:aeng
+  - aap:ap
+  - aat:at
+  - aak:a
+  - ai:ai
+  - au:ao
+  - am:am
+  - an:aeng
+  - ang:eng
+  - ap:ap
+  - at:a
+  - ak:a
+
+
+
+
+
+
+
+
+
+
+

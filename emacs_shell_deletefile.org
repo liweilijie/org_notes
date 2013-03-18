@@ -1,0 +1,42 @@
+#+TITLE:     delete file
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-01-29 Tue
+#+DESCRIPTION: delete file
+#+KEYWORDS: find rm
+#+CATEGORIES: shell
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+
+* 删除文件
+
+今天一同事问我，有没有一个shell命令可以删除一个目录下除一类文件以外的所有文件。于是想了半天，后来还是投机取巧想了一个不是很好的。
+
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+####利用find命令来删除，find命令的非运算是"\!"来表示的
+find ./ -type f \! -name 'liwei*' -exec rm -rf {} \;
+
+
+####也可以用``来完成
+rm -rf `ls | grep -v 'liwei*'`
+
+</pre>
+</div>
+#+END_HTML
+
+
+
+find命令博大精深，要好好学习。

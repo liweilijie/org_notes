@@ -1,0 +1,51 @@
+#+TITLE:     emacs快速删除
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-01-21 Mon
+#+DESCRIPTION: Emacs效仿vi的快速删除操作
+#+KEYWORDS: Emacs
+#+CATEGORIES: Emacs
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+* 哪儿来的
+
+  这个想法我从vim中借过来的，以前在用vi操作的时候常常会用到 *dt* *df* 来删除一大段文字，还会用到 ~di"~ 之类的快速命令。
+
+  可在emacs里面却没有这样的命令，今天在stackoverflow里面找到一个人跟我同样的问题。
+
+
+  Location: http://stackoverflow.com/questions/9860321/emacs-move-to-a-certain-character-forwards-and-backwards
+
+
+
+* 问： Emacs: move to a certain(某一，已确定的) character, forwards and backwards
+
+             In vim, I can use *f* to move the cursor forwards to a certain character and *F* to do this backwards. How to do
+             it in Emacs? I know you can use *C-z* or *M-z* to delete until a certain character, and you can also first delete
+             then paste to achieve a motion. But 1) is there a better way to do this, only movement, without delete? and 2)
+             how to do this backwards?
+
+
+
+               Forward incremental search is *C-s* , and reverse incremental search is *C-r* .
+
+* 答： Responding to comment:
+
+               To delete from the current position backwards to a specific character, you can use
+
+               *C-<space>* to mark the current position, then *C-r <char> <RET>* to locate the search character, and *C-w* to
+               up vote 2 down delete between current position and mark.
+
+               To get more help on doing things in emacs, you should look at the tutorial. Typing *C-h t* will open the
+               tutorial in a new buffer.
+
+
+                To delete, use *zap-to-char* or activate the mark by pressing *C-spc* before jumping, then *C-w*.

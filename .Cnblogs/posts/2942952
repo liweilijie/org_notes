@@ -1,0 +1,1049 @@
+
+(("dateCreated" :datetime (20788 51152)) ("description" . "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
+               \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
+<head>
+<title>tcpdump</title>
+
+
+
+
+
+
+
+<style type=\"text/css\">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type=\"text/javascript\">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = \"code-highlighted\";
+     elem.className   = \"code-highlighted\";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id=\"org-div-home-and-up\" style=\"text-align:right;font-size:70%;white-space:nowrap;\">
+ <a accesskey=\"h\" href=\"/liweilijie\"> UP </a>
+ |
+ <a accesskey=\"H\" href=\"/liweilijie\"> HOME </a>
+</div>
+
+<div id=\"preamble\">
+
+</div>
+
+<div id=\"content\">
+<h1 class=\"title\">tcpdump</h1>
+
+
+
+<div id=\"table-of-contents\">
+<h2>Table of Contents</h2>
+<div id=\"text-table-of-contents\">
+<ul>
+<li><a href=\"#sec-1\">1 tcpdump</a></li>
+<li><a href=\"#sec-2\">2 Basic syntax :</a>
+<ul>
+<li><a href=\"#sec-2-1\">2.1 Filtering hosts :</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id=\"outline-container-1\" class=\"outline-2\">
+<h2 id=\"sec-1\"><span class=\"section-number-2\">1</span> tcpdump</h2>
+<div class=\"outline-text-2\" id=\"text-1\">
+
+
+<p>
+  工作中离不开它，而且经常有很多过滤选项都还不是很清楚，如果能精确地对条件进行过滤的话，工作的效率就会提高很多。
+</p>
+<p>
+  这就好比用一个很高效的编辑器一样。比如vim, emacs.
+</p>
+
+</div>
+
+</div>
+
+<div id=\"outline-container-2\" class=\"outline-2\">
+<h2 id=\"sec-2\"><span class=\"section-number-2\">2</span> Basic syntax :</h2>
+<div class=\"outline-text-2\" id=\"text-2\">
+
+<p>==============
+</p>
+
+</div>
+
+<div id=\"outline-container-2-1\" class=\"outline-3\">
+<h3 id=\"sec-2-1\"><span class=\"section-number-3\">2.1</span> Filtering hosts :</h3>
+<div class=\"outline-text-3\" id=\"text-2-1\">
+
+
+<hr/>
+
+<ul>
+<li>Match any traffic involving 192.168.1.1 as destination or source
+</li>
+</ul>
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+tcpdump -i eth1 host 192.168.1.1
+
+</pre>
+</div>
+
+
+<ul>
+<li>As soure only
+</li>
+</ul>
+
+
+<ul>
+<li>As destination only
+</li>
+</ul>
+
+
+
+<p>
+Filtering ports :
+
+</p>
+<hr/>
+
+<ul>
+<li>Match any traffic involving port 25 as source or destination
+</li>
+</ul>
+
+
+<ul>
+<li>Source
+</li>
+</ul>
+
+
+<ul>
+<li>Destination
+</li>
+</ul>
+
+
+
+<p>
+Network filtering :
+
+</p>
+<hr/>
+
+
+
+<p>
+Protocol filtering :
+
+</p>
+<hr/>
+
+
+
+
+<p>
+Let's combine expressions :
+
+</p>
+<hr/>
+
+<p>
+Negation    : ! or \"not\" (without the quotes)
+Concatanate : &amp;&amp; or \"and\"
+Alternate   : || or \"or\" 
+</p>
+<ul>
+<li>This rule will match any TCP traffic on port 80 (web) with 192.168.1.254 or 192.168.1.200 as destination host
+</li>
+</ul>
+
+
+<ul>
+<li>Will match any ICMP traffic involving the destination with physical/MAC address 00:01:02:03:04:05
+</li>
+</ul>
+
+
+<ul>
+<li>Will match any traffic for the destination network 192.168 except destination host 192.168.1.200
+</li>
+</ul>
+
+
+
+<p>
+Advanced header filtering :
+===========================
+</p>
+<p>
+Before we continue, we need to know how to filter out info from headers
+</p>
+<p>
+proto[x:y]              : will start filtering from byte x for y bytes. ip[2:2] would filter bytes 3 and 4 (first byte begins by 0)
+proto[x:y] &amp; z = 0      : will match bits set to 0 when applying mask z to proto[x:y]
+proto[x:y] &amp; z !=0      : some bits are set when applying mask z to proto[x:y]
+proto[x:y] &amp; z = z      : every bits are set to z when applying mask z to proto[x:y]
+proto[x:y] = z          : p[x:y] has exactly the bits set to z
+</p>
+
+<p>
+Operators : &gt;, &lt;, &gt;=, &lt;=, =, !=
+</p>
+
+<p>
+This may not be clear in the first place but you'll find examples below involving these.
+</p>
+
+<p>
+Of course, it is important to know what the protocol headers look like before diving into more advanced filters.
+</p>
+
+<p>
+IP header
+
+</p>
+<hr/>
+
+<p>
+        0                   1                   2                   3   
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
+</p><!-- This HTML table template is generated by emacs 23.2.1 -->
+<table border=\"1\">
+  <tr>
+    <td align=\"left\" valign=\"top\">
+      Version
+    </td>
+    <td align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;IHL&nbsp;&nbsp;
+    </td>
+    <td align=\"left\" valign=\"top\">
+      Type&nbsp;of&nbsp;Service
+    </td>
+    <td colspan=\"3\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;Length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan=\"3\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identification&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align=\"left\" valign=\"top\">
+      Flags
+    </td>
+    <td colspan=\"2\" align=\"left\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fragment&nbsp;Offset&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan=\"2\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;Time&nbsp;to&nbsp;Live&nbsp;
+    </td>
+    <td align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;Protocol&nbsp;&nbsp;&nbsp;
+    </td>
+    <td colspan=\"3\" align=\"left\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Header&nbsp;Checksum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan=\"6\" align=\"left\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source&nbsp;Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan=\"6\" align=\"left\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Destination&nbsp;Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan=\"5\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Options&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;Padding&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan=\"6\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATA&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<p>
+I'll consider we are only working with the IPv4 protocol suite for these examples.
+</p>
+<p>
+In an ideal world, every field would fit inside one byte. This is not the case, of course.
+</p>
+<p>
+Are IP options set ?
+
+</p>
+<hr/>
+
+<p>
+Let's say we want to know if the IP header has options set. We can't just try to filter out the 21st byte
+because if no options are set, data start at the 21st byte. We know a \"normal\" header is usually 20 bytes 
+(160 bits) long. With options set, the header is longer than that. The IP header has the header 
+length field which we will filter here to know if the header is longer than 20 bytes.
+</p>
+<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
+<tr><th scope=\"col\">Version</th>
+<th scope=\"col\">IHL</th></tr>
+</table>
+
+<p>
+Usually the first byte has a value of 01000101 in binary.
+</p>
+<p>
+Anyhow, we need to divide the first byte in half&hellip;
+</p>
+<p>
+0100 = 4 in decimal. This is the IP version.
+0101 = 5 in decimal. This is the number of blocks of 32 bits in the headers. 5 x 32 bits = 160 bits or 20 bytes.
+</p>
+<p>
+The second half of the first byte would be bigger than 5 if the header had IP options set.
+</p>
+<p>
+We have two ways of dealing with that kind of filters.
+</p>
+<ol>
+<li>Either try to match a value bigger than 01000101. This would trigger matches for IPv4 traffic with IP options set, 
+   but ALSO any IPv6 traffic !
+</li>
+</ol>
+
+
+<p>
+In decimal 01000101 equals 69.
+</p>
+<p>
+Let's recap how to calculate in decimal.
+</p>
+<p>
+0 : 0           \\
+1 : 2^6 = 64     \\ First field (IP version)
+0 : 0            /
+0 : 0           /
+</p><ul>
+<li>
+</li>
+</ul>
+
+<p>0 : 0           \\
+1 : 2^2 = 4      \\ Second field (Header length)
+0 : 0            /
+1 : 2^0 = 1     /
+</p>
+<p>
+64 + 4 + 1 = 69
+</p>
+<p>
+The first field in the IP header would usually have a decimal value of 69.
+If we had IP options set, we would probably have 01000110 (IPv4 = 4 + header = 6), which in decimal equals 70.
+</p>
+<p>
+This rule should do the job :
+</p>
+<p>
+Somehow, the proper way is to mask the first half/field of the first byte, because as mentionned earlier, 
+this filter would match any IPv6 traffic.
+</p>
+<ol>
+<li>The proper way : masking the first half of the byte
+</li>
+</ol>
+
+
+<p>
+0100 0101 : 1st byte originally
+0000 1111 : mask (0x0f in hex or 15 in decimal). 0 will mask the values while 1 will keep the values intact.
+=========
+0000 0101 : final result
+</p>
+<p>
+The correct filter :
+</p>
+
+<p>
+or 
+</p>
+
+
+<p>
+DF bit (don't fragment) set ?
+
+</p>
+<hr/>
+
+<p>
+Let's now trying to know if we have fragmentation occuring, which is not desirable. Fragmentation occurs 
+when a the MTU of the sender is bigger than the path MTU on the path to destination.
+</p>
+<p>
+Fragmentation info can be found in the 7th and 8th byte of the IP header.
+</p>
+<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
+<tr><th scope=\"col\">Flags</th>
+<th scope=\"col\">Fragment Offset</th></tr>
+</table>
+
+<p>
+Bit 0:  reserved, must be zero
+Bit 1:  (DF) 0 = May Fragment, 1 = Don't Fragment.
+Bit 2:  (MF) 0 = Last Fragment, 1 = More Fragments.
+</p>
+<p>
+The fragment offset field is only used when fragmentation occurs.
+</p>
+<p>
+If we want to match the DF bit (don't fragment bit, to avoid IP fragmentation) :
+</p>
+<p>
+The 7th byte would have a value of :
+01000000 or 64 in decimal
+</p>
+
+
+<p>
+Matching fragmentation ?
+
+</p>
+<hr/>
+
+<ul>
+<li>Matching MF (more fragment set) ? This would match the fragmented datagrams but wouldn't match the last 
+  fragment (which has the 2nd bit set to 0).
+</li>
+</ul>
+
+
+<p>
+The last fragment have the first 3 bits set to 0&hellip; but has data in the fragment offset field.
+</p>
+<ul>
+<li>Matching the fragments and the last fragments
+</li>
+</ul>
+
+
+<p>
+A bit of explanations :
+\"ip[6:2] &gt; 0\" would return anything with a value of at least 1
+We don't want datagrams with the DF bit set though.. the reason of the \"not ip<sup><a class=\"footref\" name=\"fnr-.1\" href=\"#fn-.1\">1</a></sup> = 64\"
+</p>
+<p>
+If you want to test fragmentation use something like :
+ping -M want -s 3000 192.168.1.1
+</p>
+
+<p>
+Matching datagrams with low TTL
+
+</p>
+<hr/>
+
+<p>
+The TTL field is located in the 9th byte and fits perfectly into 1 byte.
+The maximum decimal value of the TTL field is thus 255 (11111111 in binary).
+</p>
+<p>
+This can be verified :
+$ ping -M want -s 3000 -t 256 192.168.1.200
+ping: ttl 256 out of range
+</p>
+<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
+<tr><th scope=\"col\">Time to Live</th></tr>
+</table>
+
+<p>
+We can try to find if someone on our network is using traceroute by using something like this on the gateway :
+</p>
+
+<p>
+Matching packets longer than X bytes
+
+</p>
+<hr/>
+
+<p>
+Where X is 600 bytes
+</p>
+
+
+<p>
+More IP filtering
+
+</p>
+<hr/>
+
+<p>
+We could imagine filtering source and destination addresses directly in decimal addressing.
+We could also match the protocol by filtering the 10th byte.
+</p>
+<p>
+It would be pointless anyhow, because tcpdump makes it already easy to filter out that kind of info.
+</p>
+
+<p>
+TCP header
+
+</p>
+<hr/>
+
+<p>
+        0                   1                   2                   3   
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
+</p><!-- This HTML table template is generated by emacs 23.2.1 -->
+<table border=\"1\">
+  <tr>
+    <td colspan=\"10\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source&nbsp;Port&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td colspan=\"2\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Destination&nbsp;Port&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan=\"12\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sequence&nbsp;Number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan=\"12\" align=\"left\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acknowledgment&nbsp;Number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;Data&nbsp;<br />
+      &nbsp;Offset<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align=\"center\" valign=\"middle\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;Res.&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align=\"left\" valign=\"top\">
+      C<br />
+      W<br />
+      R
+    </td>
+    <td align=\"left\" valign=\"top\">
+      E<br />
+      C<br />
+      E
+    </td>
+    <td align=\"left\" valign=\"top\">
+      U<br />
+      R<br />
+      G
+    </td>
+    <td align=\"left\" valign=\"top\">
+      A<br />
+      C<br />
+      K
+    </td>
+    <td align=\"left\" valign=\"top\">
+      P<br />
+      S<br />
+      H
+    </td>
+    <td align=\"left\" valign=\"top\">
+      R<br />
+      S<br />
+      T
+    </td>
+    <td align=\"left\" valign=\"top\">
+      S<br />
+      Y<br />
+      N
+    </td>
+    <td align=\"left\" valign=\"top\">
+      F<br />
+      I<br />
+      N
+    </td>
+    <td colspan=\"2\" align=\"center\" valign=\"middle\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Window&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan=\"10\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checksum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td colspan=\"2\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urgent&nbsp;Pointer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan=\"11\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Options&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;Padding&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan=\"12\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<ul>
+<li>Matching any TCP traffic with a source port &gt; 1024
+</li>
+</ul>
+
+
+<ul>
+<li>Matching TCP traffic with particular flag combinations
+</li>
+</ul>
+
+
+<p>
+The flags are defined in the 14th byte of the TCP header.
+</p>
+<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
+<tr><th scope=\"col\">C<br/>W<br/>R</th>
+<th scope=\"col\">E<br/>C<br/>E</th>
+<th scope=\"col\">U<br/>R<br/>G</th>
+<th scope=\"col\">A<br/>C<br/>K</th>
+<th scope=\"col\">P<br/>S<br/>H</th>
+<th scope=\"col\">R<br/>S<br/>T</th>
+<th scope=\"col\">S<br/>Y<br/>N</th>
+<th scope=\"col\">F<br/>I<br/>N</th></tr>
+</table>
+
+<p>
+In the TCP 3-way handshakes, the exchange between hosts goes like this :
+</p>
+<ol>
+<li>Source sends SYN 
+</li>
+<li>Destination answers with SYN, ACK 
+</li>
+<li>Source sends ACK
+
+</li>
+<li>If we want to match packets with only the SYN flag set, the 14th byte would have a binary 
+  value of 00000010 which equals 2 in decimal.
+</li>
+</ol>
+
+
+<ul>
+<li>Matching SYN, ACK (00010010 or 18 in decimal)
+</li>
+</ul>
+
+
+<ul>
+<li>Matching either SYN only or SYN-ACK datagrams
+</li>
+</ul>
+
+
+<p>
+We used a mask here. It will returns anything with the ACK bit set (thus the SYN-ACK combination as well)
+</p>
+<p>
+Let's assume the following examples (SYN-ACK)
+</p>
+<p>
+00010010 : SYN-ACK packet
+00000010 : mask (2 in decimal)
+
+</p>
+<hr/>
+<p>
+00000010 : result (2 in decimal)
+</p>
+<p>
+Every bits of the mask match !
+</p>
+<ul>
+<li>Matching PSH-ACK packets
+</li>
+</ul>
+
+
+<ul>
+<li>Matching any combination containing FIN (FIN usually always comes with an ACK so we either 
+  need to use a mask or match the combination ACK-FIN)
+</li>
+</ul>
+
+
+<ul>
+<li>Matching RST flag
+</li>
+</ul>
+
+
+
+<p>
+By looking at the TCP state machine diagram (<a href=\"http://www.wains.be/pub/networking/tcp_state_machine.jpg\"><img src=\"http://www.wains.be/pub/networking/tcp\\_state\\_machine.jpg\" alt=\"tcp\\_state\\_machine.jpg\"/></a>)
+we can find the different flag combinations we may want to analyze.
+</p>
+<p>
+Ideally, a socket in ACK_WAIT mode should not have to send a RST. It means the 3 way handshake has not completed.
+We may want to analyze that kind of traffic.
+</p>
+
+<p>
+Matching SMTP data :
+
+</p>
+<hr/>
+
+<p>
+I will make a filter that will match any packet containing the \"MAIL\" command from SMTP exchanges.
+</p>
+<p>
+I use something like <a href=\"http://www.easycalculation.com/ascii-hex.php\">http://www.easycalculation.com/ascii-hex.php</a> to convert values from ASCII to hexadecimal.
+</p>
+<p>
+\"MAIL\" in hex is 0x4d41494c
+</p>
+<p>
+The rule would be :
+</p>
+
+<p>
+It will check the bytes 21 to 24. \"MAIL\" is 4 bytes/32 bits long.. 
+</p>
+<p>
+This rule would not match packets with IP options set.
+</p>
+<p>
+This is an example of packet (a spam, of course) :
+</p>
+<p>
+Capturing on eth0
+Frame 1 (92 bytes on wire, 92 bytes captured)
+    Arrival Time: Sep 25, 2007 00:06:10.875424000
+    [Time delta from previous packet: 0.000000000 seconds]
+    [Time since reference or first frame: 0.000000000 seconds]
+    Frame Number: 1
+    Packet Length: 92 bytes
+    Capture Length: 92 bytes
+    [Frame is marked: False]
+    [Protocols in frame: eth:ip:tcp:smtp]
+Ethernet II, Src: Cisco_X (00:11:5c:X), Dst: 3Com_X (00:04:75:X)
+    Destination: 3Com_X (00:04:75:X)
+        Address: 3Com_X (00:04:75:X)
+        &hellip;. &hellip;0 &hellip;. &hellip;. &hellip;. &hellip;. = IG bit: Individual address (unicast)
+        &hellip;. ..0. &hellip;. &hellip;. &hellip;. &hellip;. = LG bit: Globally unique address (factory default)
+    Source: Cisco_X (00:11:5c:X)
+        Address: Cisco_X (00:11:5c:X)
+        &hellip;. &hellip;0 &hellip;. &hellip;. &hellip;. &hellip;. = IG bit: Individual address (unicast)
+        &hellip;. ..0. &hellip;. &hellip;. &hellip;. &hellip;. = LG bit: Globally unique address (factory default)
+    Type: IP (0x0800)
+Internet Protocol, Src: 62.163.X (62.163.X), Dst: 192.168.X (192.168.X)
+    Version: 4
+    Header length: 20 bytes
+    Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00)
+        0000 00.. = Differentiated Services Codepoint: Default (0x00)
+        &hellip;. ..0. = ECN-Capable Transport (ECT): 0
+        &hellip;. &hellip;0 = ECN-CE: 0
+    Total Length: 78
+    Identification: 0x4078 (16504)
+    Flags: 0x04 (Don't Fragment)
+        0&hellip; = Reserved bit: Not set
+        .1.. = Don't fragment: Set
+        ..0. = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 118
+    Protocol: TCP (0x06)
+    Header checksum: 0x08cb [correct]
+        [Good: True]
+        [Bad : False]
+    Source: 62.163.X (62.163.X)
+    Destination: 192.168.X (192.168.XX)
+Transmission Control Protocol, Src Port: 4760 (4760), Dst Port: smtp (25), Seq: 0, Ack: 0, Len: 38
+    Source port: 4760 (4760)
+    Destination port: smtp (25)
+    Sequence number: 0    (relative sequence number)
+    [Next sequence number: 38    (relative sequence number)]
+    Acknowledgement number: 0    (relative ack number)
+    Header length: 20 bytes
+    Flags: 0x18 (PSH, ACK)
+        0&hellip; &hellip;. = Congestion Window Reduced (CWR): Not set
+        .0.. &hellip;. = ECN-Echo: Not set
+        ..0. &hellip;. = Urgent: Not set
+        &hellip;1 &hellip;. = Acknowledgment: Set
+        &hellip;. 1&hellip; = Push: Set
+        &hellip;. .0.. = Reset: Not set
+        &hellip;. ..0. = Syn: Not set
+        &hellip;. &hellip;0 = Fin: Not set
+    Window size: 17375
+    Checksum: 0x6320 [correct]
+        [Good Checksum: True]
+        [Bad Checksum: False]
+Simple Mail Transfer Protocol
+    Command: MAIL FROM:&lt;wguthrie_at_mysickworld&ndash;dot&ndash;com&gt;\\r\\n
+        Command: MAIL
+        Request parameter: FROM:&lt;wguthrie_at_mysickworld&ndash;dot&ndash;com&gt;
+</p>
+
+<p>
+Matching HTTP data :
+
+</p>
+<hr/>
+
+<p>
+Let's make a filter that will find any packets containing GET requests
+The HTTP request will begin by :
+</p>
+<p>
+GET / HTTP/1.1\\r\\n (16 bytes counting the carriage return but not the backslashes !)
+</p>
+<p>
+If no IP options are set.. the GET command will use the byte 20, 21 and 22
+Usually, options will take 12 bytes (12nd byte indicates the header length, which should report 32 bytes). 
+So we should match bytes 32, 33 and 34 (1st byte = byte 0).
+</p>
+<p>
+Tcpdump is only able to match data size of either 1, 2 or 4 bytes, we will take the following ASCII 
+character following the GET command (a space)
+</p>
+<p>
+\"GET \" in hex : 47455420
+</p>
+
+
+<p>
+Matching other interesting TCP things :
+
+</p>
+<hr/>
+
+<p>
+SSH connection (on any port) : 
+We will be looking for the reply given by the SSH server.
+OpenSSH usually replies with something like \"SSH-2.0-OpenSSH_3.6.1p2\".
+The first 4 bytes (SSH-) have an hex value of 0x5353482D.
+</p>
+
+<p>
+If we want to find any connection made to older version of OpenSSH (version 1, which are insecure and subject to MITM attacks) : 
+The reply from the server would be something like \"SSH-1.99..\"
+</p>
+
+
+
+<p>
+UDP header
+
+</p>
+<hr/>
+
+<p>
+  0      7 8     15 16    23 24    31  
+</p><!-- This HTML table template is generated by emacs 23.2.1 -->
+<table border=\"1\">
+  <tr>
+    <td align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Port&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;Destination&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Port&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;Checksum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan=\"2\" align=\"center\" valign=\"top\">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATA&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<p>
+Nothing really interesting here.
+</p>
+<p>
+If we want to filter ports we would use something like :
+</p>
+
+<p>
+ICMP header
+
+</p>
+<hr/>
+
+<p>
+See different ICMP messages :
+<img src=\"http://img292.imageshack.us/my.php?image=icmpmm6.gif\"  alt=\"http://img292.imageshack.us/my.php?image=icmpmm6.gif\" />
+</p>
+<p>
+We will usually filter the type (1 byte) and code (1 byte) of the ICMP messages.
+</p>
+<p>
+Here are common ICMP types :
+</p>
+<p>
+  0     Echo Reply                               [RFC792]
+  3     Destination Unreachable                  [RFC792]
+  4     Source Quench                            [RFC792]
+  5     Redirect                                 [RFC792]
+  8     Echo                                     [RFC792]
+ 11     Time Exceeded                            [RFC792]
+</p>
+<p>
+We may want to filter ICMP messages type 4, these kind of messages are sent in case of congestion of the network.
+</p>
+
+<p>
+If we want to find the ICMP echo replies only, having an ID of 500. By looking at the image with all the ICMP packet description
+we see the ICMP echo reply have the ID spread across the 5th and 6th byte. For some reason, we have to filter out with the value in hex.
+</p>
+
+
+
+<p>
+The end ? Please send more useful recipes !
+</p>
+<div id=\"footnotes\">
+<h2 class=\"footnotes\">Footnotes: </h2>
+<div id=\"text-footnotes\">
+<p class=\"footnote\"><sup><a class=\"footnum\" name=\"fn-.1\" href=\"#fnr-.1\">1</a></sup> DEFINITION NOT FOUND: 6
+</p>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id=\"postamble\">
+<p class=\"date\">Date: 2013-03-04 Mon</p>
+<p class=\"author\">Author: liweilijie</p>
+<p class=\"creator\"><a href=\"http://orgmode.org\">Org</a> version 7.9.2 with <a href=\"http://www.gnu.org/software/emacs/\">Emacs</a> version 23</p>
+<a href=\"http://validator.w3.org/check?uri=referer\">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
+") ("title" . "tcpdump") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/03/04/2942952.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/03/04/2942952.html") ("postid" . 2942952) ("source") ("mt_excerpt" . "tcpdump 详解") ("mt_keywords" . "tcpdump"))

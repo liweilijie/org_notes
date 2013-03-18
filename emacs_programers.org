@@ -33,6 +33,8 @@
 | ESC j    | indent-new-comment-line | 如果注释的内容用一个文本行容纳不下，就需要在下一行继续写完注释；也可能将写好的注释分为两行。 |
 
 
+*平时很多时候需要注释一行代码，常用的办法是先选中该行，然后再 ESC ; 即可。*
+
 * C 和 C++ 模式
 
   - 进入 *C* 模式： *ESC x c-mode RET*
@@ -61,3 +63,219 @@
    - ESC ,
 
 
+** 编程中常用的命令
+
+| 键盘操作                       | 动作                                                               |
+|--------------------------------+--------------------------------------------------------------------|
+| C-u C-@                        | 跳到上一个光标的位置，就好比vim中的 `` 一样                        |
+| ESC C-n                        | 向下跳转与大括号匹配 *}* 但是一定要注意光标位置一定要在 *{* 前面   |
+| ESC C-p                        | 向上跳转与大括号匹配的 *{* 但是一定要注意光标位置一定要在 *}* 后面 |
+| ESC g g                        | 输入line-number,跳转指定的行 ESC x goto-line                       |
+| C-a-k                          | 按着C-a再按k, 删除一行                                             |
+| C-k                            | 删除光标后面的行 kill line                                         |
+| C-q Tab                        | 相当于Tab,直接按Tab会整行缩进                                      |
+| ESC !                          | 执行shell命令                                                      |
+| ESC x linum-mode               | 显示行号, 像vi的 :set nu                                           |
+| ESC x show-paren-mode          | 显示匹配括号                                                       |
+| C-x C-f /user@host:/remotepath | 远程编辑文件                                                       |
+|                                |                                                                    |
+
+
+
+* Emacs for vi users
+
+   今天偶然看到一篇文章，这都得赐我朝最近开放几天, 于是我将文章全部复制过来，以免以后看不到了。地址在 http://www.elmindreda.org/emacs.html .
+
+
+
+#+BEGIN_QUOTE
+:
+:
+:     Emacs for vi users
+:
+:     "Why can't I enter command mode?"
+:
+:     Introduction
+:
+:     This is intended as an introductory guide for vi users wishing to learn the
+:     basics of Emacs. I'm writing it because I'm one of them, and I suspect that
+:     I'm not alone in being mystified by the lack of a command mode, text objects
+:     and an underlying ex editor, as well as the plethora of strange and unfamiliar
+:     key combinations. The intent is to give fledgling Emacs users a basic set of
+:     commands, sufficient for basic editing.
+:
+:     This page is a basic Emacs survival guide for the vi user. It is grounded in
+:     familiarity of vi and (quite naturally) assumes a vi-centric view of the
+:     world. Since the structure is that of a list of corresponding commands, I will
+:     not list features that are unique to Emacs. I believe there to be sufficient
+:     overlap between the capabilities of each editor to motivate this approach.
+:
+:     This is not a joke. It is not about religion or the Editor war and I will not
+:     present one editor as better than the other. Neither is it about the Emacs
+:     mindset, since I have yet to acquire it myself. Finally, it is not a proper
+:     Emacs tutorial. If you want to learn Emacs propely, go find a proper tutorial.
+:     There is one built into Emacs, for example.
+:
+:     Finally, it is not complete and I welcome contributions.
+:
+:     Basics
+:
+:     Emacs doesn't have a separate command mode. In a sense, you're always in
+:     insert mode. Therefore, special modifier keys are needed to tell commands
+:     apart from typed characters. The two commonly used modifiers are Control and
+:     Meta. On many systems, the Alt key can be used as Meta. If your system lacks a
+:     functional Meta key, you can type Escape before the specified key.
+:
+:     Since Control and Meta are so frequently used in Emacs, they have created a
+:     special convention for writing such commands, so for example C-a corresponds
+:     to Control+A, and M-f corresponds to Meta+F. The Emacs command column will use
+:     this convention. This is also consistent with the documentation in Emacs.
+:
+:     Many Emacs commands take numerical prefixes, but you need to hold down Meta
+:     while typing them. So, for example, type M-2 M-3 M-g g instead of 23G to go to
+:     line 23.
+:
+:     Commands
+:
+:     Program operations
+:
+:     Action                  gi     Emacs      Notes on Emacs                      
+:     Exit program            :q     C-x C-c    If changes exist, will ask whether  
+:    			 Enter             or not to save them.                
+:     Unconditionally exit    :q!    C-x C-c    Just say no.                        
+:     program                 Enter                                                 
+:     Save current buffer and :wq    C-x C-s                                        
+:     exit program            Enter  C-x C-c                                        
+:     Cancel command          Ctrl+c C-g                                            
+:     Redraw screen           Ctrl+l C-l                                            
+:     Command line            :      M-x                                            
+:
+:     File operations
+:
+:     Action                   vi           Emacs        Notes on Emacs             
+:     Open file, or create     :e filename  C-x C-f                                 
+:     named buffer             Enter        filename                                
+:     Save current buffer      :w Enter     C-x C-s      Will not save a new,       
+:    						    unmodified file.           
+:     Save current buffer      :w filename  C-x C-w                                 
+:     under new name           Enter        filename                                
+:     Move to next buffer      :n Enter     C-x b buffer                            
+:     Move to previous buffer  :prev Enter  C-x b Enter                             
+:
+:     Navigation
+:
+:     Action            vi     Emacs               Notes on Emacs                   
+:     Go to beginning   1G     M-<                                                  
+:     of buffer                                                                     
+:     Go to end of      G      M->                                                  
+:     buffer                                                                        
+:     Go left one       h      C-b                 Will wrap to previous line.      
+:     character                Left                                                 
+:     Go right one      l      C-f                 Will wrap to next line.          
+:     character                Right                                                
+:     Go up one line    k      C-p                                                  
+:    			  Up                                                   
+:     Go down one line  j      C-n                                                  
+:    			  Down                                                 
+:    			  M-x goto-line Enter                                  
+:     Go to line n      nG     n                                                    
+:    			  M-g g n Enter                                        
+:    			  M-n M-g g                                            
+:     Go to beginning   0      C-a                                                  
+:     of line                                                                       
+:     Go to end of line $      C-e                 Places cursor one step beyond    
+:    					      last character.                  
+:     Go to next word   w      M-f                 Stops at first non-word character
+:    					      before the word.                 
+:     Go to previous    b      M-b                                                  
+:     word                                                                          
+:     Go to next page   Ctrl+f C-v                                                  
+:    			  PageUp                                               
+:     Go to previous    Ctrl+b M-v                                                  
+:     page                     PageDn                                               
+:    			  C-x r Space x                                        
+:     Set mark x        mx     M-x                                                  
+:    			  point-to-register                                    
+:    			  Enter x                                              
+:    			  C-x r j x                                            
+:     Go to mark x      'x     M-x                                                  
+:    			  register-to-point                                    
+:    			  Enter x                                              
+:     Go to first       H                                                           
+:     displayed line                                                                
+:     Go to last        L                                                           
+:     displayed line                                                                
+:     Move buffer one   Ctrl+y C-1 M-v                                              
+:     line up                                                                       
+:     Move buffer one   Ctrl+e C-1 C-v                                              
+:     line down                                                                     
+:
+:     Text editing
+:
+:     Action                   vi Emacs       Notes on Emacs                        
+:     Insert text              i              Always in insert mode.                
+:     Append text              a  C-f         Only cursor movement is needed.       
+:     Insert at beginning of   I  C-a         Only cursor movement is needed.       
+:     line                                                                          
+:     Append to end of line    A  C-e         Only cursor movement is needed.       
+:     Delete character         x  C-d                                               
+:     forwards                    Delete                                            
+:     Delete character         X  Backspace                                         
+:     backwards                                                                     
+:     Change to end of line    C  C-k         Only deletion is needed.              
+:     Delete to end of line    D  C-k         Removes line entirely if empty.       
+:     Delete entire line       dd C-a C-k     For empty lines                       
+:    			     C-a C-k C-k For non-empty lines                   
+:     Delete word forwards     dw M-d         Does not delete whitespace before next
+:    					 word.                                 
+:     Delete word backwards    db M-Backspace                                       
+:     Open line above          O  C-o                                               
+:     Open line below          o  C-e Enter                                         
+:     Join lines               J  C-n M-^                                           
+:     Undo last edit           u  C-x u                                             
+:
+:     Yanking and placing
+:
+:     Action            vi  Emacs                                   Notes on Emacs   
+:    		       C-a C-k                                 For empty lines  
+:     Yank line         yy  C-a C-k C-k                             For non-empty    
+:    							       lines            
+:     Yank n lines      nyy C-Space (move to line below last                         
+:    		       desired) M-w                                             
+:     Cut n lines down  ndd M-n C-k                                                  
+:     Paste before      P   C-y                                                      
+:     cursor                                                                         
+:     Paste after       p                                                            
+:     cursor                                                                         
+:
+:     Searching and substitution
+:
+:     Action           vi                    Emacs                      Notes on    
+:    								   Emacs       
+:     Search forwards  /pattern Enter        C-s pattern Enter                      
+:     Search backwards ?pattern Enter        C-r pattern Enter                      
+:     Global replace   :%s/pattern/with/gc   M-% word Enter with Enter              
+:     text             Enter                 C-M-% pattern Enter with               
+:    					Enter                                  
+:
+:     Window operations
+:
+:     Action                        Vim      Emacs Notes on Emacs
+:     Split horizontally            Ctrl+w s C-x 2               
+:     Split vertically              Ctrl+w v C-x 3               
+:     Close current window          Ctrl+w c C-x 0               
+:     Close all but current windows Ctrl+w o C-x 1               
+:
+:     Credits
+:
+:     This page was partly inspired by Emacs for Vi Programmers.
+:
+:     Thanks to Kaj, magda, Ian D, LeViMS, C. Warrington, E. Bowler and R. Pereira
+:     for Emacs commands.
+:
+:     © elmindreda
+:
+:
+:
+:                                                                                                                                                                                                                                                  
+#+END_QUOTE

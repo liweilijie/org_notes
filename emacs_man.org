@@ -1,0 +1,47 @@
+#+TITLE:     Emacs下的Man
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2012-01-06 Sun
+#+DESCRIPTION: Emacs下的man命令
+#+KEYWORDS: Emacs
+#+CATEGORIES: Emacs
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+
+* Emacs下的man
+
+  在vim里面我最喜爱的命令之一就有 *K* ，查看光标所在的命令的manpage说明。在写代码时常常用到它。而emacs下找了很久才找到。原来用man命令来代替。
+
+  
+    #+BEGIN_HTML
+    <div class="cnblogs_Highlighter">
+    <pre class="brush:bash">
+
+    ESC x man
+
+
+    </pre>
+    </div>
+    #+END_HTML
+  
+
+
+* Emacs自带的帮助系统:
+
+    - C-h t -- Emacs tutorial 
+    - C-h i -- 打开info 
+    - C-h k -- 查看一个按键绑定到了哪个函数 
+    - C-h f -- 查看一个函数的文档 
+    - C-h v -- 查看一个变量的文档 
+    - C-h a -- 查找带某个keyword的函数/变量 
+    - M-x find-function -- 找一个函数的代码. 
+    - M-x man && M-x woman 查看manpages
+ 

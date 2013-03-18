@@ -139,7 +139,7 @@
     | ESC C-o | 静态地将一行下移                      |
     | C-x C-o | 删除光标附近的空行(留下一行)          |
     | ESC ^   | 与上一行合并成一行                    |
-    | ESC -   | 删除光标附近的所有空格                |
+    | ESC \   | 删除光标附近的所有空格                |
     | ESC SPC | 删除光标附近的空格(留下一格)          |
     | ESC q   | Fill paragraph                        |
     | C-x f   | Set fill column                       |

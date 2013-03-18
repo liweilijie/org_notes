@@ -1,0 +1,591 @@
+
+(("dateCreated" :datetime (20780 40720)) ("description" . "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
+               \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
+<head>
+<title>linux常用命令汇总</title>
+
+
+
+
+
+
+
+<style type=\"text/css\">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type=\"text/javascript\">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = \"code-highlighted\";
+     elem.className   = \"code-highlighted\";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id=\"org-div-home-and-up\" style=\"text-align:right;font-size:70%;white-space:nowrap;\">
+ <a accesskey=\"h\" href=\"/liweilijie\"> UP </a>
+ |
+ <a accesskey=\"H\" href=\"/liweilijie\"> HOME </a>
+</div>
+
+<div id=\"preamble\">
+
+</div>
+
+<div id=\"content\">
+<h1 class=\"title\">linux常用命令汇总</h1>
+
+
+<div id=\"table-of-contents\">
+<h2>Table of Contents</h2>
+<div id=\"text-table-of-contents\">
+<ul>
+<li><a href=\"#sec-1\">1 linux运维常用命令</a>
+<ul>
+<li><a href=\"#sec-1-1\">1.1 查看某文件的一部分</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id=\"outline-container-1\" class=\"outline-2\">
+<h2 id=\"sec-1\"><span class=\"section-number-2\">1</span> linux运维常用命令</h2>
+<div class=\"outline-text-2\" id=\"text-1\">
+
+
+
+</div>
+
+<div id=\"outline-container-1-1\" class=\"outline-3\">
+<h3 id=\"sec-1-1\"><span class=\"section-number-3\">1.1</span> 查看某文件的一部分</h3>
+<div class=\"outline-text-3\" id=\"text-1-1\">
+
+
+<p>
+如果你只想看文件的前 5 行，可以使用 head 命令，
+如：head -5 /etc/passwd
+</p>
+<p>
+如果你想查看文件的后 10 行，可以使用 tail 命令，
+如：tail -10 /etc/passwd
+</p>
+<p>
+查看文件中间一段，可以使用 sed 命令
+如:sed –n '5,10p' /etc/passwd 这样你就可以只查看文件的第 5 行到第 10 行
+</p>
+<p>
+2、将 file.txt 里的123改为 456
+方法 1
+sed 's/123/456/g' file.txt &gt; file.txt.new 修改的保存到其它文件
+sed -i 's/123/456/g' file.txt 直接修改原文件
+方法 2
+vi file.txt
+输入命令：
+:%s/123/456/g
+注意：如果替换的文件有特殊符号如/就要用来取消。
+例：sed -i 's//usr/local/apache2/htdocs//var/www/html/g' /usr/local/apache2/conf/httpd.conf
+如果只是下原有的行后添加就用&amp;
+例：sed -i 's/DirectoryIndex index.html index.html.var/&amp; index.htm index.php /g' /usr/local/apache2/conf/httpd.conf
+3、echo 典型应用
+echo \"abcdefg\" | perl -lne '{$a = reverse($_); print $a;}' 把一个字符串翻转
+echo bottle|rev 把一个字符串翻转
+[文件目录管理]
+1、删除几天以前的所有东西(包括目录名和目录中的文件）
+</p><ol>
+<li>find . -ctime +3 -exec rm -rf {} ;
+</li>
+<li>find ./ -mtime +3 -print|xargs rm -f –r
+</li>
+</ol>
+
+<p>2、在多级目录中查找某个文件的方法
+</p><ol>
+<li>find /dir -name filename.ext
+</li>
+<li>du -a | grep filename.ext
+</li>
+<li>locate filename.ext
+</li>
+</ol>
+
+<p>3、删除软硬连接注意点
+删除软件连接的时候一定要记得不要在删除的文件夹后加一斜杠,
+rm -f filename/
+会说这是一个文件夹不能删除
+rm filename
+会提示说是否要删除这个连接。
+如果用的第一种可能会把其它文件都删除
+4、删除目录中含输入关键字的文件
+find <i>mnt/ebook</i> -type f -exec grep \"在此输入关键字\" {} ; -print -exec rm {} ;
+5、在当前目录下解压 rpm 文件
+cat kernel-ntfs-2.4.20-8.i686.rpm | rpm2cpio | pax –r
+6、用命令清空 Root 回收站中的文件
+cd <i>var</i>.Trash-root
+rm -rf *
+[系统与安全]
+1、让用户的密码必须有一定的长度，并且符合复杂度
+vi /etc/login.defs，修改 PASS_MIN_LEN
+2、用 dat 查询昨天的日期
+date &ndash;date='yesterday'
+3、修改系统时
+</p><ol>
+<li>设置你的时区： timeconfig 里选择Asia/Shanghai （如果你位于 GMT+8 中国区域）
+</li>
+<li>与标准时间服务器校准： ntpdate time.nist.gov
+</li>
+</ol>
+
+<p>date -s “2003-04-14 cst”，cst 指时区，时间设定用 date -s 18:10
+修改后执行 clock -w 写到 CMOS
+</p><ol>
+<li>将当前软件系统时间写入硬件时钟： hwclock –systohc
+</li>
+</ol>
+
+<p>4、改变 redhat 的系统语言/字符集
+修改 /etc/sysconfig/i18n 文件，如
+LANG=\"en_US\"，xwindow会显示英文界面，
+LANG=\"zh_CN.GB18030\"，xwindow会显示中文界面。
+还有一种方法
+cp <i>etc/sysconfig/i18n $HOME</i>.i18n
+vi $HOME/.i18n 文件，如
+LANG=\"en_US\"，xwindow会显示英文界面，
+LANG=\"zh_CN.GB18030\"，xwindow会显示中文界面。
+这样就可以改变个人的界面语言，而不影响别的用户
+5、查看系统信息
+cat /proc/cpuinfo - CPU (i.e. vendor, Mhz, flags like mmx)
+cat /proc/interrupts - 中断
+cat /proc/ioports - 设备 IO端口
+cat /proc/meminfo - 内存信息(i.e. mem used, free, swap size)
+cat /proc/partitions - 所有设备的所有分区
+cat /proc/pci - PCI设备的信息
+cat /proc/swaps - 所有 Swap 分区的信息
+cat /proc/version - Linux 的版本号相当于 uname -r
+uname -a - 看系统内核等信息
+6、让 linux自动同步时间
+vi /etc/crontab
+加上一句：
+00 0 1 * * root rdate -s time.nist.gov
+7、如何防止某个关键文件被修改
+在 Linux 下，有些配置文件是不允许任何人（包括 root）修改的。为了防止被误删除或修改
+可以设定该文件的“不可修改位(immutable) ”。命令如下：
+如果需要修改文件则采用下面的命令：
+[管理与网络]
+1、 lsof 用法小全
+lsof abc.txt 显示开启文件 abc.txt 的进程
+lsof -i :22 知道 22 端口现在运行什么程序
+lsof -c nsd 显示 nsd 进程现在打开的文件
+lsof -g gid 显示归属 gid 的进程情况
+lsof +d <i>usr/local</i> 显示目录下被进程开启的文件
+lsof +D <i>usr/local</i> 同上，但是会搜索目录下的目录，时间较长
+lsof -d 4 显示使用 fd 为4 的进程
+lsof -i [i] 用以显示符合条件的进程情况
+语法: lsof -i<sup><a class=\"footref\" name=\"fnr-.1\" href=\"#fn-.1\">1</a></sup> [protocol][@hostname|hostaddr][:service|port]
+46 &ndash;&gt; IPv4 or IPv6
+protocol &ndash;&gt; TCP or UDP
+hostname &ndash;&gt; Internet host name
+hostaddr &ndash;&gt; IPv4 位置
+service &ndash;&gt; /etc/service中的 service name (可以不止一个)
+port &ndash;&gt; 端口号(可以不止一个)
+例子: TCP:25 - TCP and port 25
+@1.2.3.4 - Internet IPv4 host address 1.2.3.4 tcp@ohaha.ks.edu.tw:ftp - TCP protocol host:ohaha.ks.edu.tw service name:ftp
+lsof -n 不将 IP转换为 hostname，预设是不加上-n参数
+例子: lsof -i tcp@ohaha.ks.edu.tw:ftp -n
+lsof -p 12 看进程号为 12的进程打开了哪些文件
+2、grep 不显示本身进程
+#ps -aux|grep httpd|grep -v grep
+grep -v grep可以取消显示你所执行的 grep 本身这个进程，-v 参数是不显示所列出的进程名
+3、查看本机IP
+ifconfig |grep \"inet\" |cut -c 0-36|sed -e 's/[a-zA-Z: ]//g'
+hostname –i
+4、查看有多少活动的Httpd进程
+#!/bin/sh
+while (true)
+do
+pstree |grep \"<b>[httpd]$\"|sed 's/.</b>-([0-9][0-9]*)*[httpd]$/1/'
+sleep 3
+done
+同样可以引用到其它的进程
+5、设置 com1口，让超级终端通过 com1口进行登录
+第一步：确认有/sbin/agetty，编辑/etc/inittab，添加
+7:2345:respawn:/sbin/agetty /dev/ttyS0 9600
+9600bps 是因为连路由器时缺省一般都是这种速率，也可以设成
+19200、38400、57600、115200
+第二步：修改/etc/securetty，添加一行：ttyS0，确保 root 用户能登录
+第三步：重启机器，就可以拔掉鼠标键盘显示器（启动时最好还是要看看输出信息）了
+6、查找或删除正在使用某文件的进程
+fuser filename
+fuser -k filename
+7、已知网络中一个机器的硬件地址，如何知道它所对应的 IP地址
+在 Linux 下，假定要查“00:0A:EB:27:17:B9”这样一个硬件地址所对应的 IP 地址，可以使
+用以下命令：
+192.168.2.54 0x1 0x6 00:0A:EB:27:17:B9 *eth2
+另外，还可以用“arp -a”命令查询：
+（192.168.2.54）at 00:0A:EB:27:17:B9[ether] on eth2
+8、在 Linux下如何绑定 IP地址和硬件地址
+可以编辑一个地址对应文件，里面记录了 IP地址和硬件地址的对应关系，然后执行“arp –
+f 地址对应文件”。如果没有指定地址对应文件，则通常情况下一默认文件/etc/ethers为准。
+地址对应文件的格式如下：
+192.168.0.1 00:0D:61:27:58:93
+192.168.0.2 00:40:F4:2A:2E:5C
+192.168.0.3 00:0A:EB:5E:BA:8E
+9、更改 eth0是否混杂模式（混杂模式可以监听其它主机的信息）
+网卡 eth0 改成混杂模式：
+ifconfig eth0 promisc
+关闭混杂模式：
+ifconfig eth0 –promisc
+10、linux下清空 arp表的命令
+#arp -d -a(适用于 bsd)
+for HOST in `arp | sed '/Address/d' | awk '{ print $1}'` ; do arp -d $HOST; done
+11、如何得到网卡的 MAC地址
+arp -a | awk '{print $4}'
+ifconfig eth0 | head -1 | awk '{print $5}'
+12、一个网卡绑定多 ip
+方法一、建立eth0:1在网卡后加冒号和数字的文件
+cp /etc/sysconfig/network-scripts/eth0 /etc/sysconfig/network-scripts/eth0:1
+再修改下eth0:1就可以了.
+方法二、
+在/etc/sysconfig/network-scripts/下创建一个文件：ifcfg-ethX-rangeX （\"X\"为网卡号）
+文件内容：
+IPADDR_START=&lt;start ip&gt;
+IPADDR_END=&lt;end ip&gt;
+CLONENUM=0
+可以有 256个 ip
+13、一个 ip如何绑定两块网卡
+假设 192.168.0.88 是ip,192.168.0.1 是网关:
+/sbin/modprobe bonding miimon=100 mode=1
+/sbin/ifdown eth0
+/sbin/ifdown eth1
+/sbin/ifconfig bond0 192.168.0.88
+/sbin/ifenslave bond0 eth0 eth1
+/sbin/route add default gw 192.168.0.1
+14、设置ssh 上来能不自动断线
+修改自己 HOME 目录下的.bash_profile文件，加上
+export TMOUT=1000000 (以秒为单位)
+然后运行 source .bash_profile
+15、mount 局域网上其他windows机器共享出的目录
+mount -t smbfs -o username=guest,password=guest //machine/path /mnt/cdrom
+16、向登陆到同一台服务器上的所有用户发一条信息
+1)输入 wall并回车
+2)输入要发送的消息
+3)结束时按“Control-d”键,消息即在用户的控制窗口中显示
+17、向远程机器上的所有用户发送消息
+使用 rwall(向所有人远程写)命令同时发送消息到网络中的所有用户。
+rwall hostname file
+当使用 CDE或 OpenWindows 等窗口系统时,每个窗口被看成是一次单个的登录;
+如果用户登录次数超过一次则消息直接发送到控制窗口
+</p>
+<p>
+18、向网络中的所有用户发送消息
+发送消息到网络中的所有用户
+1)输入 rwall -n netgroup 并回车
+2)输入要发送的消息
+3)结束时按“Control-d”键，消息即在系统每个用户的控制窗口中显示，下面是系统管理员
+发消息到网络组 Eng 每个用户的例子：
+% rwall -n EngSystem will be rebooted at 11:00.(Control-d)
+%
+用户控制窗口中的消息:Broadcast message from root on console…System will be rebooted at
+11:00.EOF
+注意：也可以通过 rwall hostname（主机名）命令到系统的所有用户
+</p>
+<p>
+19、将 top的结果输出到文件中
+top -d 2 -n 3 -b &gt;test.txt
+可以把 top 的结果每隔 2秒，打印 3次，这样后面页的进程也能够看见了
+20、装双系统不能看到另一个系统的解决办法
+首先光盘启动，进入 rescue 模式，运行 GRUB，进入 grub 提示符 grub&gt;，然后敲入下面的
+语句，重启就好了。
+root (hd0,2)，setup (hd0)
+21、压缩传输文件或目录
+传输到远程：tar czf - www | ssh server \"tar zxf -\"
+压缩到远程：tar czf - www | ssh server \"cat &gt; www.tar.gz\"
+解压到远程：ssh server \"tar zxf -\" &lt; www.tar.gz
+解压到本地：ssh server \"cat www.tar.gz\" | tar zxf -
+22、命令行下发送带附件的邮件
+方法 1. uuencode &lt;in_file&gt; &lt;remote_file&gt; | mail -s \"title\" mail@address
+&lt;in_file&gt; 本地需要作为附件的文件名。
+&lt;remote_file&gt; 邮件中的附件文件名，可以和&lt;in_file&gt;不同，其实内容一样。
+方法 2. cat &lt;mailcontent.txt&gt; | mutt -s \"title\" -a &lt;attachfile&gt; mail@address
+&lt;mailcontent.txt&gt;邮件正文内容。
+&lt;attachfile&gt;本地需要作为附件的文件名。
+[Mysql维护]
+1、mysql 的数据库存放在什么地方
+</p><ol>
+<li>如果使用 rpm包安装，应该在/var/lib/mysql 目录下，以数据库名为目录名
+</li>
+<li>如果源码安装在/usr/local/mysql中，应该在/usr/local/mysql/var中，以数据库名为目录名
+</li>
+</ol>
+
+<p>2、从 mysql 中导出和导入数据
+导出数据库
+mysqldump 数据库名 &gt; 文件名
+导入数据库
+mysqladmin create 数据库名
+mysql 数据库名 &lt; 文件名
+</p>
+<p>
+3、忘了 mysql 的 root 口令怎么办
+</p>
+<p>
+4、 mysqld 起来了，却无法登录，提示\"/var/lib/mysql/mysql.sock\"不存在
+这种情况大多数是因为你的 mysql 是使用 rpm 方式安装的，它会自动寻找
+/var/lib/mysql/mysql.sock 这个文件，
+通过 unix socket 登录 mysql。
+常见解决办法如下：
+1)创建/修改文件 /etc/my.cnf，至少增加/修改一行
+[mysql]
+[client]
+socket = <i>tmp/mysql.sock #在这里写上你的 mysql.sock 的正确位置，通常不是在 /tmp</i> 下就是在 <i>var/lib/mysql</i> 下
+2)指定 IP地址，使用 tcp 方式连接mysql，而不使用本地 sock 方式
+#mysql -h127.0.0.1 -uuser -ppassword
+3)为 mysql.sock 加个连接，比如说实际的 mysql.sock 在 <i>tmp</i> 下，则
+5、导出数据的几种常用方法
+1)使用 mysqldump
+#mysqldump -uuser -ppassword -B database &ndash;tables table1 &ndash;tables table2 &gt;
+dump_data_20051206.sql
+详细的参数
+2)backup to语法
+mysql&gt;BACKUP TABLE tbl_name[,tbl_name&hellip;] TO '/path/to/backup/directory';
+详细请查看 mysql 手册
+3)mysqlhotcopy
+#mysqlhotcopy db_name [/path/to/new_directory]
+或
+#mysqlhotcopy db_name_1 &hellip; db_name_n /path/to/new_directory
+或
+#mysqlhotcopy db_name./regex/
+详细请查看 mysql 手册
+4)select into outfile
+详细请查看 mysql 手册
+5)客户端命令行
+#mysql -uuser -ppassword -e \"sql statements\" database &gt; result.txt
+以上各种方法中，以 mysqldump 最常用
+6、如何在命令行上执行 sql 语句
+#mysql -uuser -ppassword -e \"sql statements\" database
+</p>
+<p>
+7、导入备份出来文件的常见方法
+1)由 mysqldump 出来的文件
+#mysql -uuser -ppassword [database] &lt; dump.sql
+2)文件类型同上，使用 source 语法
+mysql&gt;source /path_to_file/dump.sql;
+3)按照一定格式存储的文本文件或 csv 等文件
+#mysqlimport [options] database file1 [file2&hellip;.]
+详细请查看 mysql 手册
+4)文件类型同上，也可以使用 load data 语法导入
+详细请查看 mysql 手册
+</p>
+<p>
+4、过滤掉#号打头的行，和所有的空行（对于查看配置文档很有用）
+</p>
+<p>
+awk '<i>^[^#]/&amp;&amp;/^[^$]</i>' filename &gt; new.file
+</p>
+<p>
+7.删除文件大小为零的文件
+</p>
+<p>
+rm -i `find ./ -size 0`
+</p>
+<p>
+find ./ -size 0 -exec rm {} ;
+</p>
+<p>
+find ./ -size |xargs rm -f &amp;非常有效
+</p>
+<p>
+for file in * #自己定义需要删除的文件类型
+</p>
+<p>
+do
+</p>
+<p>
+if [ ! -s ${file} ]
+</p>
+<p>
+then
+</p>
+<p>
+rm ${file}
+</p>
+<p>
+echo \"rm $file Success!\"
+</p>
+<p>
+fi
+</p>
+<p>
+done
+</p>
+<p>
+8.利用现存两个文件，生成一个新的文件
+</p>
+<ol>
+<li>取出两个文件的并集(重复的行只保留一份)
+
+</li>
+<li>取出两个文件的交集(只留下同时存在于两个文件中的文件)
+
+</li>
+<li>删除交集，留下其他的行
+</li>
+</ol>
+
+
+<p>
+A cat file1 file2 | sort | uniq
+</p>
+<p>
+B cat file1 file2 | sort | uniq -d
+</p>
+<p>
+C cat file1 file2 | sort | uniq -u
+</p>
+<p>
+6、更改字符集
+</p>
+<p>
+网站因为迁移改变了原有的字符集，导致前台看到乱码。如果是少数的几个页可以直接拿到本地用Editplus或者UltraEdit进行另存为时选择
+字符编码。现在有一个不用拿到本地的方法，在Linux机器上就能进行。
+</p>
+<p>
+conv -f &lt;native encoding&gt; -t &lt;wanted encoding&gt; &lt;filename&gt; -o &lt;newfilename&gt;
+</p>
+<p>
+如：将GB2312转为UTF-8 注意：转成的必须是新的文件名，不然会出错。
+</p>
+<p>
+/usr/bin/iconv –f GB2312 –t UTF-8 sourcefile &gt; targetfile
+</p>
+<p>
+[管理与维护]
+增加虚拟内存
+</p>
+<p>
+26.如果SWAP(交换空间)不够了，要增加怎么办？只要你的硬盘上有空闲的空间，直接用命令：mkswape/dev/hda(假设你的驱动器是/dev/
+hda)，swapon/dev/hda；要自动启动SWAPE，可以把新的分区加到/etc/fstab中去，照着原来SWAP的写就行了。用“free” 检查你SWAP的大小
+，Linux支持最多16个交换分区，每个交换分区最大128MB，没有空闲分区的时候，可以用个大文件来建立，用命令“man mkswap”查看帮助。
+</p>
+
+
+
+
+<p>
+27、一次解压多个.tar.gz文件
+</p>
+<p>
+find ./ -name '*.tar.gz' -exec tar zxvf {} ; -print
+</p>
+<div id=\"footnotes\">
+<h2 class=\"footnotes\">Footnotes: </h2>
+<div id=\"text-footnotes\">
+<p class=\"footnote\"><sup><a class=\"footnum\" name=\"fn-.1\" href=\"#fnr-.1\">1</a></sup> DEFINITION NOT FOUND: 46
+</p>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id=\"postamble\">
+<p class=\"date\">Date: 2013-02-26 Tue</p>
+<p class=\"author\">Author: liweilijie</p>
+<p class=\"creator\"><a href=\"http://orgmode.org\">Org</a> version 7.9.2 with <a href=\"http://www.gnu.org/software/emacs/\">Emacs</a> version 23</p>
+<a href=\"http://validator.w3.org/check?uri=referer\">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
+") ("title" . "linux常用命令汇总") ("categories" "[随笔分类]linux") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/02/26/2933264.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/02/26/2933264.html") ("postid" . 2933264) ("source") ("mt_excerpt" . "linux常用命令") ("mt_keywords" . "linux"))

@@ -1,0 +1,98 @@
+#+TITLE:     收集c语言常用函数
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-01-16 WED
+#+DESCRIPTION: 收集平时开发时用到的一些小函数。
+#+KEYWORDS: C
+#+CATEGORIES: C
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+
+* 概
+   在平时的开发中有时候会写一些很有趣的函数，所以在这时记录一下。
+
+* strcasecmp()
+
+** 算法：
+   很简单，先将其转为小写，再进行统一比较。
+
+** 代码：
+    #+BEGIN_HTML
+    <div class="cnblogs_Highlighter">
+    <pre class="brush:cpp">
+
+     /* Compare S1 and S2, ignoring case, returning less than, equal to or
+       greater than zero if S1 is lexicographically less than,
+       equal to or greater than S2.  */
+    int
+    strcasecmp (const char *s1, const char *s2)
+    {
+      register const unsigned char *p1 = (const unsigned char *) s1;
+      register const unsigned char *p2 = (const unsigned char *) s2;
+      unsigned char c1, c2;
+
+      if (p1 == p2)
+	return 0;
+
+      do
+	{
+	  c1 = tolower (*p1++);
+	  c2 = tolower (*p2++);
+	  if (c1 == '\0')
+	    break;
+	}
+      while (c1 == c2);
+
+      return c1 - c2;
+    }
+
+
+    </pre>
+    </div>
+    #+END_HTML
+
+
+另外一个strncasecmp():
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:cpp">
+
+/* Compare no more than N characters of S1 and S2,
+   ignoring case, returning less than, equal to or
+   greater than zero if S1 is lexicographically less
+   than, equal to or greater than S2.  */
+int
+strncasecmp (const char *s1, const char *s2, size_t n)
+{
+  register const unsigned char *p1 = (const unsigned char *) s1;
+  register const unsigned char *p2 = (const unsigned char *) s2;
+  unsigned char c1, c2;
+
+  if (p1 == p2 || n == 0)
+    return 0;
+
+  do
+    {
+      c1 = tolower (*p1++);
+      c2 = tolower (*p2++);
+      if (c1 == '\0' || c1 != c2)
+	return c1 - c2;
+    } while (--n > 0);
+
+  return c1 - c2;
+}
+
+
+</pre>
+</div>
+#+END_HTML
+
+

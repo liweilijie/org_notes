@@ -2,7 +2,7 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Thu Jan  3 18:33:19 2013
+;; Created Sun Jan  6 18:23:55 2013
 ;; Desktop file format version 206
 ;; Emacs version 23.2.1
 
@@ -17,10 +17,32 @@
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_vc_sql.org"
+  "emacs_vc_sql.org"
+  'org-mode
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode)
+  879
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/home/liwei/git/org_notes/emacs_programers.org"
+  "emacs_programers.org"
+  'org-mode
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode)
+  2737
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
   "/home/liwei/git/org_notes/emacs_linux-shell-config.org"
   "emacs_linux-shell-config.org"
   'org-mode
-  '(cnblogs-minor-mode yas-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode)
   184
   '(647 nil)
   nil
@@ -31,7 +53,7 @@
   "/home/liwei/git/org_notes/emacs_sed_awk_basic_1.org"
   "emacs_sed_awk_basic_1.org"
   'org-mode
-  '(cnblogs-minor-mode yas-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode)
   184
   '(680 nil)
   nil
@@ -42,7 +64,7 @@
   "/home/liwei/git/org_notes/emacs_cnblogs_setup.org"
   "emacs_cnblogs_setup.org"
   'org-mode
-  '(cnblogs-minor-mode yas-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode)
   4204
   '(4353 nil)
   nil
@@ -53,7 +75,7 @@
   "/root/.emacs.d/site-lisp/yasnippet/snippets/org-mode/image"
   "image"
   'snippet-mode
-  '(yas-minor-mode)
+  '(yas-minor-mode ede-minor-mode)
   129
   '(53 nil)
   nil
@@ -64,7 +86,7 @@
   "/home/liwei/git/org_notes/emacs_cnblogs-coder-color.org"
   "emacs_cnblogs-coder-color.org"
   'org-mode
-  '(cnblogs-minor-mode yas-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode)
   1773
   '(1601 nil)
   nil
@@ -75,7 +97,7 @@
   "/root/.emacs.d/site-lisp/yasnippet/snippets/org-mode/cpp"
   "cpp"
   'snippet-mode
-  '(yas-minor-mode)
+  '(yas-minor-mode ede-minor-mode)
   137
   '(53 nil)
   nil
@@ -86,7 +108,7 @@
   "/root/.emacs.d/site-lisp/yasnippet/snippets/org-mode/bash"
   "bash"
   'snippet-mode
-  '(yas-minor-mode)
+  '(yas-minor-mode ede-minor-mode)
   206
   '(59 nil)
   nil
@@ -97,7 +119,7 @@
   "/home/liwei/git/org_notes/emacs_rectangle_command.org"
   "emacs_rectangle_command.org"
   'org-mode
-  '(cnblogs-minor-mode yas-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode)
   955
   '(550 nil)
   nil
@@ -108,7 +130,7 @@
   "/root/.emacs.d/site-lisp/yasnippet/snippets/org-mode/sourceblock"
   "sourceblock"
   'snippet-mode
-  '(yas-minor-mode)
+  '(yas-minor-mode ede-minor-mode)
   1
   '(229 nil)
   nil
@@ -119,7 +141,7 @@
   "/home/liwei/git/org_notes/emacs_yasnippet.org"
   "emacs_yasnippet.org"
   'org-mode
-  '(cnblogs-minor-mode yas-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode)
   37
   '(nil nil)
   nil
@@ -130,18 +152,18 @@
   "/root/he.c"
   "he.c"
   'c-mode
-  '(abbrev-mode yas-minor-mode)
+  '(abbrev-mode yas-minor-mode semantic-highlight-edits-mode semantic-show-unmatched-syntax-mode semantic-show-parser-state-mode ede-minor-mode senator-minor-mode semantic-idle-scheduler-mode semantic-idle-summary-mode semantic-mru-bookmark-mode semantic-decoration-mode semantic-tag-folding-mode auto-complete-mode)
   126
   '(nil nil)
   nil
   nil
-  '((buffer-file-coding-system . undecided-unix)))
+  '((tab-width . 2) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
 
 (desktop-create-buffer 206
   "/home/liwei/git/org_notes/emacs_plugin_org-mode.org"
   "emacs_plugin_org-mode.org"
   'org-mode
-  '(cnblogs-minor-mode yas-minor-mode org-indent-mode)
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode org-indent-mode)
   1496
   '(nil nil)
   nil
@@ -152,7 +174,7 @@
   "/home/liwei/git/org_notes/emacs_emacs_indent_codes.org"
   "emacs_emacs_indent_codes.org"
   'org-mode
-  '(cnblogs-minor-mode yas-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode)
   1054
   '(908 nil)
   nil
@@ -174,7 +196,7 @@
   "/root/.gnus.el"
   ".gnus.el"
   'emacs-lisp-mode
-  '(yas-minor-mode)
+  '(yas-minor-mode semantic-highlight-edits-mode semantic-show-unmatched-syntax-mode semantic-show-parser-state-mode ede-minor-mode senator-minor-mode semantic-idle-scheduler-mode semantic-idle-summary-mode semantic-mru-bookmark-mode semantic-decoration-mode semantic-tag-folding-mode auto-complete-mode)
   47
   '(766 nil)
   nil
@@ -185,7 +207,7 @@
   "/home/liwei/git/org_notes/emacs_emacs_rmail.org"
   "emacs_emacs_rmail.org"
   'org-mode
-  '(cnblogs-minor-mode yas-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode)
   4499
   '(4531 nil)
   nil
@@ -207,7 +229,7 @@
   "/root/.emacs.d/site-lisp/color-theme-6.6.0/themes/color-theme-example.el"
   "color-theme-example.el"
   'emacs-lisp-mode
-  '(yas-minor-mode)
+  '(yas-minor-mode semantic-highlight-edits-mode semantic-show-unmatched-syntax-mode semantic-show-parser-state-mode ede-minor-mode senator-minor-mode semantic-idle-scheduler-mode semantic-idle-summary-mode semantic-mru-bookmark-mode semantic-decoration-mode semantic-tag-folding-mode auto-complete-mode)
   1
   '(nil nil)
   nil
@@ -218,7 +240,7 @@
   "/root/.emacs.d/site-lisp/org-7.9.2/doc/texinfo.tex"
   "texinfo.tex"
   'plain-tex-mode
-  '(yas-minor-mode)
+  '(yas-minor-mode ede-minor-mode)
   16686
   '(nil nil)
   nil
@@ -229,7 +251,7 @@
   "/home/liwei/git/org_notes/emacs_tcp_http-keep-alive.org"
   "emacs_tcp_http-keep-alive.org"
   'org-mode
-  '(cnblogs-minor-mode yas-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode)
   1487
   '(581 nil)
   nil
@@ -240,7 +262,7 @@
   "/home/liwei/git/org_notes/emacs_c_bugs.org"
   "emacs_c_bugs.org"
   'org-mode
-  '(cnblogs-minor-mode yas-minor-mode)
+  '(cnblogs-minor-mode yas-minor-mode ede-minor-mode)
   178
   '(163 nil)
   nil
@@ -251,7 +273,7 @@
   "/root/.emacs.d/site-lisp/misc/cnblogs.el"
   "cnblogs.el"
   'emacs-lisp-mode
-  '(yas-minor-mode)
+  '(yas-minor-mode semantic-highlight-edits-mode semantic-show-unmatched-syntax-mode semantic-show-parser-state-mode ede-minor-mode senator-minor-mode semantic-idle-scheduler-mode semantic-idle-summary-mode semantic-mru-bookmark-mode semantic-decoration-mode semantic-tag-folding-mode auto-complete-mode)
   16507
   '(nil nil)
   nil
