@@ -1,0 +1,94 @@
+#+TITLE:     ftp prompt
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-03-20 Wed
+#+DESCRIPTION: ftp prompt
+#+KEYWORDS: ftp
+#+CATEGORIES: linux
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+
+* ftp 常用命令
+   ftp 在做服务器时常用到的工具。恢复母盘也常用到。
+
+
+
+* 关闭ftp中mput的上传确认提示:prompt方法
+     
+    今天因工作需要使用ftp上传一大批文件，是将一整个目录下的文件都上传到服务器，就用mput命令，默认的情况下，每上传一个文件都
+    输入一下y来确认，没有时间进行这样搞，需要在命令模式，并登录系统后用prompt来关闭它：
+      
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+    ftp>prompt 
+
+</pre>
+</div>
+#+END_HTML
+    
+
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+    # 切换交谈式指令(使用mput/mget 时不用每个文件皆询问yes/no)
+     
+    # 这样就可以使用 mput *让它慢慢上传…喝茶去…    
+     
+    # 注:
+     
+    ftp> help prompt
+    prompt          force interactive prompting on multiple commands
+     
+    ftp> prompt
+    Interactive mode off.
+    ftp> prompt
+    Interactive mode on.
+    ftp> prompt
+    Interactive mode off.
+    ftp>
+     
+    # 从上例也可以看出不任何参数就可以进行开发或关闭的设备，每执行一次，状态就会改变。
+     
+    # 实例：
+     
+    ftp> mget aix.txt
+     
+    mget aix.txt? no
+     
+    ftp> prompt
+     
+    Interactive mode off.
+     
+    ftp> mget aix.txt
+     
+    200 Port command successful
+     
+    150 Opening data channel for file transfer.
+     
+    226 Transfer OK
+     
+    10077 bytes received in 1.634 seconds (6.023 Kbytes/s)
+     
+    local: aix.txt remote: aix.txt
+     
+    ftp>
+
+</pre>
+</div>
+#+END_HTML
+    
+
+
