@@ -40,3 +40,44 @@ rm -rf `ls | grep -v 'liwei*'`
 
 
 find命令博大精深，要好好学习。
+
+
+* 更高效地删除
+
+
+** 问题：
+
+   在 ~tmp~ 目录下有大量包含 ~select_*~ 的临时文件，每天晚上 ~2:30~ 对一天前的文件进行清理。
+
+之前在 *crontab* 下增加如下脚本，但是发现脚本效率很低，每次执行时负载猛涨，影响到其他服务。
+
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+find /tmp -name "select_*" -mtime +1 -exec rm -f {} \;
+
+</pre>
+</div>
+#+END_HTML
+
+
+** 原因：
+     目录下有大量文件，用 *find很耗资源* 。
+
+** 解决：
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+cd /tmp
+time=`date -d "2 day ago” “+%b %d"`
+ls -l|grep "select" |grep "$time"|awk ‘{print $NF}’|xargs rm -rf #
+
+
+</pre>
+</div>
+#+END_HTML
+

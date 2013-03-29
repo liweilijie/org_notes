@@ -1,0 +1,191 @@
+#+TITLE:     光建
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-03-28 Thu
+#+DESCRIPTION: wj 上的一些事情。
+#+KEYWORDS: wj
+#+CATEGORIES: work
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+* for zhaogj
+
+  dear zhaogj, the article is for you and you can get it.
+
+* 新装前端平台替换C程序：
+
+  #+BEGIN_HTML
+  <div class="cnblogs_Highlighter">
+  <pre class="brush:bash">
+  
+  # 这里举例的前端平台服务器是(192.168.3.225).
+  # 首先上我的开发机0.46 因为我的机器上面有程序，且平台上不需要输入密码，我的开发机密码是129129
+  ssh root@192.168.0.46
+
+
+  # 进到wjpt程序目录
+  cd /root/zhaogj/wjpt/
+
+  # 复制程序到服务器(192.168.3.225)
+  scp wjpt_commshell wjpt_sm wj_port_map.sh root@192.168.3.225:/root/beap_gw/
+
+  # 复制日志清理脚本到服务器配置文件目录：
+  scp vsftpd wjpt_log root@192.168.3.225:/etc/logrotate.d/
+
+  # 复制开机启动脚本到配置目录
+  scp beap.sh root@192.168.3.225:/etc/init.d/
+
+  # ssh到服务器侧，修改端口转换文件(/root/beap_gw/wj_port_map.sh) 与 wjpt_server.conf
+  # 将里面的服务器地址全部替换成对应前端地址，vi命令： %s/125.88.108.7/192.168.3.225/g
+  vi /root/beap_gw/wj_port_map.sh  
+
+  # 修改wjpt_server.conf
+  vi /root/beap_gw/wjpt_server.conf # 将里面的ftp_ip改为当前服务器的ip地址：192.168.3.225
+
+  # 杀死平台上所有老的程序
+  cd /root/beap_gw/
+  killall -9 wjpt_*
+
+  # 启动平台上新的程序：
+  /etc/init.d/beap.sh
+  
+  # 大约5秒钟程序就会自动启动成功。一定要记得在数据库里面增加一个设备的信息，否则wjpt_sm不断地重启。导致平台异常。
+
+   ps -ae | grep wjpt
+
+
+
+  </pre>
+  </div>
+  #+END_HTML
+
+
+-----
+
+* 区分arm还是x86
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+# 执行命令unmae -m会告诉你
+uname -m 
+
+</pre>
+</div>
+#+END_HTML
+  
+
+
+-----
+
+* 替换企智通上的网监模块程序
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+# 首先上我的开发机 root@192.168.0.46 密码是129129
+# 在我的开发机0.46的/root/zhaogj/wjmk/目录下
+cd /root/zhaogj/wjmk/
+
+# 有两个文件， x86: beap_app_wj 
+# arm: beap_app_arm
+
+# 如果你的目标机是x86的企智通：
+# 首先上到企智通，删除其以前的/root/beap_gw/beap_gw_apps/beap_app_wj网监模块文件。然后再进行复制。
+scp beap_app_wj root@192.168.0.250:/root/beap_gw/beap_gw_apps/beap_app_wj
+#再重启网监模块，杀一次，daemon会自动启它。
+kill -9 `pidof beap_app_wj`
+
+
+# 如果你的目标机是arm的企智通：
+# 首先上到企智通，删除其以前的/root/beap_gw/beap_gw_apps/beap_app_wj网监模块文件。然后再进行复制。
+scp beap_app_wj_arm root@192.168.0.250:/root/beap_gw/beap_gw_apps/beap_app_wj
+#再重启网监模块，杀一次，daemon会自动启它。
+kill -9 `pidof beap_app_wj`
+
+
+</pre>
+</div>
+#+END_HTML
+  
+-----
+
+
+* 手动放置eupdate到设备上
+
+如果发现前方有设备报障，发现设备没有布署beap_eupdate。这时候连/etc/config_isse都没有。
+
+时间紧迫，所以手动更新布置一下eupdate即可。方法如下：
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+
+# 需要手动下载升级包，执行升级程序。此升级程序只会布署eupdate，
+# 其他模块的更新后续由eupdate来完成。
+# 对一切版本，一切平台(arm,x86)的设备都通用。
+scp update@server.qzt360.com:/update* ./
+# 输入密码：update
+
+# 下载完manual_update.tar.gz后，解压，并且执行脚本
+tar -zxvf manual_update.tar.gz
+sh slex.sh
+
+
+# 举例
+[root@qzt ~]# scp update@server.qzt360.com:/update/* ./
+The authenticity of host 'server.qzt360.com (113.105.0.67)' can't be established.
+RSA key fingerprint is e6:45:38:6b:e0:1f:35:4d:2f:7e:c5:71:5a:d7:73:67.
+Are you sure you want to continue connecting (yes/no)? yes
+update@server.qzt360.com's password:
+scp: /update/Mech: not a regular file
+manual_update.tar.gz         100% 2063KB 343.8KB/s   00:06
+
+[root@qzt ~]# tar -zxvf manual_update.tar.gz
+manual_update/
+manual_update/eupdhelper_arm
+manual_update/slex.sh
+manual_update/libcurl.so.3.0.0_arm
+manual_update/libxml2.so.2_arm
+manual_update/beap_eupdate
+manual_update/beap_eupdate_arm
+manual_update/eud
+manual_update/libcurl.so.3.0.0
+manual_update/eupdhelper
+
+[root@qzt ~]# cd manual_update
+
+[root@qzt manual_update]# sh slex.sh
+[root@qzt manual_update]#
+
+</pre>
+</div>
+#+END_HTML
+  
+
+-----
+
+* vi ESC 替代键 Ctrl+[
+
+   在利用QQ远程处理故障的时候，当人们利用vi修改文件内容时，人们一定会遇到这样的一个问题：
+
+   按 *ESC* 键时 自己从远程环境中退了出来。这时候可以按 *Ctrl+[* 来代替 *ESC* 。
+
+   
+   | vi中最常用的键 | 可以替换的键 |
+   |----------------+--------|
+   | ESC            | Ctrl+[ |
+   |                |        |
+   
+   

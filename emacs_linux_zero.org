@@ -1,0 +1,71 @@
+#+TITLE:     /dev/null /dev/zero 区别
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-03-29 Fri
+#+DESCRIPTION: /dev/null /dev/zero 区别与用法
+#+KEYWORDS: linux
+#+CATEGORIES: linux
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+
+* sub-title
+
+
+在Linux操作系统中/dev/null和/dev/zero是两个相似却又很特殊的文件，特别是在shell脚本开发和系统运维过程中会经常用这两个文件，
+因此作为Linux系统工程师，你必须了解这两个文件的区别和用法。
+
+一、/dev/null的用法：
+我们可以把/dev/null文件看作”黑洞”，它非常等价于一个只写文件，所有写入/dev/null文件的内容都会丢失，而从/dev/null文件中也读取
+不到任何内容。然而，也正因为这些特点，在shell脚本开发和命令行维护时，/dev/null文件就可大展身手，显得非常的有用。
+
+1. 禁止标准输出
+例如：cat查看$filename文件，其回显信息将为空
+# cat $filename >/dev/null
+
+2. 禁止标准错误
+例如：rm删除文件时，若$badname文件不存在，那么如下的方式则会过滤回显的错误信息
+# rm $badname 2>/dev/null
+
+3. 禁止标准输出和标准错误的输出
+例如：cat查看$filename文件
+# cat $filename 2>/dev/null >/dev/null
+# 如果”$filename”不存在，将不会有任何错误信息提示.
+# 如果”$filename”存在, 文件的内容不会打印到标准输出.
+# 因此上面的代码根本不会输出任何信息.
+
+4. 清除日志文件内容
+例如：
+# cat /dev/null > /var/log/messages
+# : > /var/log/messages 有同样的效果, 但不会产生新的进程.（因为:是内建的）
+# cat /dev/null > /var/log/wtmp
+
+5. /dev/null的特殊用法，程序打印的日志将不再记录，避免系统空间被不需要的日志所占用
+例如：将该cookie的日志文件链接到/dev/null，那么往该文件中写入的内容都将被抛弃
+# ln -s /dev/null ~/.netscape/cookies
+
+二、/dev/zero的用法：
+/dev/zero和/dev/null一样，也是一个伪文件，但/dev/zero实际上能产生连续不断的null的流（二进制的零流，而不是ASCII型的），写入/
+dev/zero的输出会丢失不见，而从/dev/zero读出一连串的null也比较困难，虽然这也能通过dd或一个十六进制编辑器来做到，/dev/zero主
+要的用处是用来创建一个指定长度用于初始化的空文件，它通常都是配合dd命令一起使用的。
+
+1. 用/dev/zero创建一个指定大小的临时文件
+例如：结合dd命令可创建一个大小为1024*1000bit的文件/swap，当然这个文件的大小可通过bs和count参数去调整
+# dd if=/dev/zero of=/swap bs=1024 count=1000
+
+2. 通过/dev/zero将零填充到一个指定大小的文件，以使用某些特殊需求
+例如：把RAM设备的内容用零填充，从而实现格式化RAM的目的
+# dd if=/dev/zero of=$DEVICE count=$SIZE bs=$BLOCKSIZE
+
+综上所述，/dev/null和/dev/zero文件的区别和用法如下：
+/dev/null文件是空设备，也称为位桶（bit bucket），它主要是用于“被写入”，任何写入它的输出都会被抛弃。如果不想让消息以标准输出
+显示或写入文件，那么可以将消息重定向到/dev/null。因此凡是向/dev/null输入的任何数据，它通吃，并且不会撑着！
+/dev/zero文件主要是用作一个标准的“0”输入设备，它可无穷尽地提供0，可以使用/dev/zero来初始化文件。

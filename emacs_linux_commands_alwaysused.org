@@ -403,4 +403,29 @@ find ./ -name '*.tar.gz' -exec tar zxvf {} ; -print
 </div>
 #+END_HTML
    
+-----
 
+* 挂载ios文件
+ 
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+mount -o loop *.ios /mnt/
+
+</pre>
+</div>
+#+END_HTML
+  
+* 格式化U盘
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+mkfs.ext3 /dev/sdb1
+
+</pre>
+</div>
+#+END_HTML
+  

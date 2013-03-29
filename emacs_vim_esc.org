@@ -1,0 +1,29 @@
+#+TITLE:     vi ESC 替代键 Ctrl+[
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-03-28 Thu
+#+DESCRIPTION: vi 中替代 ESC 的键 Ctrl+[
+#+KEYWORDS: vi
+#+CATEGORIES: vim
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+* vi ESC 替代键 Ctrl+[
+
+   在利用QQ远程处理故障的时候，当人们利用vi修改文件内容时，人们一定会遇到这样的一个问题：
+
+   按 *ESC* 键时 自己从远程环境中退了出来。这时候可以按 *Ctrl+[* 来代替 *ESC* 。
+
+   
+   | vi中最常用的键 | 可以替换的键 |
+   |----------------+--------|
+   | ESC            | Ctrl+[ |
+   |                |        |
+   

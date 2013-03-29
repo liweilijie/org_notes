@@ -1,0 +1,40 @@
+#+TITLE:     too many open files
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-03-29 Fri
+#+DESCRIPTION: Too many open files 解决方法
+#+KEYWORDS: shell
+#+CATEGORIES: linux
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+* too many open file终极解决方案
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+echo “” >> /etc/security/limits.conf
+echo “* soft nproc 65535″ >> /etc/security/limits.conf
+echo “* hard nproc 65535″ >> /etc/security/limits.conf
+echo “* soft nofile 65535″ >> /etc/security/limits.conf
+echo “* hard nofile 65535″ >> /etc/security/limits.conf
+echo “” >> /root/.bash_profile
+echo “ulimit -n 65535″ >> /root/.bash_profile
+echo “ulimit -u 65535″ >> /root/.bash_profile
+#最后重启机器或者执行 ulimit -u 655345 && ulimit -n 65535
+
+
+</pre>
+</div>
+#+END_HTML
+  
+
