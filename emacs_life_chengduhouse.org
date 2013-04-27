@@ -1,0 +1,29 @@
+#+TITLE:     成都定房
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-04-08 Mon
+#+DESCRIPTION: 回成都看房
+#+KEYWORDS: 成都
+#+CATEGORIES: life
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+* 回成都定房
+
+   这次回成都看房子。一下子发现自己老了，身边很多年轻的面孔。
+   
+   而且自己离自己的理想越来越远，越来越远。。。
+
+   自己应该积累，沉淀，干一些自己的事情。
+
+
+
+   不能这辈子就这样朝九晚五地机械式的活着。

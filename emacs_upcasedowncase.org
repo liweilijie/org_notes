@@ -1,0 +1,45 @@
+#+TITLE:     emacs 大小写转换
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-04-26 Fri
+#+DESCRIPTION: Emacs 大小写
+#+KEYWORDS: Emacs
+#+CATEGORIES: Emacs
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+* emacs大小写转换
+
+*从光标开始，处理单词后半部分：*
+
+| 快捷键                | 说明           |
+|-----------------------+----------------|
+| M-c (capitalize-word) | 首字母改为大写 |
+| M-u (upcase-word)     | 全部改为大写   |
+| M-l (downcase-word)   | 全部改为小写   |
+
+
+*从光标位置开始，处理单词前半部分*
+
+| 快捷键  | 说明                              |
+|---------+-----------------------------------|
+| M-- M-c | negtive-argument; capitalize-word |
+| M-- M-u | negtive-argument; upcase-word     |
+| M-- M-l | negtive-argument; downcase-word   | 
+
+*改变选定区域的大小写*
+
+| 快捷键                    | 说明                 |
+|---------------------------+----------------------|
+| C-x C-l (downcase-region) | 选定区域全部改为小写 |
+| C-x C-u (upcase-region)   | 选定区域全部改为大写 |
+  
+

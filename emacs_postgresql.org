@@ -1,0 +1,40 @@
+#+TITLE:     postgresql 数据库
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-04-26 Fri
+#+DESCRIPTION: postgresql 数据库一些操作
+#+KEYWORDS: postgresq
+#+CATEGORIES: postgresql
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+* postgresql
+
+  公司用的这个开源数据库。其实用起来还挺不错的。
+
+* 通配符
+  
+  #+BEGIN_HTML
+  <div class="cnblogs_Highlighter">
+  <pre class="brush:sql">
+    
+  # tt~aa~bb
+  select host_name, length(host_name)-length(replace(host_name, '~', '')) from table;
+  
+  </pre>
+  </div>
+  #+END_HTML
+  
+
+
+*_* 代表匹配任何单个字符。
+
+*%* 代表匹配任何零或者更多字符

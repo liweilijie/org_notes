@@ -1,0 +1,55 @@
+#+TITLE:     mv 批量
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-04-27 Sat
+#+DESCRIPTION: mv 批量
+#+KEYWORDS: shell
+#+CATEGORIES: shell
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+
+* mv 批量
+
+  偶尔会用到，记录一下。
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+ls *.txt |awk -F"-" '{print "mv "$0" "$2""}'
+mv a-b.txt b.txt
+mv a-c.txt c.txt
+mv a-d.txt d.txt
+
+
+ls *.txt |awk -F"-" '{print "mv "$0" "$2""}'|sh
+
+
+ll
+总用量 4
+-rw-r--r--  1 root root  0  7月  8 14:41 4.gif
+-rw-r--r--  1 root root  0  7月  9 11:19 4.jpg
+-rw-r--r--  1 root root  0  7月 14 17:54 b.txt
+-rw-r--r--  1 root root  0  7月 14 17:54 c.txt
+-rw-r--r--  1 root root  0  7月 14 17:54 d.txt
+-rw-r--r--  1 root root 33  7月 14 17:45 txta.
+
+ 
+for a in *.txt;do mv "$a" "${a#a-}";done
+
+
+</pre>
+</div>
+#+END_HTML
+  
+
+

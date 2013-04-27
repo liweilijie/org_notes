@@ -84,4 +84,22 @@ cvs co -r B3V4R7D3 beap_app_stat
    
 
 
+** 4.commit更新代码
+
+#+BEGIN_HTML
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash">
+
+export CVSROOT=:pserver:qzt_imi@192.168.0.5:/home/cvsroot/imi_module
+cvs login
+cvs co -r B3V4R7D4 beap_app_imi # 这里检出的时候要用branch来检出，不能用tag来检。
+cd beap_app_imi/src/  # 然后进去修改代码
+cd .. # 一定要退回一级目录下才能commit有效
+cvs commit -m "fixed by liw 20130418"
+cvs tag tag_20130418_byliw # commit完了记得打上tag号。
+
+</pre>
+</div>
+#+END_HTML
+   
 
