@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>Emacs cscope</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"Emacs cscope\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2012-12-29 Sat\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"Emacs下使用cscope进行代码的浏览。\"/>
+<meta name=\"keywords\" content=\"Emacs cscope\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -128,7 +83,7 @@ for the JavaScript code in this tag.
 <li><a href=\"#sec-1\">1 cscope</a></li>
 <li><a href=\"#sec-2\">2 install</a></li>
 <li><a href=\"#sec-3\">3 functaion</a></li>
-<li><a href=\"#sec-4\">4 Keywordbinding</a></li>
+<li><a href=\"#sec-4\">4 Keybindings</a></li>
 </ul>
 </div>
 </div>
@@ -233,7 +188,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id=\"outline-container-4\" class=\"outline-2\">
-<h2 id=\"sec-4\"><span class=\"section-number-2\">4</span> Keywordbinding</h2>
+<h2 id=\"sec-4\"><span class=\"section-number-2\">4</span> Keybindings</h2>
 <div class=\"outline-text-2\" id=\"text-4\">
 
 
@@ -305,4 +260,4 @@ for the JavaScript code in this tag.
 </div>
 </body>
 </html>
-") ("title" . "Emacs cscope") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/29/2838920.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/29/2838920.html") ("postid" . 2838920) ("source") ("mt_excerpt" . "Emacs下使用cscope进行代码的浏览。") ("mt_keywords" . "Emacs cscope"))
+") ("title" . "Emacs cscope") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/29/2838920.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/29/2838920.html") ("postid" . "2838920") ("source") ("userid" . "-2"))

@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>emacs 宏操作</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"emacs 宏操作\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2012-12-30 Sun\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"emacs下的宏操作\"/>
+<meta name=\"keywords\" content=\"Emacs\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -135,6 +90,7 @@ for the JavaScript code in this tag.
 <div id=\"text-table-of-contents\">
 <ul>
 <li><a href=\"#sec-1\">1 命令:</a></li>
+<li><a href=\"#sec-2\">2 如何创建良好的宏</a></li>
 </ul>
 </div>
 </div>
@@ -168,6 +124,36 @@ for the JavaScript code in this tag.
 </table>
 
 
+
+</div>
+
+</div>
+
+<div id=\"outline-container-2\" class=\"outline-2\">
+<h2 id=\"sec-2\"><span class=\"section-number-2\">2</span> 如何创建良好的宏</h2>
+<div class=\"outline-text-2\" id=\"text-2\">
+
+
+<ol>
+<li>应该在宏里使用绝对型命令而非相对型命令,比如 'ESC f' 来移动一个单词
+</li>
+<li>有时候给宏额外增加几个并非严格必要的命令是很有好处的,它们的作用是确保操作发生在文本行上正确位置.　比如　\"C-a\" , \"C-e\" .
+</li>
+</ol>
+
+
+
+<p>
+一般来说,好的宏由3个部分组成:
+</p><ol>
+<li>找到准备开始工作的地方(通常利用查找操作来实现).
+</li>
+<li>对文本进行预定的编辑处理.
+</li>
+<li>做好下次循环的准备工作.
+</li>
+</ol>
+
 </div>
 </div>
 </div>
@@ -181,4 +167,4 @@ for the JavaScript code in this tag.
 </div>
 </body>
 </html>
-") ("title" . "emacs 宏操作") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/30/2839970.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/30/2839970.html") ("postid" . 2839970) ("source") ("mt_excerpt" . "emacs下的宏操作") ("mt_keywords" . "Emacs"))
+") ("title" . "emacs 宏操作") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/30/2839970.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/30/2839970.html") ("postid" . "2839970") ("source") ("userid" . "-2"))

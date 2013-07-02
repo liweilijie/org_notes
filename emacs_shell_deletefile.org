@@ -81,3 +81,16 @@ ls -l|grep "select" |grep "$time"|awk ‘{print $NF}’|xargs rm -rf #
 </div>
 #+END_HTML
 
+** Delete 
+
+#+BEGIN_HTML
+   <div class="cnblogs_Highlighter">
+   <pre class="brush:bash">
+   
+   find ./ -maxdepth 1 -type f -mmin +10 -name '*.txt' -exec rm -rf {} \;
+   
+   </pre>
+   </div>
+#+END_HTML
+   
+   

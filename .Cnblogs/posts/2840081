@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>Emacs 使用YASnippet</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"Emacs 使用YASnippet\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2012-12-30 Sun\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"Emacs 使用YASnippet\"/>
+<meta name=\"keywords\" content=\"Emacs\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -131,6 +86,8 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href=\"#sec-1\">1 安装YASnippent</a></li>
 <li><a href=\"#sec-2\">2 安装 org-mode字典</a></li>
+<li><a href=\"#sec-3\">3 org-mode中使用教程</a></li>
+<li><a href=\"#sec-4\">4 YASnippet增加模板</a></li>
 </ul>
 </div>
 </div>
@@ -173,9 +130,155 @@ Add the following in your <code>.emacs</code> file:
 
 
 
-<pre class=\"example\">git clone git://github.com/rvf0068/yasnippets.git
+<pre class=\"example\"># git clone git://github.com/rvf0068/yasnippets.git
+## 复制yasnippets/org-mode目录到yasnippet/snippets/目录下
+# cp -r yasnippets/org-mode /root/.emacs.d/site-lisp/yasnippet/snippets/
+
 </pre>
 
+
+</div>
+
+</div>
+
+<div id=\"outline-container-3\" class=\"outline-2\">
+<h2 id=\"sec-3\"><span class=\"section-number-2\">3</span> org-mode中使用教程</h2>
+<div class=\"outline-text-2\" id=\"text-3\">
+
+
+<p>
+Snippets for org-mode. See <a href=\"https://github.com/capitaomorte/yasnippet\">Yasnippet in Github</a>.
+</p>
+<p>
+They have bindings <code>C-c y</code> plus an extra letter.
+</p>
+<p>
+I have added a <code>condition</code> statement so that the snippets can be
+expanded only at the beginning of the line.
+</p>
+<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
+<colgroup><col class=\"left\" /><col class=\"left\" /><col class=\"left\" /><col class=\"left\" />
+</colgroup>
+<thead>
+<tr><th scope=\"col\" class=\"left\">name</th><th scope=\"col\" class=\"left\">key</th><th scope=\"col\" class=\"left\">letter</th><th scope=\"col\" class=\"left\">explanation</th></tr>
+</thead>
+<tbody>
+<tr><td class=\"left\">#+begin_ &hellip;#+end_</td><td class=\"left\">block</td><td class=\"left\">b</td><td class=\"left\"></td></tr>
+<tr><td class=\"left\">#+srcname:..#+begin_src&hellip;#+end_src</td><td class=\"left\">sb</td><td class=\"left\">s</td><td class=\"left\">source block with name</td></tr>
+<tr><td class=\"left\">attr_html</td><td class=\"left\">ath</td><td class=\"left\"></td><td class=\"left\">alt=\"$1\" img class=\"aligncenter\"</td></tr>
+<tr><td class=\"left\">attr_latex</td><td class=\"left\">atl</td><td class=\"left\"></td><td class=\"left\">${1:width=$2\\textwidth}</td></tr>
+<tr><td class=\"left\">author</td><td class=\"left\">aut</td><td class=\"left\">a</td><td class=\"left\">inserts <code>#+author:</code></td></tr>
+<tr><td class=\"left\">corollary</td><td class=\"left\">cor</td><td class=\"left\">c</td><td class=\"left\">(uses reftex)</td></tr>
+<tr><td class=\"left\">definition</td><td class=\"left\">def</td><td class=\"left\">d</td><td class=\"left\">(uses reftex)</td></tr>
+<tr><td class=\"left\">ditaa</td><td class=\"left\">dit</td><td class=\"left\"></td><td class=\"left\">#+begin_ditaa,+end_ditaa</td></tr>
+<tr><td class=\"left\">el</td><td class=\"left\">el</td><td class=\"left\"></td><td class=\"left\">#+begin_src emacs-lisp,+end_src</td></tr>
+<tr><td class=\"left\">email</td><td class=\"left\">email</td><td class=\"left\"></td><td class=\"left\">inserts <code>#+email:</code></td></tr>
+<tr><td class=\"left\">equation</td><td class=\"left\">eqn</td><td class=\"left\">e</td><td class=\"left\">(uses reftex)</td></tr>
+<tr><td class=\"left\">figure</td><td class=\"left\">fig</td><td class=\"left\">f</td><td class=\"left\">asks for image file</td></tr>
+<tr><td class=\"left\">language</td><td class=\"left\">lan</td><td class=\"left\"></td><td class=\"left\">inserts <code>#+language:</code> (with choice)</td></tr>
+<tr><td class=\"left\">LaTeX class</td><td class=\"left\">lcl</td><td class=\"left\"></td><td class=\"left\">inserts <code>#+latex_class:</code> (with choice)</td></tr>
+<tr><td class=\"left\">LaTeX header</td><td class=\"left\">lhe</td><td class=\"left\"></td><td class=\"left\">inserts <code>#+latex_header:</code></td></tr>
+<tr><td class=\"left\">lemma</td><td class=\"left\">lem</td><td class=\"left\">l</td><td class=\"left\">(uses reftex)</td></tr>
+<tr><td class=\"left\">options</td><td class=\"left\">opt</td><td class=\"left\">o</td><td class=\"left\">inserts <code>#+options:</code></td></tr>
+<tr><td class=\"left\">proof</td><td class=\"left\">prf</td><td class=\"left\"></td><td class=\"left\"></td></tr>
+<tr><td class=\"left\">properties folded</td><td class=\"left\">properties</td><td class=\"left\"></td><td class=\"left\">inserts visibility folded property</td></tr>
+<tr><td class=\"left\">proposition</td><td class=\"left\">pro</td><td class=\"left\">p</td><td class=\"left\">(uses reftex)</td></tr>
+<tr><td class=\"left\">startup</td><td class=\"left\">sta</td><td class=\"left\"></td><td class=\"left\">inserts <code>#+startup:</code></td></tr>
+<tr><td class=\"left\">text</td><td class=\"left\">text</td><td class=\"left\"></td><td class=\"left\">inserts <code>#+text:</code></td></tr>
+<tr><td class=\"left\">theorem</td><td class=\"left\">thm</td><td class=\"left\">t</td><td class=\"left\">(uses reftex)</td></tr>
+<tr><td class=\"left\">tikz-picture</td><td class=\"left\">tkz</td><td class=\"left\">z</td><td class=\"left\">(uses reftex)</td></tr>
+<tr><td class=\"left\">title</td><td class=\"left\">title</td><td class=\"left\"></td><td class=\"left\">inserts <code>#+title:</code></td></tr>
+</tbody>
+</table>
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-4\" class=\"outline-2\">
+<h2 id=\"sec-4\"><span class=\"section-number-2\">4</span> YASnippet增加模板</h2>
+<div class=\"outline-text-2\" id=\"text-4\">
+
+
+<p>
+这么强大的工具要是没有定制功能简直太可惜了.不过我找了很久也没有找到.以为直接编辑文件就可以的,但是结果还是不成功.
+</p>
+<p>
+还得一步一个脚印的来.幸好有元旦的5天假期,否则不知道我会不会因为没有耐心而放弃研究它了呢.
+</p>
+<p>
+下面举个例子增加 cnblogs的bash着色模块.
+</p>
+<ol>
+<li><b>ESC x yas/new-snippet</b> 来进入新建snippet的buffer,可以看到以下的内容:
+
+<blockquote>
+
+<pre class=\"example\">
+ 　# -*- mode: snippet -*-
+ 　# name: 
+ 　# key: 
+ 　# binding: direct-keybinding
+ 　# expand-env: ((some-var some-value))
+ 　# type: command
+ 　# --
+
+</pre>
+
+
+</blockquote>
+
+
+<p>
+        其中:
+</p><ul>
+<li>name: 是在YASnippet中显示的名字.
+</li>
+<li>key: 是触发这个snippet所用的关键字.
+</li>
+<li>binding 和　expand-env, type 是一些高级特征,这里不做研究.
+
+</li>
+</ul>
+
+</li>
+<li>将上面的内容改为(不需要的行删掉):
+
+<blockquote>
+
+<pre class=\"example\">
+   # -*- mode: snippet -*-
+   # name: src_bash
+   # key: bash
+   # --
+   #+BEGIN_HTML
+  &lt;div class=\"cnblogs_Highlighter\"&gt;
+  &lt;pre class=\"brush:bash\"&gt;
+
+  ${1:#!/bin/bash}
+  $0
+
+  &lt;/pre&gt;
+  &lt;/div&gt;
+   #+END_HTML
+
+</pre>
+
+
+</blockquote>
+
+
+<p>
+         其中: <b>${N: Some Text}</b> 的内容被称为字段, <code>N</code> 是tab stop序号(顺序是从$1-$N的),冒号后面的文本则是默认值.最近 <code>$0</code> 被称为YASnippet的退出点,即一个key被展开为snippet,并按顺序走完所有的tab stop之后光标停留的点.
+</p>
+</li>
+<li>保存: <b>C-x C-s</b> 保存在 org-mode/bash文件里面即可.
+</li>
+<li>重启之后,可以使用.
+</li>
+</ol>
 
 </div>
 </div>
@@ -190,4 +293,4 @@ Add the following in your <code>.emacs</code> file:
 </div>
 </body>
 </html>
-") ("title" . "Emacs 使用YASnippet") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/30/2840081.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/30/2840081.html") ("postid" . 2840081) ("source") ("mt_excerpt" . "Emacs 使用YASnippet") ("mt_keywords" . "Emacs"))
+") ("title" . "Emacs 使用YASnippet") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/30/2840081.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/30/2840081.html") ("postid" . "2840081") ("source") ("userid" . "-2"))

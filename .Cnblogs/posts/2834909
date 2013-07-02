@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>Emacs Org-Mode 标记语言</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"Emacs Org-Mode 标记语言\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2012-12-26 Wed\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"Emacs Org-Mode 标记语言的一些知识。\"/>
+<meta name=\"keywords\" content=\"org-mode Emacs\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -137,6 +92,9 @@ for the JavaScript code in this tag.
 <div id=\"text-table-of-contents\">
 <ul>
 <li><a href=\"#sec-1\">1 单个org文件的解决方法</a></li>
+<li><a href=\"#sec-2\">2 org 全局解决办法</a></li>
+<li><a href=\"#sec-3\">3 解决org css样式问题：</a></li>
+<li><a href=\"#sec-4\">4 如果要写一些容易被 \"误解\" 的代码，如org链接的源代码。刚可以当成代码来发布：</a></li>
 </ul>
 </div>
 </div>
@@ -165,9 +123,107 @@ for the JavaScript code in this tag.
 
 
 <p>
-这样，当你写 <b>a<sub>b</sub></b> 时，_后被{}括起来的内容就会被转义。
+这样，当你写成：
+</p>
+
+
+<pre class=\"example\">a_{b}
+</pre>
+
+<p>
+将会被转义成 <b>a<sub>b</sub></b> ， <b>_</b> 后被{}括起来的内容就会被转义。
 而 <b>a_b</b> 时，就按普通的方式来显示。
-</p></div>
+</p>
+</div>
+
+</div>
+
+<div id=\"outline-container-2\" class=\"outline-2\">
+<h2 id=\"sec-2\"><span class=\"section-number-2\">2</span> org 全局解决办法</h2>
+<div class=\"outline-text-2\" id=\"text-2\">
+
+
+<p>
+如果用org sites来写笔记，想让某个site的所有org文件不转义 <b>_</b> 字符，
+</p>
+<p>
+则可以直接在org sites配置文件里，配置下面这么一句：
+</p>
+
+
+
+<pre class=\"example\">(setq org-export-with-sub-superscripts nil)
+</pre>
+
+
+<p>
+也可以在 org sites里设置这个属性，只作用于某一个site:
+</p>
+
+
+
+<pre class=\"example\">:sub-superscript nil
+</pre>
+
+
+<p>
+如果需要像上面一样，采用相对智能的{}方式，可以设置成：
+</p>
+
+
+<pre class=\"example\">:sub-superscript {}
+</pre>
+
+
+<p>
+或者直接用elisp来设置全局的属性：
+</p>
+
+
+<pre class=\"example\">(setq org-export-with-sub-superscripts '{})
+
+</pre>
+
+
+<p>
+是不是解决了？
+</p>
+
+</div>
+
+</div>
+
+<div id=\"outline-container-3\" class=\"outline-2\">
+<h2 id=\"sec-3\"><span class=\"section-number-2\">3</span> 解决org css样式问题：</h2>
+<div class=\"outline-text-2\" id=\"text-3\">
+
+
+
+
+<pre class=\"example\">
+:style \"&lt;link rel=\\\"stylesheet\\\" href=\\\"/home/liwei/emacs.css\\\" type=\\\"text/css\\\" /&gt;\"
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-4\" class=\"outline-2\">
+<h2 id=\"sec-4\"><span class=\"section-number-2\">4</span> 如果要写一些容易被 \"误解\" 的代码，如org链接的源代码。刚可以当成代码来发布：</h2>
+<div class=\"outline-text-2\" id=\"text-4\">
+
+
+
+
+<pre class=\"example\">
+#+begin_src ascii
+[[link][description]] or [[link]]
+</pre>
+
+
+</div>
 </div>
 </div>
 
@@ -180,4 +236,4 @@ for the JavaScript code in this tag.
 </div>
 </body>
 </html>
-") ("title" . "Emacs Org-Mode 标记语言") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/26/2834909.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/26/2834909.html") ("postid" . 2834909) ("source") ("mt_excerpt" . "Emacs Org-Mode 标记语言的一些知识。") ("mt_keywords" . "org-mode Emacs"))
+") ("title" . "Emacs Org-Mode 标记语言") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/26/2834909.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/26/2834909.html") ("postid" . "2834909") ("source") ("userid" . "-2"))

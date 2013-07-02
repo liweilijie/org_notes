@@ -171,4 +171,4 @@ echo “ulimit -u 65535″ >> /root/.bash_profile
 </div>
 </body>
 </html>
-") ("title" . "too many open files") ("categories" "[随笔分类]linux") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/03/29/2988602.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/03/29/2988602.html") ("postid" . 2988602) ("source") ("mt_excerpt" . "Too many open files 解决方法") ("mt_keywords" . "shell"))
+") ("title" . "too many open files") ("categories" "[随笔分类]linux") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/03/29/2988602.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/03/29/2988602.html") ("postid" . "2988602") ("source") ("userid" . "-2"))

@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>emacs 大小写转换</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"emacs 大小写转换\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2013-04-26 Fri\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"Emacs 大小写\"/>
+<meta name=\"keywords\" content=\"Emacs\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -139,7 +139,7 @@ for the JavaScript code in this tag.
 
 
 <p>
-从光标开始，处理单词后半部分：
+<b>从光标开始，处理单词后半部分：</b>
 </p>
 <table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
 <colgroup><col class=\"left\" /><col class=\"left\" />
@@ -157,7 +157,7 @@ for the JavaScript code in this tag.
 
 
 <p>
-从光标位置开始，处理单词前半部分
+<b>从光标位置开始，处理单词前半部分</b>
 </p>
 <table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
 <colgroup><col class=\"left\" /><col class=\"left\" />
@@ -174,7 +174,7 @@ for the JavaScript code in this tag.
 
 
 <p>
-改变选定区域的大小写
+<b>改变选定区域的大小写</b>
 </p>
 <table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
 <colgroup><col class=\"left\" /><col class=\"left\" />
@@ -203,4 +203,4 @@ for the JavaScript code in this tag.
 </div>
 </body>
 </html>
-") ("title" . "emacs 大小写转换") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/04/26/3045265.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/04/26/3045265.html") ("postid" . 3045265) ("source") ("mt_excerpt" . "Emacs 大小写") ("mt_keywords" . "Emacs"))
+") ("title" . "emacs 大小写转换") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/04/26/3045265.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/04/26/3045265.html") ("postid" . "3045265") ("source") ("userid" . "-2"))

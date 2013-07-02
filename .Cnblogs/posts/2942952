@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>tcpdump</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"tcpdump\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2013-03-04 Mon\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"tcpdump 详解\"/>
+<meta name=\"keywords\" content=\"tcpdump\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -133,8 +88,15 @@ for the JavaScript code in this tag.
 <li><a href=\"#sec-2\">2 Basic syntax :</a>
 <ul>
 <li><a href=\"#sec-2-1\">2.1 Filtering hosts :</a></li>
+<li><a href=\"#sec-2-2\">2.2 Filtering ports :</a></li>
+<li><a href=\"#sec-2-3\">2.3 Destination</a></li>
+<li><a href=\"#sec-2-4\">2.4 Network filtering</a></li>
+<li><a href=\"#sec-2-5\">2.5 Protocol filtering</a></li>
+<li><a href=\"#sec-2-6\">2.6 Let's combine expressions</a></li>
+<li><a href=\"#sec-2-7\">2.7 Advanced header filtering :</a></li>
 </ul>
 </li>
+<li><a href=\"#sec-3\">3 The proper way : masking the first half of the byte</a></li>
 </ul>
 </div>
 </div>
@@ -159,8 +121,7 @@ for the JavaScript code in this tag.
 <h2 id=\"sec-2\"><span class=\"section-number-2\">2</span> Basic syntax :</h2>
 <div class=\"outline-text-2\" id=\"text-2\">
 
-<p>==============
-</p>
+
 
 </div>
 
@@ -169,12 +130,26 @@ for the JavaScript code in this tag.
 <div class=\"outline-text-3\" id=\"text-2-1\">
 
 
-<hr/>
 
-<ul>
-<li>Match any traffic involving 192.168.1.1 as destination or source
-</li>
-</ul>
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+# Match any traffic involving 192.168.1.1 as destination or source
+tcpdump -i eth1 host 192.168.1.1
+
+</pre>
+</div>
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+# As soure only
+tcpdump -i eth1 src host 192.168.1.1
+
+</pre>
+</div>
 
 
 
@@ -182,281 +157,278 @@ for the JavaScript code in this tag.
 <div class=\"cnblogs_Highlighter\">
 <pre class=\"brush:bash\">
 
-tcpdump -i eth1 host 192.168.1.1
+# As destination only
+tcpdump -i eth1 dst host 192.168.1.1
 
 </pre>
 </div>
 
 
-<ul>
-<li>As soure only
-</li>
-</ul>
+</div>
 
+</div>
 
-<ul>
-<li>As destination only
-</li>
-</ul>
-
-
-
-<p>
-Filtering ports :
-
-</p>
-<hr/>
-
-<ul>
-<li>Match any traffic involving port 25 as source or destination
-</li>
-</ul>
-
-
-<ul>
-<li>Source
-</li>
-</ul>
-
-
-<ul>
-<li>Destination
-</li>
-</ul>
-
-
-
-<p>
-Network filtering :
-
-</p>
-<hr/>
-
-
-
-<p>
-Protocol filtering :
-
-</p>
-<hr/>
+<div id=\"outline-container-2-2\" class=\"outline-3\">
+<h3 id=\"sec-2-2\"><span class=\"section-number-3\">2.2</span> Filtering ports :</h3>
+<div class=\"outline-text-3\" id=\"text-2-2\">
 
 
 
 
-<p>
-Let's combine expressions :
 
-</p>
-<hr/>
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
 
-<p>
-Negation    : ! or \"not\" (without the quotes)
-Concatanate : &amp;&amp; or \"and\"
-Alternate   : || or \"or\" 
-</p>
-<ul>
-<li>This rule will match any TCP traffic on port 80 (web) with 192.168.1.254 or 192.168.1.200 as destination host
-</li>
-</ul>
+# Match any traffic involving port 25 as source or destination
+tcpdump -i eth1 port 25
 
-
-<ul>
-<li>Will match any ICMP traffic involving the destination with physical/MAC address 00:01:02:03:04:05
-</li>
-</ul>
-
-
-<ul>
-<li>Will match any traffic for the destination network 192.168 except destination host 192.168.1.200
-</li>
-</ul>
+</pre>
+</div>
 
 
 
-<p>
-Advanced header filtering :
-===========================
-</p>
-<p>
-Before we continue, we need to know how to filter out info from headers
-</p>
-<p>
-proto[x:y]              : will start filtering from byte x for y bytes. ip[2:2] would filter bytes 3 and 4 (first byte begins by 0)
-proto[x:y] &amp; z = 0      : will match bits set to 0 when applying mask z to proto[x:y]
-proto[x:y] &amp; z !=0      : some bits are set when applying mask z to proto[x:y]
-proto[x:y] &amp; z = z      : every bits are set to z when applying mask z to proto[x:y]
-proto[x:y] = z          : p[x:y] has exactly the bits set to z
-</p>
 
-<p>
-Operators : &gt;, &lt;, &gt;=, &lt;=, =, !=
-</p>
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+# Source
+tcpdump -i eth1 src port 25
 
-<p>
-This may not be clear in the first place but you'll find examples below involving these.
-</p>
-
-<p>
-Of course, it is important to know what the protocol headers look like before diving into more advanced filters.
-</p>
-
-<p>
-IP header
-
-</p>
-<hr/>
-
-<p>
-        0                   1                   2                   3   
-        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
-</p><!-- This HTML table template is generated by emacs 23.2.1 -->
-<table border=\"1\">
-  <tr>
-    <td align=\"left\" valign=\"top\">
-      Version
-    </td>
-    <td align=\"center\" valign=\"top\">
-      &nbsp;&nbsp;IHL&nbsp;&nbsp;
-    </td>
-    <td align=\"left\" valign=\"top\">
-      Type&nbsp;of&nbsp;Service
-    </td>
-    <td colspan=\"3\" align=\"center\" valign=\"top\">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;Length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td colspan=\"3\" align=\"center\" valign=\"top\">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identification&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align=\"left\" valign=\"top\">
-      Flags
-    </td>
-    <td colspan=\"2\" align=\"left\" valign=\"top\">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fragment&nbsp;Offset&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td colspan=\"2\" align=\"center\" valign=\"top\">
-      &nbsp;&nbsp;Time&nbsp;to&nbsp;Live&nbsp;
-    </td>
-    <td align=\"center\" valign=\"top\">
-      &nbsp;&nbsp;&nbsp;&nbsp;Protocol&nbsp;&nbsp;&nbsp;
-    </td>
-    <td colspan=\"3\" align=\"left\" valign=\"top\">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Header&nbsp;Checksum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td colspan=\"6\" align=\"left\" valign=\"top\">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source&nbsp;Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td colspan=\"6\" align=\"left\" valign=\"top\">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Destination&nbsp;Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td colspan=\"5\" align=\"center\" valign=\"top\">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Options&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align=\"center\" valign=\"top\">
-      &nbsp;&nbsp;&nbsp;&nbsp;Padding&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td colspan=\"6\" align=\"center\" valign=\"top\">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATA&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-  </tr>
-</table>
-
-<p>
-I'll consider we are only working with the IPv4 protocol suite for these examples.
-</p>
-<p>
-In an ideal world, every field would fit inside one byte. This is not the case, of course.
-</p>
-<p>
-Are IP options set ?
-
-</p>
-<hr/>
-
-<p>
-Let's say we want to know if the IP header has options set. We can't just try to filter out the 21st byte
-because if no options are set, data start at the 21st byte. We know a \"normal\" header is usually 20 bytes 
-(160 bits) long. With options set, the header is longer than that. The IP header has the header 
-length field which we will filter here to know if the header is longer than 20 bytes.
-</p>
-<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
-<tr><th scope=\"col\">Version</th>
-<th scope=\"col\">IHL</th></tr>
-</table>
-
-<p>
-Usually the first byte has a value of 01000101 in binary.
-</p>
-<p>
-Anyhow, we need to divide the first byte in half&hellip;
-</p>
-<p>
-0100 = 4 in decimal. This is the IP version.
-0101 = 5 in decimal. This is the number of blocks of 32 bits in the headers. 5 x 32 bits = 160 bits or 20 bytes.
-</p>
-<p>
-The second half of the first byte would be bigger than 5 if the header had IP options set.
-</p>
-<p>
-We have two ways of dealing with that kind of filters.
-</p>
-<ol>
-<li>Either try to match a value bigger than 01000101. This would trigger matches for IPv4 traffic with IP options set, 
-   but ALSO any IPv6 traffic !
-</li>
-</ol>
+</pre>
+</div>
 
 
-<p>
-In decimal 01000101 equals 69.
-</p>
-<p>
-Let's recap how to calculate in decimal.
-</p>
-<p>
-0 : 0           \\
-1 : 2^6 = 64     \\ First field (IP version)
-0 : 0            /
-0 : 0           /
-</p><ul>
-<li>
-</li>
-</ul>
 
-<p>0 : 0           \\
-1 : 2^2 = 4      \\ Second field (Header length)
-0 : 0            /
-1 : 2^0 = 1     /
-</p>
-<p>
-64 + 4 + 1 = 69
-</p>
-<p>
-The first field in the IP header would usually have a decimal value of 69.
-If we had IP options set, we would probably have 01000110 (IPv4 = 4 + header = 6), which in decimal equals 70.
-</p>
-<p>
-This rule should do the job :
-</p>
+</div>
+
+</div>
+
+<div id=\"outline-container-2-3\" class=\"outline-3\">
+<h3 id=\"sec-2-3\"><span class=\"section-number-3\">2.3</span> Destination</h3>
+<div class=\"outline-text-3\" id=\"text-2-3\">
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+tcpdump -i eth1 dst port 25
+
+</pre>
+</div>
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-2-4\" class=\"outline-3\">
+<h3 id=\"sec-2-4\"><span class=\"section-number-3\">2.4</span> Network filtering</h3>
+<div class=\"outline-text-3\" id=\"text-2-4\">
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+tcpdump -i eth1 net 192.168
+tcpdump -i eth1 src net 192.168
+tcpdump -i eth1 dst net 192.168
+
+</pre>
+</div>
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-2-5\" class=\"outline-3\">
+<h3 id=\"sec-2-5\"><span class=\"section-number-3\">2.5</span> Protocol filtering</h3>
+<div class=\"outline-text-3\" id=\"text-2-5\">
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+tcpdump -i eth1 arp
+tcpdump -i eth1 ip
+tcpdump -i eth1 tcp
+tcpdump -i eth1 udp
+tcpdump -i eth1 icmp
+
+</pre>
+</div>
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-2-6\" class=\"outline-3\">
+<h3 id=\"sec-2-6\"><span class=\"section-number-3\">2.6</span> Let's combine expressions</h3>
+<div class=\"outline-text-3\" id=\"text-2-6\">
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+#Negation    : ! or \"not\" (without the quotes)
+#Concatanate : && or \"and\"
+#Alternate   : || or \"or\" 
+
+# This rule will match any TCP traffic on port 80 (web) with 192.168.1.254 or 192.168.1.200 as destination host
+tcpdump -i eth1 '((tcp) and (port 80) and ((dst host 192.168.1.254) or (dst host 192.168.1.200)))'
+
+# Will match any ICMP traffic involving the destination with physical/MAC address 00:01:02:03:04:05
+tcpdump -i eth1 '((icmp) and ((ether dst host 00:01:02:03:04:05)))'
+
+# Will match any traffic for the destination network 192.168 except destination host 192.168.1.200
+tcpdump -i eth1 '((tcp) and ((dst net 192.168) and (not dst host 192.168.1.200)))'
+
+</pre>
+</div>
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-2-7\" class=\"outline-3\">
+<h3 id=\"sec-2-7\"><span class=\"section-number-3\">2.7</span> Advanced header filtering :</h3>
+<div class=\"outline-text-3\" id=\"text-2-7\">
+
+
+<blockquote>
+
+<pre class=\"example\">
+   
+   
+Before we continue, we need to know how to filter out info from headers                                                                                             
+                                                                                                                                                            
+proto[x:y]            : will start filtering from byte x for y bytes. ip[2:2] would filter bytes 3 and 4 (first byte begins by 0)                           
+proto[x:y] &amp; z = 0    : will match bits set to 0 when applying mask z to proto[x:y]                                                                         
+proto[x:y] &amp; z !=0    : some bits are set when applying mask z to proto[x:y]                                                                                
+proto[x:y] &amp; z = z    : every bits are set to z when applying mask z to proto[x:y]                                                                          
+proto[x:y] = z                : p[x:y] has exactly the bits set to z                                                                                                
+                                                                                                                                                            
+                                                                                                                                                            
+Operators : &gt;, &lt;, &gt;=, &lt;=, =, !=                                                                                                                                     
+                                                                                                                                                            
+                                                                                                                                                            
+This may not be clear in the first place but you'll find examples below involving these.                                                                    
+                                                                                                                                                            
+                                                                                                                                                            
+Of course, it is important to know what the protocol headers look like before diving into more advanced filters.                                            
+                                                                                                                                                            
+                                                                                                                                                             
+  IP header                                                                                                                                                 
+  ---------                                                                                                                                                 
+                                                                                                                                                            
+0                   1                   2                   3                                                                                       
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1                                                                                     
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                                                   
+|Version|  IHL  |Type of Service|          Total Length         |                                                                                   
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                                                   
+|         Identification        |Flags|      Fragment Offset    |                                                                                   
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                                                    
+|  Time to Live |    Protocol   |         Header Checksum       |                                                                                    
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                                                    
+|                       Source Address                          |                                                                                     
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                                                     
+|                    Destination Address                        |                                                                                   
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                                                     
+|                    Options                    |    Padding    | &lt;-- optional                                                                                
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                                                   
+|                            DATA ...                           |                                                                                   
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                                                    
+                                                                                                                                                            
+  I'll consider we are only working with the IPv4 protocol suite for these examples.                                                                        
+                                                                                                                                                            
+  In an ideal world, every field would fit inside one byte. This is not the case, of course.                                                                
+                                                                                                                                                            
+  Are IP options set ?                                                                                                                                              
+  --------------------                                                                                                                                              
+                                                                                                                                                            
+  Let's say we want to know if the IP header has options set. We can't just try to filter out the 21st byte                                                 
+  because if no options are set, data start at the 21st byte. We know a \"normal\" header is usually 20 bytes                                                 
+  (160 bits) long. With options set, the header is longer than that. The IP header has the header                                                           
+  length field which we will filter here to know if the header is longer than 20 bytes.                                                                              
+                                                                                                                                                             
+      +-+-+-+-+-+-+-+-+                                                                                                                                      
+      |Version|  IHL  |                                                                                                                                       
+      +-+-+-+-+-+-+-+-+                                                                                                                                       
+                                                                                                                                                            
+  Usually the first byte has a value of 01000101 in binary.                                                                                                   
+                                                                                                                                                              
+  Anyhow, we need to divide the first byte in half...                                                                                                       
+                                                                                                                                                             
+  0100 = 4 in decimal. This is the IP version.                                                                                                                      
+  0101 = 5 in decimal. This is the number of blocks of 32 bits in the headers. 5 x 32 bits = 160 bits or 20 bytes.                                          
+                                                                                                                                                            
+  The second half of the first byte would be bigger than 5 if the header had IP options set.                                                                
+                                                                                                                                                            
+  We have two ways of dealing with that kind of filters.                                                                                                            
+                                                                                                                                                            
+  1. Either try to match a value bigger than 01000101. This would trigger matches for IPv4 traffic with IP options set,                                             
+     but ALSO any IPv6 traffic !                                                                                                                                    
+                                                                                                                                                            
+  In decimal 01000101 equals 69.                                                                                                                                    
+                                                                                                                                                             
+  Let's recap how to calculate in decimal.                                                                                                                   
+                                                                                                                                                             
+  0 : 0               \\                                                                                                                                               
+  1 : 2^6 = 64         \\ First field (IP version)                                                                                                                     
+  0 : 0                /                                                                                                                                            
+  0 : 0               /                                                                                                                                               
+  -                                                                                                                                                           
+  0 : 0               \\                                                                                                                                             
+  1 : 2^2 = 4  \\ Second field (Header length)                                                                                                               
+  0 : 0                /                                                                                                                                              
+  1 : 2^0 = 1 /                                                                                                                                             
+                                                                                                                                                            
+  64 + 4 + 1 = 69                                                                                                                                                     
+                                                                                                                                                            
+  The first field in the IP header would usually have a decimal value of 69.                                                                                  
+  If we had IP options set, we would probably have 01000110 (IPv4 = 4 + header = 6), which in decimal equals 70.                                                
+
+</pre>
+
+
+</blockquote>
+
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+#This rule should do the job :
+tcpdump -i eth1 'ip[0] > 69'
+
+</pre>
+</div>
+
+
 <p>
 Somehow, the proper way is to mask the first half/field of the first byte, because as mentionned earlier, 
 this filter would match any IPv6 traffic.
 </p>
-<ol>
-<li>The proper way : masking the first half of the byte
-</li>
-</ol>
+</div>
+</div>
+
+</div>
+
+<div id=\"outline-container-3\" class=\"outline-2\">
+<h2 id=\"sec-3\"><span class=\"section-number-2\">3</span> The proper way : masking the first half of the byte</h2>
+<div class=\"outline-text-2\" id=\"text-3\">
 
 
 <p>
@@ -1031,7 +1003,6 @@ The end ? Please send more useful recipes !
 
 </div>
 </div>
-</div>
 
 </div>
 </div>
@@ -1046,4 +1017,4 @@ The end ? Please send more useful recipes !
 </div>
 </body>
 </html>
-") ("title" . "tcpdump") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/03/04/2942952.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/03/04/2942952.html") ("postid" . 2942952) ("source") ("mt_excerpt" . "tcpdump 详解") ("mt_keywords" . "tcpdump"))
+") ("title" . "tcpdump") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/03/04/2942952.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/03/04/2942952.html") ("postid" . "2942952") ("source") ("userid" . "-2"))

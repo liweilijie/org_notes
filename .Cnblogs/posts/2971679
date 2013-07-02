@@ -4,14 +4,14 @@
                \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
-<title>vim yank命令</title>
-
-
-
-
-
-
-
+<title>vim yank 命令</title>
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"vim yank 命令\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2013-03-20 Wed\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"vim 命令\"/>
+<meta name=\"keywords\" content=\"vim\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -121,7 +76,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id=\"content\">
-<h1 class=\"title\">vim yank命令</h1>
+<h1 class=\"title\">vim yank 命令</h1>
 
 
 
@@ -130,7 +85,12 @@ for the JavaScript code in this tag.
 <div id=\"text-table-of-contents\">
 <ul>
 <li><a href=\"#sec-1\">1 vi 标识着我年轻</a></li>
-<li><a href=\"#sec-2\">2 vi yank</a></li>
+<li><a href=\"#sec-2\">2 vi yank</a>
+<ul>
+<li><a href=\"#sec-2-1\">2.1 复制一段内容示例如下：</a></li>
+<li><a href=\"#sec-2-2\">2.2 删除一段内容示例如下：</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -155,22 +115,91 @@ for the JavaScript code in this tag.
 <div class=\"outline-text-2\" id=\"text-2\">
 
 
-<ul>
-<li>`:81, 109y&lt;center&gt;`
-</li>
-</ul>
 
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+# 复制一个区域的内容
+:81, 109y<center>
+
+</pre>
+</div>
 
 
 <p>
-If you ever need to cut/copy/delete/paste lines without knowing the actual number of lines, here is what you should do.
-In normal mode, go to the beginning of the section that you want to yank.
-Type mk to mark this spot as k.
-Go to the end of the section you want to yank using whatever movement commands you like.
-Type: y'k (&lt;y-yank&gt;, &lt;single quote-go to mark&gt;, k) To yank from the mark to the current location.
-You can paste those lines wherever you want with p
-Similarly, d'k will cut/delete the lines from the current location to the mark.
+If you ever need to <b>cut/copy/delete/paste</b> lines without knowing the actual number of lines, here is what you should do.
 </p>
+<p>
+In normal mode, go to the beginning of the section that you want to yank.
+</p>
+<p>
+Type <b>mk</b> to mark this spot as <code>k</code>.
+</p>
+<p>
+Go to the end of the section you want to yank using whatever movement commands you like.
+Type: <b>y'k</b> (&lt;y-yank&gt;, &lt;single quote-go to mark&gt;, k) To yank from the mark to the current location.
+</p>
+
+<p>
+You can paste those lines wherever you want with <b>p</b>.
+</p>
+<p>
+Similarly, <b>d'k</b> will <b>cut/delete</b> the lines from the current location to the mark.
+</p>
+
+
+</div>
+
+<div id=\"outline-container-2-1\" class=\"outline-3\">
+<h3 id=\"sec-2-1\"><span class=\"section-number-3\">2.1</span> 复制一段内容示例如下：</h3>
+<div class=\"outline-text-3\" id=\"text-2-1\">
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+# 1. 移动起始位置，做好标记
+mk
+
+# 2. 移动到终点位置，复制标记到此点间的内容
+y'k
+
+# 3. 移动到将要粘贴的位置
+p
+
+</pre>
+</div>
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-2-2\" class=\"outline-3\">
+<h3 id=\"sec-2-2\"><span class=\"section-number-3\">2.2</span> 删除一段内容示例如下：</h3>
+<div class=\"outline-text-3\" id=\"text-2-2\">
+
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+# 1. 移动起始位置，做好标记
+mk
+
+# 2. 移动到终点位置，删除标记到此点间的内容
+d'k
+
+
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -184,4 +213,4 @@ Similarly, d'k will cut/delete the lines from the current location to the mark.
 </div>
 </body>
 </html>
-") ("title" . "vim yank命令") ("categories" "[随笔分类]vim") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/03/20/2971679.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/03/20/2971679.html") ("postid" . 2971679) ("source") ("mt_excerpt" . "vim") ("mt_keywords" . "vim"))
+") ("title" . "vim yank 命令") ("categories" "[随笔分类]vim") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/03/20/2971679.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/03/20/2971679.html") ("postid" . "2971679") ("source") ("userid" . "-2"))

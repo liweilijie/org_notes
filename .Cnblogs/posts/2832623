@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>time<sub>wait过多的优化</sub></title>
-
-wait过多的优化</sub>\"/>
-
-
-
-WAIT</sub> 在服务器侧过多的优化方法\"/>
-WAIT</sub> TCP\"/>
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"time<sub>wait过多的优化</sub>\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2012-12-25 Tue\"/>
+<meta name=\"author\" content=\"liweijijie\"/>
+<meta name=\"description\" content=\"TIME<sub>WAIT</sub> 在服务器侧过多的优化方法\"/>
+<meta name=\"keywords\" content=\"TIME<sub>WAIT</sub> TCP\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@ WAIT</sub> TCP\"/>
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -136,7 +91,7 @@ for the JavaScript code in this tag.
 
 
 <p>
-今天在一个服务器上发现连接太多，尤其是 <b>TIME<sub>WAIT</sub></b> 状态的连接更多，这可能主要是由于增加了端口映射。
+今天在一个服务器上发现连接太多，尤其是 <b>TIME_WAIT</b> 状态的连接更多，这可能主要是由于增加了端口映射。
 而且服务器侧是短连接造成的这种现象。
 用一条命令查看一下：
 </p>
@@ -166,13 +121,16 @@ TIME_WAIT 101
 
 
 <p>
-该TIME<sub>WAIT的默认值为2</sub>*MSL, MSL即max segment lifetime, 是一个tcp包的最大生存时间。
+   该TIME_WAIT的默认值为2 * MSL, <b>MSL</b> 即max segment lifetime, 是一个tcp包的最大生存时间。
 </p>
 <p>
-MSL值在linux上好像默认是30秒， 所以从TIME<sub>WAIT状态变化到CLOSED大约需要60秒时间。</sub>
+MSL值在linux上好像默认是30秒， 所以从 <b>TIME_WAIT</b> 状态变化到 <b>CLOSED</b> 大约需要60秒时间。
 </p>
 <p>
 另外一方面，本机可用的发起连接的socket端口是有限的，可通过以下命令查看：
+</p>
+
+
   <div class=\"cnblogs_Highlighter\">
   <pre class=\"brush:bash\">
 [root@ ~]# cat /proc/sys/net/ipv4/ip_local_port_range
@@ -184,12 +142,17 @@ MSL值在linux上好像默认是30秒， 所以从TIME<sub>WAIT状态变化到CL
 
 
 
-也即大约只有2万多个端口可用，如果处于 <b>TIME<sub>WIAT</sub></b> 状态的连接很多，
+<p>
+也即大约只有2万多个端口可用，如果处于 <b>TIME_WIAT</b> 状态的连接很多，
 很有可能会影响本机向处发起的连接,比如ftp的主动模式就会深受影响。
 </p>
 <p>
 出现端口不够用的情况。
 </p>
+
+
+<hr/>
+
 </div>
 
 </div>
@@ -200,7 +163,7 @@ MSL值在linux上好像默认是30秒， 所以从TIME<sub>WAIT状态变化到CL
 
 
 <p>
-可以通过以下参数减少 <b>TIME<sub>WAIT</sub></b> 的连接：
+可以通过以下参数减少 <b>TIME_WAIT</b> 的连接：
 </p>
 <ul>
 <li>方法一：
@@ -211,15 +174,15 @@ MSL值在linux上好像默认是30秒， 所以从TIME<sub>WAIT状态变化到CL
   <div class=\"cnblogs_Highlighter\">
   <pre class=\"brush:bash\">
 
-[root@ ~] vi /etc/sysctl.conf
+    [root@ ~] vi /etc/sysctl.conf
 
-#开启time_wait状态的socket重用
-net.ipv4.tcp_tw_reuse = 1
+    #开启time_wait状态的socket重用
+    net.ipv4.tcp_tw_reuse = 1
 
-#开启time_wait状态的socket快速回收
-net.ipv4.tcp_tw_recycle = 1
+    #开启time_wait状态的socket快速回收
+    net.ipv4.tcp_tw_recycle = 1
 
-[root@ ~] /sbin/sysctl -p
+    [root@ ~] /sbin/sysctl -p
 
   </pre>
   </div>
@@ -232,16 +195,22 @@ net.ipv4.tcp_tw_recycle = 1
 </ul>
 
 
-  <div class=\"cnblogs_Highlighter\">
-  <pre class=\"brush:bash\">
+      <div class=\"cnblogs_Highlighter\">
+      <pre class=\"brush:bash\">
 
-# 或者直接修改time_wait的等待时间
-[root@ ~]echo 30 > /proc/sys/net/ipv4/tcp_fin_timeout
+      # 或者直接修改time_wait的等待时间
+      [root@ ~]echo 30 > /proc/sys/net/ipv4/tcp_fin_timeout
 
 
-  </pre>
-  </div>
+      </pre>
+      </div>
 
+
+
+<pre class=\"example\">
+[root@ ~] ifconfig
+
+</pre>
 
 </div>
 </div>
@@ -256,4 +225,4 @@ net.ipv4.tcp_tw_recycle = 1
 </div>
 </body>
 </html>
-") ("title" . "time_wait过多的优化") ("categories" "[随笔分类]C") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/25/2832623.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/25/2832623.html") ("postid" . 2832623) ("source") ("mt_excerpt" . "TIME_WAIT 在服务器侧过多的优化方法") ("mt_keywords" . "TIME_WAIT TCP"))
+") ("title" . "time_wait过多的优化") ("categories" "[随笔分类]C") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/25/2832623.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/25/2832623.html") ("postid" . "2832623") ("source") ("userid" . "-2"))

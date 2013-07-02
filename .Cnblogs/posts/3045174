@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>postgresql 数据库</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"postgresql 数据库\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2013-04-26 Fri\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"postgresql 数据库一些操作\"/>
+<meta name=\"keywords\" content=\"postgresq\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -163,7 +163,13 @@ for the JavaScript code in this tag.
   </div>
 
 
-</div>
+
+<p>
+<b>_</b> 代表匹配任何单个字符。
+</p>
+<p>
+<b>%</b> 代表匹配任何零或者更多字符
+</p></div>
 </div>
 </div>
 
@@ -176,4 +182,4 @@ for the JavaScript code in this tag.
 </div>
 </body>
 </html>
-") ("title" . "postgresql 数据库") ("categories" "[随笔分类]postgresql") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/04/26/3045174.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/04/26/3045174.html") ("postid" . 3045174) ("source") ("mt_excerpt" . "postgresql 数据库一些操作") ("mt_keywords" . "postgresq"))
+") ("title" . "postgresql 数据库") ("categories" "[随笔分类]postgresql") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/04/26/3045174.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/04/26/3045174.html") ("postid" . "3045174") ("source") ("userid" . "-2"))

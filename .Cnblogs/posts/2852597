@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>odbc备忘</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"odbc备忘\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2013-01-09 WED\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"odbc学习\"/>
+<meta name=\"keywords\" content=\"odbc\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -134,6 +89,10 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href=\"#sec-3-1\">3.1 Contents</a></li>
 <li><a href=\"#sec-3-2\">3.2 Introduction</a></li>
+<li><a href=\"#sec-3-3\">3.3 ODBC Status Returns</a></li>
+<li><a href=\"#sec-3-4\">3.4 Obtaining Diagnostics</a></li>
+<li><a href=\"#sec-3-5\">3.5 Diagnostic Fields</a></li>
+<li><a href=\"#sec-3-6\">3.6 Example diagnostic messages</a></li>
 </ul>
 </li>
 </ul>
@@ -182,19 +141,19 @@ for the JavaScript code in this tag.
 
 
 <ul>
-<li>Introduction                                                                                                           
+<li>Introduction
 </li>
-<li>ODBC Status Returns                                                                                                    
+<li>ODBC Status Returns
 </li>
-<li>Obtaining Diagnostics                                                                                                  
+<li>Obtaining Diagnostics <code>{[,daignostiks] n. 论断学}</code>
 </li>
-<li>Diagnostic Fields                                                                                                      
+<li>Diagnostic Fields
 </li>
-<li>Example Diagnostic Messages                                                                                            
+<li>Example Diagnostic Messages
 </li>
-<li>Appendix A: ODBC Status Return Codes                                                                                   
+<li>Appendix A: ODBC Status Return Codes
 </li>
-<li>Appendix B: ODBC 2 to ODBC 3 SQLSTATE Mappings                                                                         
+<li>Appendix B: ODBC 2 to ODBC 3 SQLSTATE Mappings
 </li>
 </ul>
 
@@ -208,111 +167,324 @@ for the JavaScript code in this tag.
 <div class=\"outline-text-3\" id=\"text-3-2\">
 
 
-<p>                                                                                                                           
-This document aims to provide a brief introduction to ODBC diagnostics and status return codes.                            
+<p>
+    This document aims to provide a brief <code>{[bri:f] adj. 简洁的，简明的}</code> introduction to ODBC diagnostics and status return codes.
 </p>
-<p>                                                                                                                           
-We begin with an explanation of how ODBC Status return codes are formed, the meaning that this form has and then move onto 
-how diagnostic information is retrieved and dealt with.                                                                    
+<p>
+    We begin with an explanation <code>{[ekspleneifen] n. 说明，解释}</code> of how ODBC Status return codes are formed <code>{[fo:m] v. 产生，形成}</code>, the meaning that this form has and then move onto
+    how diagnostic information is retrieved <code>{[ritri:v] v. 取回，恢复，检索}</code> and dealt with.
 </p>
-<p>                                                                                                                           
-Finally, there are links to some, rather long, pages that list all the ODBC status codes and the ODBC API functions that   
-can return them, complete with brief descriptions.                                                                         
+<p>
+    Finally, there are links to some, rather long, pages that list all the ODBC status codes and the ODBC API functions that
+    can return them, complete with brief descriptions.
 </p>
-<p>                                                                                                                           
-ODBC Status Returns                                                                                                        
+</div>
+
+</div>
+
+<div id=\"outline-container-3-3\" class=\"outline-3\">
+<h3 id=\"sec-3-3\"><span class=\"section-number-3\">3.3</span> ODBC Status Returns</h3>
+<div class=\"outline-text-3\" id=\"text-3-3\">
+
+
+<p>
+<b>SQLGetDiagRec</b> or <b>SQLGetDiagField</b> returns <b>SQLSTATE</b> values as defined by X/Open Data Management: Structured Query Language
+(SQL), Version 2 (March 1995). <b>SQLSTATE</b> values are strings that contain five characters. Appendixes <code>{[ependiks] n. 附录， 附加物}</code> A &amp; B tables lists
+<b>SQLSTATE</b> values that a driver can return for <b>SQLGetDiagRec</b>.
 </p>
-<p>                                                                                                                           
-SQLGetDiagRec or SQLGetDiagField returns SQLSTATE values as defined by X/Open Data Management: Structured Query Language   
-(SQL), Version 2 (March 1995). SQLSTATE values are strings that contain five characters. Appendixes A &amp; B tables lists     
-SQLSTATE values that a driver can return for SQLGetDiagRec.                                                                
+<p>
+The character string value returned for an <b>SQLSTATE</b> consists of a two-character class value followed by a three-character
+subclass value. A class value of \"01\" indicates a warning and is accompanied <code>{[ekampeni] vt. 陪伴，附加，与...共存}</code> by a return code of <b>SQL_SUCCESS_WITH_INFO</b>.
+Class values other than \"01,\" except for the class \"IM,\" indicate an error and are accompanied by a return value of
+<b>SQL_ERROR</b>. The class \"IM\" is specific to warnings and errors that derive from the implementation of ODBC itself. The
+subclass value \"000\" in any class indicates that there is no subclass for that SQLSTATE. The assignment of class and
+subclass values is defined by SQL-92.
 </p>
-<p>                                                                                                                           
-The character string value returned for an SQLSTATE consists of a two-character class value followed by a three-character  
-subclass value. A class value of \"01\" indicates a warning and is accompanied by a return code of SQL_SUCCESS_WITH_INFO.    
-Class values other than \"01,\" except for the class \"IM,\" indicate an error and are accompanied by a return value of        
-SQL_ERROR. The class \"IM\" is specific to warnings and errors that derive from the implementation of ODBC itself. The       
-subclass value \"000\" in any class indicates that there is no subclass for that SQLSTATE. The assignment of class and       
-subclass values is defined by SQL-92.                                                                                      
+<p>
+Note:Although successful execution of a function is normally indicated by a return value of <b>SQL_SUCCESS</b>, the <b>SQLSTATE</b> 00000
+also indicates success.
 </p>
-<p>                                                                                                                           
-Note:Although successful execution of a function is normally indicated by a return value of SQL_SUCCESS, the SQLSTATE 00000
-also indicates success.                                                                                                    
+<p>
+All ODBC API's return a status value which may be used to check whether the function succeeded or not. In C you can test
+the return value from an ODBC function using the macro <b>SQL_SUCCEEDED</b>
 </p>
-<p>                                                                                                                           
-All ODBC API's return a status value which may be used to check whether the function succeeded or not. In C you can test   
-the return value from an ODBC function using the macro SQL_SUCCEEDED                                                       
-</p>
-<p>                                                                                                                           
-e.g.                                                                                                                       
+<p>
+e.g.
 </p>
 
 
 <div class=\"cnblogs_Highlighter\">
 <pre class=\"brush:cpp\">
 
-  SQLRETURN fsts;                                                                                                            
-  /* Assume for this example the environment has already been allocated */                                                   
-  SQLHENV envh;                                                                                                              
-  SQLHDBC dbch;                                                                                                              
-  fsts = SQLAllocHandle(SQL_HANDLE_DBC, envh, &dbch);                                                                        
-  if (!SQL_SUCCEEDED(fsts))                                                                                                  
-  {                                                                                                                          
-    /* an error occurred allocating the database handle */                                                                   
-  }                                                                                                                          
-  else                                                                                                                       
-  {                                                                                                                          
-    /* Database handle allocated OK */                                                                                       
-  }                                                                                                                          
+  SQLRETURN fsts;
+  /* Assume for this example the environment has already been allocated */
+  SQLHENV envh;
+  SQLHDBC dbch;
+  fsts = SQLAllocHandle(SQL_HANDLE_DBC, envh, &dbch);
+  if (!SQL_SUCCEEDED(fsts))
+  {
+    /* an error occurred allocating the database handle */
+  }
+  else
+  {
+    /* Database handle allocated OK */
+  }
 
 
 </pre>
 </div>
 
 
-<p>                                                                                                                           
-The macro <b>SQL_SUCCEEDED</b> is defined as:                                                                                     
+<p>
+The macro <b>SQL_SUCCEEDED</b> is defined as:
 </p>
 
 
 <div class=\"cnblogs_Highlighter\">
 <pre class=\"brush:cpp\">
 
-    #define SQL_SUCCEEDED(rc) (((rc)&(~1))==0)                                                                                 
+    #define SQL_SUCCEEDED(rc) (((rc)&(~1))==0)
 
 
 </pre>
 </div>
 
-<p>                                                                                                                           
-Virtually all ODBC functions can return two values which indicate success                                                  
+<p>
+Virtually all ODBC functions can return two values which indicate success
 </p>
 <ul>
-<li>SQL_SUCCESS                                                                                                            
+<li>SQL_SUCCESS
 </li>
-<li>SQL_SUCCESS_WITH_INFO                                                                                                  
+<li>SQL_SUCCESS_WITH_INFO
 </li>
 </ul>
 
 
-<p>                                                                                                                           
-Both of these returns cause the SQL_SUCCEEDED macro to result in <b>1</b>.                                                        
+<p>
+Both of these returns cause the SQL_SUCCEEDED macro to result in <b>1</b>.
 </p>
-<p>                                                                                                                           
-If a function returns <b>SQL_SUCCESS_WITH_INFO</b> it means that the call succeeded but an informational message was produced.    
+<p>
+    If a function returns <b>SQL_SUCCESS_WITH_INFO</b> it means that the call succeeded but an informational message was produced.
 </p>
-<p>                                                                                                                           
-e.g. with some drivers you might set the cursor type, prepare a statement and then execute it. When SQLExecute is called   
-the statement is acted upon but the driver might change the cursor type to something else. In this case, SQLExecute would  
-return <b>SQL_SUCCESS_WITH_INFO</b> and the driver would add a diagnostic indicating the cursor type had been changed.            
+<p>
+    e.g. with some drivers you might set the cursor type, prepare a statement and then execute it. When SQLExecute is called
+the statement is acted upon but the driver might change the cursor type to something else. In this case, SQLExecute would
+return <b>SQL_SUCCESS_WITH_INFO</b> and the driver would add a diagnostic indicating the cursor type had been changed.
 </p>
-<p>                                                                                                                           
-You should note that a few ODBC functions return a status which fails the SQL_SUCCEEDED macro but do not indicate an error 
-as such.                                                                                                                   
+<p>
+    You should note that a few ODBC functions return a status which fails the SQL_SUCCEEDED macro but do not indicate an error
+as such.
 </p>
-<p>                                                                                                                           
-e.g. SQLFetch can return SQL_NO_DATA indicating there is no further rows in the result set, this is not necessarily an     
-error.                                                                                                                     
+<p>
+e.g. SQLFetch can return SQL_NO_DATA indicating there is no further rows in the result set, this is not necessarily an
+error.
+</p>
+
+</div>
+
+</div>
+
+<div id=\"outline-container-3-4\" class=\"outline-3\">
+<h3 id=\"sec-3-4\"><span class=\"section-number-3\">3.4</span> Obtaining Diagnostics</h3>
+<div class=\"outline-text-3\" id=\"text-3-4\">
+
+
+<p>
+When an ODBC function returns an error or <b>SQL_SUCCESS_WITH_INFO</b> then the driver will associate a diagnostic with the handle
+used in the ODBC call. You can obtain the diagnostic to find out what failed by calling <b>SQLGetDiagRec</b> with the handle you
+used in the ODBC call that failed.
+</p>
+<p>
+The driver may associate multiple diagnostic records with a handle.
+</p>
+<p>
+You can call <b>SQLGetDiagField</b> and request the <b>SQL_DIAG_NUMBER</b> attribute to find out how many diagnostics exist.
+Alternatively, as diagnostic records start at 1, you can repeatedly call <b>SQLGetDiagRec</b> asking for record 1, then 2 (and so
+on) until <b>SQLGetDiagRec</b> returns <b>SQL_NO_DATA</b>.
+</p>
+<p>
+As an example, the following C function takes a function name string, handle type and handle and retrieves all the
+diagnostics associated with that handle.
+</p>
+
+
+    <div class=\"cnblogs_Highlighter\">
+    <pre class=\"brush:cpp\">
+
+    void extract_error(
+          char *fn,
+          SQLHANDLE handle,
+          SQLSMALLINT type)
+      {
+        SQLINTEGER i = 0;
+        SQLINTEGER native;
+        SQLCHAR state[ 7 ];
+        SQLCHAR text[256];
+        SQLSMALLINT len;
+        SQLRETURN ret;
+        fprintf(stderr,
+                \"\\n\"
+                \"The driver reported the following diagnostics whilst running \"
+                \"%s\\n\\n\",
+                fn);
+
+        do
+        {
+          ret = SQLGetDiagRec(type, handle, ++i, state, &native, text,
+          sizeof(text), &len );
+          if (SQL_SUCCEEDED(ret))
+          printf(\"%s:%ld:%ld:%s\\n\", state, i, native, text);
+        }
+        while( ret == SQL_SUCCESS );
+      }
+
+    </pre>
+    </div>
+
+
+<p>
+Using the example above which attempts to allocate a database handle you could use extract_error as follows:
+</p>
+<p>
+SQLRETURN fsts;
+</p>
+
+
+    <div class=\"cnblogs_Highlighter\">
+    <pre class=\"brush:cpp\">
+
+
+      /* Assume for this example the environment has already been allocated */
+      SQLHENV envh;
+      SQLHDBC dbch;
+      fsts = SQLAllocHandle(SQL_HANDLE_DBC, envh, &dbch);
+      if (!SQL_SUCCEEDED(fsts))
+      {
+        extract_error(\"SQLAllocHandle for dbc\", envh, SQL_HANDLE_ENV);
+        exit(1);
+      }
+      else
+      {
+        /* Database handle allocated OK */
+      }
+
+
+    </pre>
+    </div>
+
+
+<p>
+ODBC 2.0 applications will use SQLError instead of SQLGetDiagRec.
+</p>
+</div>
+
+</div>
+
+<div id=\"outline-container-3-5\" class=\"outline-3\">
+<h3 id=\"sec-3-5\"><span class=\"section-number-3\">3.5</span> Diagnostic Fields</h3>
+<div class=\"outline-text-3\" id=\"text-3-5\">
+
+
+<p>
+When you call SQLGetDiagRec you can retrieve 3 diagnostic fields:
+</p>
+<ul>
+<li>State
+</li>
+<li>Native error code
+</li>
+<li>Message text
+</li>
+</ul>
+
+
+<p>
+The state is a five character SQLSTATE code. The first two characters indicate the class and the next three indicate the
+subclass. SQLSTATEs provide detailed information about the cause of a warning or error. You can look states up in Appendix
+A.
+</p>
+<p>
+The native error code is a code specific to the data source. This number is often extremely <code>{[ikstri:mli] adv. 很，极端地，非常，去，绝}</code> useful to the driver developers
+in locating an internal error or state. If you are reporting a bug in an ODBC driver for which you obtained an error you
+should always quote the ODBC function called, the error text and this native number.
+</p>
+<p>
+The message text is the text of the diagnostic. This string takes one of two forms:
+</p>
+<p>
+For errors and warnings that do not occur in a data source the format:
+</p>
+<p>
+<code>[vendor-identifier][ODBC-component-identifier]component-supplied-text</code>
+</p>
+<p>
+otherwise:
+</p>
+<p>
+<code>[vendor-identifier][ODBC-component-identifier][data-source-identifer]</code>
+</p>
+<p>
+      <code>data-source-supplied-text</code>
+</p>
+</div>
+
+</div>
+
+<div id=\"outline-container-3-6\" class=\"outline-3\">
+<h3 id=\"sec-3-6\"><span class=\"section-number-3\">3.6</span> Example diagnostic messages</h3>
+<div class=\"outline-text-3\" id=\"text-3-6\">
+
+
+<p>
+You can use the message text string to identify which piece of software reported the error. For example, here are some
+message texts and error conditions:
+</p>
+<p>
+The following three examples of diagnostic messages can be generated using the Easysoft ODBC-ODBC Bridge to access
+Microsoft SQL Server.
+</p>
+<p>
+<code>[Easysoft ODBC (Client)]Invalid authorization specification</code>
+</p>
+<p>
+This error was produced when the LogonUser/LogonAuth attributes were invalid and the connection attempt has been refused.
+The OOB alone was involved in this process.
+</p>
+<p>
+<code>[Easysoft ODBC (Server)][Microsoft][ODBC Driver Manager]</code>
+</p>
+<p>
+      Data source name not found and no default driver specified.
+</p>
+<p>
+This error was produced by the Microsoft ODBC driver manager on the OOB Server machine when the TargetDSN attribute
+specified a DSN which does not exist on the server. You can see that the last item is square brackets was the \"ODBC Driver
+manager\" and hence that is the component which generated the error text. As the text is prefixed with \"[Easysoft ODBC
+(Server)]\" you know that it was the driver manager at the server end.
+</p>
+<p>
+<code>[Easysoft ODBC (Server)][Microsoft][ODBC SQL Server Driver][SQL Server]</code>
+      Login failed for user 'demo'.
+</p>
+<p>
+This error was produced when the TargetUser/TargetAuth specified at the OOB client was passed through the DBMS which
+refused the connection. The last item in square brackets was \"SQL Server\" and so you know that SQL Server turned down the
+connection attempt.
+</p>
+<p>
+Appendix A: ODBC Status Return Codes
+</p>
+<p>
+A complete list of all ODBC Status Return codes can be found here.
+</p>
+<p>
+This list includes error messages and the functions that can return the status code complete with brief descriptions.
+</p>
+<p>
+Appendix B: ODBC 2.x to ODBC 3.x SQLSTATE Mappings
+</p>
+<p>
+A list of ODBC 2.x to ODBC 3.x SQLSTATE mappings can be found here.
 </p></div>
 </div>
 </div>
@@ -327,4 +499,4 @@ error.
 </div>
 </body>
 </html>
-") ("title" . "odbc备忘") ("categories" "[随笔分类]C") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/01/09/2852597.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/01/09/2852597.html") ("postid" . 2852597) ("source") ("mt_excerpt" . "odbc学习") ("mt_keywords" . "odbc"))
+") ("title" . "odbc备忘") ("categories" "[随笔分类]C") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/01/09/2852597.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/01/09/2852597.html") ("postid" . "2852597") ("source") ("userid" . "-2"))

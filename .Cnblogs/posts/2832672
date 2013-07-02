@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>HTTP协议中的keep-alive</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"HTTP协议中的keep-alive\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2012-12-25 Tue\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"HTTP协议中的keep-alive\"/>
+<meta name=\"keywords\" content=\"HTTP keep-alive\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -123,7 +78,29 @@ for the JavaScript code in this tag.
 <div id=\"content\">
 <h1 class=\"title\">HTTP协议中的keep-alive</h1>
 
-<p>通常，我们说的http长连接，实际上是包含2种不同的含义：
+
+
+<div id=\"table-of-contents\">
+<h2>Table of Contents</h2>
+<div id=\"text-table-of-contents\">
+<ul>
+<li><a href=\"#sec-1\">1 概述</a>
+<ul>
+<li><a href=\"#sec-1-1\">1.1 HTTP/1.0</a></li>
+<li><a href=\"#sec-1-2\">1.2 HTTP/1.1</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id=\"outline-container-1\" class=\"outline-2\">
+<h2 id=\"sec-1\"><span class=\"section-number-2\">1</span> 概述</h2>
+<div class=\"outline-text-2\" id=\"text-1\">
+
+
+<p>
+通常，我们说的http长连接，实际上是包含2种不同的含义：
 </p>
 <ol>
 <li>comet，是服务器和浏览器之间维持一个长时间的http连接，用于服务器消息的实时推送，见Web应用中的Comet技术，这种模式下，浏览器只会发送一次request请求，而server端会不断吐出消息给浏览器端，直到超时或者手工终止连接
@@ -134,19 +111,11 @@ for the JavaScript code in this tag.
 
 
 
-<div id=\"table-of-contents\">
-<h2>Table of Contents</h2>
-<div id=\"text-table-of-contents\">
-<ul>
-<li><a href=\"#sec-1\">1 HTTP/1.0</a></li>
-<li><a href=\"#sec-2\">2 HTTP/1.1</a></li>
-</ul>
-</div>
 </div>
 
-<div id=\"outline-container-1\" class=\"outline-3\">
-<h3 id=\"sec-1\"><span class=\"section-number-3\">1</span> HTTP/1.0</h3>
-<div class=\"outline-text-3\" id=\"text-1\">
+<div id=\"outline-container-1-1\" class=\"outline-3\">
+<h3 id=\"sec-1-1\"><span class=\"section-number-3\">1.1</span> HTTP/1.0</h3>
+<div class=\"outline-text-3\" id=\"text-1-1\">
 
 <p>在HTTP/1.0版本中，并没有官方的标准来规定Keep-Alive如何工作，因此实际上它是被附加到HTTP/1.0协议上，如果客户端浏览器支持 Keep-Alive，那么就在HTTP请求头中添加一个字段 Connection: Keep-Alive，当服务器收到附带有Connection: Keep-Alive的请求时，它也会在响应头中添加一个同样的字段来使用Keep-Alive。这样一来，客户端和服务器之间的HTTP连接就会被保持，不会断开（超过Keep-Alive规定的时间，意外断电等情况除外），当客户端发送另外一个请求时，就使用这条已经建立的连接
 </p>
@@ -154,32 +123,26 @@ for the JavaScript code in this tag.
 
 </div>
 
-<div id=\"outline-container-2\" class=\"outline-3\">
-<h3 id=\"sec-2\"><span class=\"section-number-3\">2</span> HTTP/1.1</h3>
-<div class=\"outline-text-3\" id=\"text-2\">
+<div id=\"outline-container-1-2\" class=\"outline-3\">
+<h3 id=\"sec-1-2\"><span class=\"section-number-3\">1.2</span> HTTP/1.1</h3>
+<div class=\"outline-text-3\" id=\"text-1-2\">
 
-<p>在HTTP/1.1版本中，默认情况下所在HTTP1.1中所有连接都被保持，除非在请求头或响应头中指明要关闭：Connection: Close，所以在1.1版本中，Connection: Keep-Alive字段实际上已经意义不大了
+<p>在HTTP/1.1版本中，默认情况下所在HTTP1.1中所有连接都被保持，除非在请求头或响应头中指明要关闭： <b>Connection: Close</b> ，所以在1.1版本中，Connection: Keep-Alive字段实际上已经意义不大了
 </p>
 <p>
-现有的Apache/Nginx等都支持KeepAlive模式，在nginx中配置：
-</p>
-<p>
-    keepalive<sub>timeout</sub>  65;
-</p>
-<p>
-如果想关闭keepalive，只需将keepalive<sub>timeout设为0即可</sub>
+如果想关闭keepalive，在某些服务器上，只需将keepalive<sub>timeout设为0即可</sub>.
 </p>
 <p>
 resin/tomcat等容器也都是支持Keepalive的，JDK中的URL类同样默认支持keepalive
 </p>
 
-
-<p>
+<p> 
 要想真正理解keep-alive长连接模式，我们可以使用wireshark或tcpdump去抓包
 </p>
 <p>
 对于一个没有开启keep-alive的server，response会返回Connection: Close，然后tcp连接马上就关闭了.
 </p></div>
+</div>
 </div>
 </div>
 
@@ -192,4 +155,4 @@ resin/tomcat等容器也都是支持Keepalive的，JDK中的URL类同样默认�
 </div>
 </body>
 </html>
-") ("title" . "HTTP协议中的keep-alive") ("categories" "[随笔分类]C") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/25/2832672.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/25/2832672.html") ("postid" . 2832672) ("source") ("mt_excerpt" . "HTTP协议中的keep-alive") ("mt_keywords" . "HTTP keep-alive"))
+") ("title" . "HTTP协议中的keep-alive") ("categories" "[随笔分类]C") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/25/2832672.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/25/2832672.html") ("postid" . "2832672") ("source") ("userid" . "-2"))

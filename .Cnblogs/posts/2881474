@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>shell date</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"shell date\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2013-01-29 Tue\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"shell date\"/>
+<meta name=\"keywords\" content=\"date\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -150,8 +105,11 @@ for the JavaScript code in this tag.
 <div class=\"cnblogs_Highlighter\">
 <pre class=\"brush:bash\">
 
-  # date -d @1359442870
-  # date -d '1970-01-01 UTC 1359442870 seconds'
+ ## 在有些系统下可以这样用
+ date -d @1359442870
+
+ ## 大部分系统支持这种命令格式
+ date -d '1970-01-01 UTC 1359442870 seconds'
 
 </pre>
 </div>
@@ -161,6 +119,21 @@ for the JavaScript code in this tag.
 <p>
 1359442870 这个值表示从1970年1月1日0点0分到现在一共经过了多少秒。
 </p>
+
+<p>
+另外备注一个命令，查看某目录下文件大小从大到小前几个的命令
+</p>
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+# 按文件大小排序
+find / -exec stat -c \"%s %n\" {} \\; | sort -nr | head -n 10
+
+</pre>
+</div>
+
 
 
 
@@ -179,4 +152,4 @@ for the JavaScript code in this tag.
 </div>
 </body>
 </html>
-") ("title" . "shell date") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/01/29/2881474.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/01/29/2881474.html") ("postid" . 2881474) ("source") ("mt_excerpt" . "shell date") ("mt_keywords" . "date"))
+") ("title" . "shell date") ("categories" "[随笔分类]shell") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/01/29/2881474.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/01/29/2881474.html") ("postid" . "2881474") ("source") ("userid" . "-2"))

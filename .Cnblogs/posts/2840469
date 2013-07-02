@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>Emacs cnblogs 代码着色</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"Emacs cnblogs 代码着色\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2012-12-31 Mon\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"Emacs 下写cnblogs发表代码时的着色模板\"/>
+<meta name=\"keywords\" content=\"Emacs\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -131,6 +86,7 @@ for the JavaScript code in this tag.
 <li><a href=\"#sec-1\">1 在org-mode中增加一些html标签来适应cnblogs代码着色</a>
 <ul>
 <li><a href=\"#sec-1-1\">1.1 cpp</a></li>
+<li><a href=\"#sec-1-2\">1.2 bash</a></li>
 </ul>
 </li>
 </ul>
@@ -155,11 +111,74 @@ for the JavaScript code in this tag.
   <div class=\"cnblogs_Highlighter\">
   <pre class=\"brush:cpp\">
 
-  int main()
+  int main(int argc, char *argv[])
+  {
+    printf(\"hello world.\\n\");
+
+    return 0;
+  }
 
   </pre>
 
   </div>
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-1-2\" class=\"outline-3\">
+<h3 id=\"sec-1-2\"><span class=\"section-number-3\">1.2</span> bash</h3>
+<div class=\"outline-text-3\" id=\"text-1-2\">
+
+
+
+
+  <div class=\"cnblogs_Highlighter\">
+  <pre class=\"brush:bash\">
+
+    #!/bin/bash
+    X=3
+    Y=4
+    empty_string=\"\"
+    if [ $X -lt $Y ]  # is $X less than $Y ? 
+    then
+      echo \"\\$X=${X}, which is smaller than \\$Y=${Y}\"
+    fi
+     
+    if [ -n \"$empty_string\" ]; then
+      echo \"empty string is non_empty\"
+    fi
+     
+    if [ -e \"${HOME}/.fvwmrc\" ]; then             # test to see if ~/.fvwmrc exists
+      echo \"you have a .fvwmrc file\"
+      if [ -L \"${HOME}/.fvwmrc\" ]; then       # is it a symlink ?  
+          echo \"it's a symbolic link\"
+      elif [ -f \"${HOME}/.fvwmrc\" ]; then     # is it a regular file ?
+          echo \"it's a regular file\"
+      fi
+    else
+      echo \"you have no .fvwmrc file\"
+    fi
+
+  </pre>
+
+  </div>
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+#!/bin/bash
+if [ -n \"$hello\" ]; then
+  echo \"hello is not null.\"
+fi
+
+</pre>
+</div>
 
 </div>
 </div>
@@ -175,4 +194,4 @@ for the JavaScript code in this tag.
 </div>
 </body>
 </html>
-") ("title" . "Emacs cnblogs 代码着色") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/31/2840469.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/31/2840469.html") ("postid" . 2840469) ("source") ("mt_excerpt" . "Emacs 下写cnblogs发表代码时的着色模板") ("mt_keywords" . "Emacs"))
+") ("title" . "Emacs cnblogs 代码着色") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/31/2840469.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/31/2840469.html") ("postid" . "2840469") ("source") ("userid" . "-2"))

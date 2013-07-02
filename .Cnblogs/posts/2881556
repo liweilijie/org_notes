@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>delete file</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"delete file\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2013-01-29 Tue\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"delete file\"/>
+<meta name=\"keywords\" content=\"find rm\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -124,6 +124,28 @@ for the JavaScript code in this tag.
 <h1 class=\"title\">delete file</h1>
 
 
+
+<div id=\"table-of-contents\">
+<h2>Table of Contents</h2>
+<div id=\"text-table-of-contents\">
+<ul>
+<li><a href=\"#sec-1\">1 删除文件</a></li>
+<li><a href=\"#sec-2\">2 更高效地删除</a>
+<ul>
+<li><a href=\"#sec-2-1\">2.1 问题：</a></li>
+<li><a href=\"#sec-2-2\">2.2 原因：</a></li>
+<li><a href=\"#sec-2-3\">2.3 解决：</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id=\"outline-container-1\" class=\"outline-2\">
+<h2 id=\"sec-1\"><span class=\"section-number-2\">1</span> 删除文件</h2>
+<div class=\"outline-text-2\" id=\"text-1\">
+
+
 <p>
 今天一同事问我，有没有一个shell命令可以删除一个目录下除一类文件以外的所有文件。于是想了半天，后来还是投机取巧想了一个不是很好的。
 </p>
@@ -134,11 +156,11 @@ for the JavaScript code in this tag.
 <pre class=\"brush:bash\">
 
 ####利用find命令来删除，find命令的非运算是\"\\!\"来表示的
-# find ./ -type f \\! -name 'liwei*' -exec rm -rf {} \\;
+find ./ -type f \\! -name 'liwei*' -exec rm -rf {} \\;
 
 
 ####也可以用``来完成
-# rm -rf `ls | grep -v 'liwei*'`
+rm -rf `ls | grep -v 'liwei*'`
 
 </pre>
 </div>
@@ -147,7 +169,80 @@ for the JavaScript code in this tag.
 
 <p>
 find命令博大精深，要好好学习。
-</p></div>
+</p>
+
+</div>
+
+</div>
+
+<div id=\"outline-container-2\" class=\"outline-2\">
+<h2 id=\"sec-2\"><span class=\"section-number-2\">2</span> 更高效地删除</h2>
+<div class=\"outline-text-2\" id=\"text-2\">
+
+
+
+
+</div>
+
+<div id=\"outline-container-2-1\" class=\"outline-3\">
+<h3 id=\"sec-2-1\"><span class=\"section-number-3\">2.1</span> 问题：</h3>
+<div class=\"outline-text-3\" id=\"text-2-1\">
+
+
+<p>
+   在 <code>tmp</code> 目录下有大量包含 <code>select_*</code> 的临时文件，每天晚上 <code>2:30</code> 对一天前的文件进行清理。
+</p>
+<p>
+之前在 <b>crontab</b> 下增加如下脚本，但是发现脚本效率很低，每次执行时负载猛涨，影响到其他服务。
+</p>
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+find /tmp -name \"select_*\" -mtime +1 -exec rm -f {} \\;
+
+</pre>
+</div>
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-2-2\" class=\"outline-3\">
+<h3 id=\"sec-2-2\"><span class=\"section-number-3\">2.2</span> 原因：</h3>
+<div class=\"outline-text-3\" id=\"text-2-2\">
+
+<p>     目录下有大量文件，用 <b>find很耗资源</b> 。
+</p>
+</div>
+
+</div>
+
+<div id=\"outline-container-2-3\" class=\"outline-3\">
+<h3 id=\"sec-2-3\"><span class=\"section-number-3\">2.3</span> 解决：</h3>
+<div class=\"outline-text-3\" id=\"text-2-3\">
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+cd /tmp
+time=`date -d \"2 day ago” “+%b %d\"`
+ls -l|grep \"select\" |grep \"$time\"|awk ‘{print $NF}’|xargs rm -rf
+
+
+</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
 
 <div id=\"postamble\">
 <p class=\"date\">Date: 2013-01-29 Tue</p>
@@ -158,4 +253,4 @@ find命令博大精深，要好好学习。
 </div>
 </body>
 </html>
-") ("title" . "delete file") ("categories" "[随笔分类]shell") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/01/29/2881556.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/01/29/2881556.html") ("postid" . 2881556) ("source") ("mt_excerpt" . "删除文件") ("mt_keywords" . "find rm"))
+") ("title" . "delete file") ("categories" "[随笔分类]shell") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/01/29/2881556.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/01/29/2881556.html") ("postid" . "2881556") ("source") ("userid" . "-2"))

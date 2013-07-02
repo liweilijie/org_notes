@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>emacs-shell</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"emacs-shell\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2013-01-11 Fri\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"Emacs下shell模式\"/>
+<meta name=\"keywords\" content=\"Emacs\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -145,7 +100,7 @@ for the JavaScript code in this tag.
 
 
 <p>
-Location: <a href=\"http://www.ibm.com/developerworks/cn/linux/l-cn-emacs-shell/index.html\">http://www.ibm.com/developerworks/cn/linux/l-cn-emacs-shell/index.html</a>                                            
+Location: <a href=\"http://www.ibm.com/developerworks/cn/linux/l-cn-emacs-shell/index.html\">http://www.ibm.com/developerworks/cn/linux/l-cn-emacs-shell/index.html</a>
 </p>
 <p>
 当 Shell 遇见 Emacs &ndash; 大话 Emacs Shell Mode
@@ -184,7 +139,7 @@ comint.el进行收集，然后写入到用户所用的这个缓冲区当中来�
 <p>
 启动一个 Shell 缓冲区并且进入 shell mode 的过程非常简单。只需要在 Emacs 当中按下 Meta-x 组合键（在现在的键盘上通常是 Alt-x
 组合键），然后输入命令 shell 并回车，Emacs 就会启动一个 Shell 进程并且打开一个与之关联的 Shell 缓冲区。Shell 缓冲区的名字通
-常会是 *shell*。具体启动什么样的 Shell 进程通过 Emacs 配置文件里的 shell-file-name 变量指定，或者由用户的环境变量 SHELL 或 
+常会是 *shell*。具体启动什么样的 Shell 进程通过 Emacs 配置文件里的 shell-file-name 变量指定，或者由用户的环境变量 SHELL 或
 EMACSSHEL 来指定。通常的写法是
 </p>
 
@@ -257,45 +212,45 @@ export EMACSSHELL=/usr/bin/zsh
 <blockquote>
 
 <pre class=\"example\">
-   
-    +----------------------+                                                                                                 
-    |                      |                                                                                                 
-    |                      |                                                                                                 
-    +----------------------+                                                                                                 
-    |                      |                                                                                                 
-    |                      |                                                                                                 
-    +----------------------+                                                                                                 
-                                                                                                                        
-   按下 Ctrl-x 3组合键又可以把当前窗口切分成左右两个等分的窗口。这些切分可以一直进行下去。                                      
-                                                                                                                        
-    +----------+-----------+                                                                                                 
-    |          |           |                                                                                                 
-    |          |           |                                                                                                 
-    +----------+-----------+                                                                                                 
-    |                      |                                                                                                 
-    |                      |                                                                                                 
-    +----------------------+                                                                                                 
-                                                                                                                        
-   输入 Ctrl-x 0可以关闭当前光标所在的窗口。                                                                            
-                                                                                                                        
-    +----------------------+                                                                                                  
-    |                      |                                                                                                  
-    |                      |                                                                                                 
-    +----------------------+                                                                                                  
-    |                      |                                                                                                  
-    |                      |                                                                                                 
-    +----------------------+                                                                                                 
-                                                                                                                         
-   输入 Ctrl-x 1组合键则可以关闭其他所有窗口，并使当前光标所在的窗口成为最大的窗口。                                    
-                                                                                                                        
-    +----------------------+                                                                                                 
-    |                      |                                                                                                 
-    |                      |                                                                                                 
-    |                      |                                                                                                 
-    |                      |                                                                                                 
-    |                      |                                                                                                 
-    +----------------------+                                                                                                 
-                                                                                                                        
+
+    +----------------------+
+    |                      |
+    |                      |
+    +----------------------+
+    |                      |
+    |                      |
+    +----------------------+
+
+   按下 Ctrl-x 3组合键又可以把当前窗口切分成左右两个等分的窗口。这些切分可以一直进行下去。
+
+    +----------+-----------+
+    |          |           |
+    |          |           |
+    +----------+-----------+
+    |                      |
+    |                      |
+    +----------------------+
+
+   输入 Ctrl-x 0可以关闭当前光标所在的窗口。
+
+    +----------------------+
+    |                      |
+    |                      |
+    +----------------------+
+    |                      |
+    |                      |
+    +----------------------+
+
+   输入 Ctrl-x 1组合键则可以关闭其他所有窗口，并使当前光标所在的窗口成为最大的窗口。
+
+    +----------------------+
+    |                      |
+    |                      |
+    |                      |
+    |                      |
+    |                      |
+    +----------------------+
+
 
 
 
@@ -350,8 +305,8 @@ Emacs 里面，同一个缓冲区显示在两个独立的窗口里面完全不�
 
 
 <pre class=\"example\">
-(global-set-key (kbd \"C-c z\") 'shell)                                                                                     
-(global-set-key (kbd \"&lt;f10&gt;\") 'rename-buffer)                                                                             
+(global-set-key (kbd \"C-c z\") 'shell)
+(global-set-key (kbd \"&lt;f10&gt;\") 'rename-buffer)
 
 </pre>
 
@@ -380,15 +335,15 @@ Emacs 里面，同一个缓冲区显示在两个独立的窗口里面完全不�
 
 
 <pre class=\"example\">
-(when (fboundp 'winner-mode)                                                                                              
- (winner-mode)                                                                                                            
- (windmove-default-keybindings))                                                                                          
+(when (fboundp 'winner-mode)
+ (winner-mode)
+ (windmove-default-keybindings))
 
 </pre>
 
 
-<p>                                                                                                                           
-然后就可以使用 Ctrl-c ← （对，就是向左的箭头键）组合键，退回你的上一个窗口设置。                                           
+<p>
+然后就可以使用 Ctrl-c ← （对，就是向左的箭头键）组合键，退回你的上一个窗口设置。
 </p>
 
 <hr/>
@@ -425,17 +380,17 @@ Emacs 里面，同一个缓冲区显示在两个独立的窗口里面完全不�
 
 #!/bin/bash
 
- 2 : 2037 : 13:04:40 : ~                                                                                                   
- dove@bash-4.1$  cd /usr/share/emacs                                                                                       
-                                                                                                                           
- 2 : 2038 : 13:05:05 : /usr/share/emacs                                                                                    
- dove@bash-4.1$ ls -1                                                                                                      
- 23.1                                                                                                                      
- site-lisp                                                                                                                 
- site-lisp.tar                                                                                                             
-                                                                                                                           
- 2 : 2039 : 13:05:09 : /usr/share/emacs                                                                                    
- dove@bash-4.1$                                                                                                            
+ 2 : 2037 : 13:04:40 : ~
+ dove@bash-4.1$  cd /usr/share/emacs
+
+ 2 : 2038 : 13:05:05 : /usr/share/emacs
+ dove@bash-4.1$ ls -1
+ 23.1
+ site-lisp
+ site-lisp.tar
+
+ 2 : 2039 : 13:05:09 : /usr/share/emacs
+ dove@bash-4.1$
 
 
 </pre>
@@ -453,17 +408,17 @@ Emacs 里面，同一个缓冲区显示在两个独立的窗口里面完全不�
 
 #!/bin/bash
 
- 2 : 2037 : 13:04:40 : ~                                                                                                   
- dove@bash-4.1$  cd /usr/share/emacs                                                                                       
-                                                                                                                           
- 2 : 2038 : 13:05:05 : /usr/share/emacs                                                                                    
- dove@bash-4.1$ ls -1                                                                                                      
- ls -1 23.1                                                                                                                
- site-lisp                                                                                                                 
- site-lisp.tar                                                                                                             
-                                                                                                                           
- 2 : 2039 : 13:05:09 : /usr/share/emacs                                                                                    
- dove@bash-4.1$                                                                                                            
+ 2 : 2037 : 13:04:40 : ~
+ dove@bash-4.1$  cd /usr/share/emacs
+
+ 2 : 2038 : 13:05:05 : /usr/share/emacs
+ dove@bash-4.1$ ls -1
+ ls -1 23.1
+ site-lisp
+ site-lisp.tar
+
+ 2 : 2039 : 13:05:09 : /usr/share/emacs
+ dove@bash-4.1$
 
 
 </pre>
@@ -479,15 +434,15 @@ Emacs 里面，同一个缓冲区显示在两个独立的窗口里面完全不�
 <div class=\"cnblogs_Highlighter\">
 <pre class=\"brush:bash\">
 
- 2 : 2040 : 13:08:55 : /usr/share/emacs                                                                                    
- dove@bash-4.1$ ls -1 23.1                                                                                                 
- etc                                                                                                                       
- leim                                                                                                                      
- lisp                                                                                                                      
- site-lisp                                                                                                                 
-                                                                                                                           
- 2 : 2041 : 13:09:06 : /usr/share/emacs                                                                                    
- dove@bash-4.1$                                                                                                            
+ 2 : 2040 : 13:08:55 : /usr/share/emacs
+ dove@bash-4.1$ ls -1 23.1
+ etc
+ leim
+ lisp
+ site-lisp
+
+ 2 : 2041 : 13:09:06 : /usr/share/emacs
+ dove@bash-4.1$
 
 
 
@@ -512,24 +467,24 @@ Emacs 里面，同一个缓冲区显示在两个独立的窗口里面完全不�
 
 <div class=\"cnblogs_Highlighter\">
 <pre class=\"brush:bash\">
- 2 : 2044 : 15:16:17 : /usr/share/emacs/23.1                                                                               
- dove@bash-4.1$ ls -1                                                                                                      
- etc                                                                                                                       
- leim                                                                                                                      
- lisp                                                                                                                      
- cd ../site-lisp && !!                                                                                                     
-                                                                                                                           
- 2 : 2045 : 15:16:49 : /usr/share/emacs/23.1                                                                               
- dove@bash-4.1$ cd ../site-lisp && !!                                                                                      
- cd ../site-lisp && ls -1                                                                                                  
- auctex                                                                                                                    
- auctex.el                                                                                                                 
- autoconf                                                                                                                  
- autoconf-mode.el                                                                                                          
- autotest-mode.el                                                                                                          
- bashdb.el                                                                                                                 
- bashdb.elc                                                                                                                
- bbdb                                                                                                                      
+ 2 : 2044 : 15:16:17 : /usr/share/emacs/23.1
+ dove@bash-4.1$ ls -1
+ etc
+ leim
+ lisp
+ cd ../site-lisp && !!
+
+ 2 : 2045 : 15:16:49 : /usr/share/emacs/23.1
+ dove@bash-4.1$ cd ../site-lisp && !!
+ cd ../site-lisp && ls -1
+ auctex
+ auctex.el
+ autoconf
+ autoconf-mode.el
+ autotest-mode.el
+ bashdb.el
+ bashdb.elc
+ bbdb
 
 </pre>
 </div>
@@ -544,32 +499,32 @@ Emacs 里面，同一个缓冲区显示在两个独立的窗口里面完全不�
 <div class=\"cnblogs_Highlighter\">
 <pre class=\"brush:bash\">
 
- 2 : 2045 : 15:16:49 : /usr/share/emacs/23.1                                                                               
- dove@bash-4.1$ cd ../site-lisp && !!                                                                                      
- cd ../site-lisp && ls -1                                                                                                  
- auctex                                                                                                                    
- head auctex.el                                                                                                            
- autoconf                                                                                                                  
- autoconf-mode.el                                                                                                          
- autotest-mode.el                                                                                                          
- bashdb.el                                                                                                                 
- bashdb.elc                                                                                                                
- bbdb                                                                                                                      
-                                                                                                                           
- 2 : 2046 : 15:17:16 : /usr/share/emacs/site-lisp                                                                          
- dove@bash-4.1$ head auctex.el                                                                                             
- ;;; auctex.el                                                                                                             
- ;;                                                                                                                        
- ;; This can be used for starting up AUCTeX.  The following somewhat                                                       
- ;; strange trick causes tex-site.el to be loaded in a way that can be                                                     
- ;; safely undone using (unload-feature 'tex-site).                                                                        
- ;;                                                                                                                        
- (autoload 'TeX-load-hack                                                                                                  
-  (expand-file-name \"tex-site.el\" (file-name-directory load-file-name)))                                                   
- (TeX-load-hack)                                                                                                           
+ 2 : 2045 : 15:16:49 : /usr/share/emacs/23.1
+ dove@bash-4.1$ cd ../site-lisp && !!
+ cd ../site-lisp && ls -1
+ auctex
+ head auctex.el
+ autoconf
+ autoconf-mode.el
+ autotest-mode.el
+ bashdb.el
+ bashdb.elc
+ bbdb
 
- 2 : 2047 : 15:23:53 : /usr/share/emacs/site-lisp                                                                          
- dove@bash-4.1$                                                                                                            
+ 2 : 2046 : 15:17:16 : /usr/share/emacs/site-lisp
+ dove@bash-4.1$ head auctex.el
+ ;;; auctex.el
+ ;;
+ ;; This can be used for starting up AUCTeX.  The following somewhat
+ ;; strange trick causes tex-site.el to be loaded in a way that can be
+ ;; safely undone using (unload-feature 'tex-site).
+ ;;
+ (autoload 'TeX-load-hack
+  (expand-file-name \"tex-site.el\" (file-name-directory load-file-name)))
+ (TeX-load-hack)
+
+ 2 : 2047 : 15:23:53 : /usr/share/emacs/site-lisp
+ dove@bash-4.1$
 
 </pre>
 </div>
@@ -591,7 +546,7 @@ Emacs 里面，同一个缓冲区显示在两个独立的窗口里面完全不�
 
 <p>
 如果你登录在一台远程机器上工作，cat 一个文件后，需要把这个文件的内容保存到本地来，那么完全不需要启动一个 FTP session 去下载
-这个文件。你只需要选中缓冲区里面的文件内容，按下 Meta-x 组合键，输入 write-region 命令就可以把选中的内容保存在本地文件当中
+这个文件。你只需要选中缓冲区里面的文件内容，按下 <b>Meta-x</b> 组合键，输入 <b>write-region</b> 命令就可以把选中的内容保存在本地文件当中
 。
 </p>
 </div>
@@ -607,4 +562,4 @@ Emacs 里面，同一个缓冲区显示在两个独立的窗口里面完全不�
 </div>
 </body>
 </html>
-") ("title" . "emacs-shell") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/01/11/2856208.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/01/11/2856208.html") ("postid" . 2856208) ("source") ("mt_excerpt" . "Emacs下shell模式") ("mt_keywords" . "Emacs"))
+") ("title" . "emacs-shell") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/01/11/2856208.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/01/11/2856208.html") ("postid" . "2856208") ("source") ("userid" . "-2"))

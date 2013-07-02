@@ -4,14 +4,14 @@
                \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
-<title>vi ESC 替代键</title>
-
-
-
-
-
-
-
+<title>vi ESC 替代键 Ctrl+[</title>
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"vi ESC 替代键 Ctrl+[\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2013-03-28 Thu\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"vi 中替代 ESC 的键 Ctrl+[\"/>
+<meta name=\"keywords\" content=\"vi\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -121,27 +121,43 @@ for the JavaScript code in this tag.
 </div>
 
 <div id=\"content\">
-<h1 class=\"title\">vi ESC 替代键</h1>
+<h1 class=\"title\">vi ESC 替代键 Ctrl+[</h1>
 
 
 <div id=\"table-of-contents\">
 <h2>Table of Contents</h2>
 <div id=\"text-table-of-contents\">
 <ul>
-<li><a href=\"#sec-1\">1 vi ESC 替代键</a></li>
+<li><a href=\"#sec-1\">1 vi ESC 替代键 Ctrl+[</a></li>
 </ul>
 </div>
 </div>
 
 <div id=\"outline-container-1\" class=\"outline-2\">
-<h2 id=\"sec-1\"><span class=\"section-number-2\">1</span> vi ESC 替代键</h2>
+<h2 id=\"sec-1\"><span class=\"section-number-2\">1</span> vi ESC 替代键 Ctrl+[</h2>
 <div class=\"outline-text-2\" id=\"text-1\">
 
 
 <p>
-   在利用QQ远程处理故障的利用vi修改文件内容时间，你一定会遇到这样的一个问题：
+   在利用QQ远程处理故障的时候，当人们利用vi修改文件内容时，人们一定会遇到这样的一个问题：
+</p>
+<p>
    按 <b>ESC</b> 键时 自己从远程环境中退了出来。这时候可以按 <b>Ctrl+[</b> 来代替 <b>ESC</b> 。
-</p></div>
+</p>
+
+<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"hsides\">
+<colgroup><col class=\"left\" /><col class=\"left\" />
+</colgroup>
+<thead>
+<tr><th scope=\"col\" class=\"left\">vi中最常用的键</th><th scope=\"col\" class=\"left\">可以替换的键</th></tr>
+</thead>
+<tbody>
+<tr><td class=\"left\">ESC</td><td class=\"left\">Ctrl+[</td></tr>
+</tbody>
+</table>
+
+
+</div>
 </div>
 </div>
 
@@ -154,4 +170,4 @@ for the JavaScript code in this tag.
 </div>
 </body>
 </html>
-") ("title" . "vi ESC 替代键") ("categories" "[随笔分类]vim") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/03/28/2986206.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/03/28/2986206.html") ("postid" . 2986206) ("source") ("mt_excerpt" . "vi 中替代 ESC 的键") ("mt_keywords" . "vi"))
+") ("title" . "vi ESC 替代键 Ctrl+[") ("categories" "[随笔分类]vim") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/03/28/2986206.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/03/28/2986206.html") ("postid" . "2986206") ("source") ("userid" . "-2"))

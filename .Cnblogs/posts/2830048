@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>用emacs写cnblogs博客。</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"用emacs写cnblogs博客。\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2012-12-23\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"study emacs cnblogs\"/>
+<meta name=\"keywords\" content=\"Emacs, org-mode, cnblogs\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -217,6 +172,7 @@ for the JavaScript code in this tag.
 <tr><td class=\"left\">C-c c r</td><td class=\"left\">cnblogs-get-recent-posts</td><td class=\"left\">获取最近N篇博文</td><td class=\"left\">一般只在配置扩展时使用</td></tr>
 <tr><td class=\"left\">C-c c s</td><td class=\"left\">cnblogs-save-draft</td><td class=\"left\">将草稿保存至服务器</td><td class=\"left\">不知道有什么实际用途</td></tr>
 <tr><td class=\"left\">C-c c u</td><td class=\"left\">cnblogs-get-users-blogs</td><td class=\"left\">获取用户信息</td><td class=\"left\">对用户没什么用处</td></tr>
+<tr><td class=\"left\">C-c C-e t</td><td class=\"left\"></td><td class=\"left\">插入模块。</td><td class=\"left\"></td></tr>
 </tbody>
 </table>
 
@@ -285,7 +241,94 @@ org-mode中有以下几种：
 </p>
 <p>
 有时候再弄吧。最近开始由vim转向emacs了，原因很简单-扩展性。
-</p></div>
+</p>
+</div>
+
+</div>
+
+<div id=\"outline-container-7\" class=\"outline-2\">
+<h2 id=\"sec-7\"><span class=\"section-number-2\">7</span> 上传图片方法:</h2>
+<div class=\"outline-text-2\" id=\"text-7\">
+
+<blockquote>
+
+
+<pre class=\"example\">
+# 下面定义插入图片的标题与样式
+   ,#+CAPTION: github中的org文件
+   ,#+ATTR_HTML: width=800
+    [[file:github.png]]
+</pre>
+
+
+
+
+</blockquote>
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-8\" class=\"outline-2\">
+<h2 id=\"sec-8\"><span class=\"section-number-2\">8</span> 特别注意同步的问题</h2>
+<div class=\"outline-text-2\" id=\"text-8\">
+
+
+<p>  
+  在多台电脑上同步时应该注意如下事项：
+</p><ul>
+<li>创建的文件目录一定要一致。一定要与.Cnblogs/entry-list-file内容里面的目录一致。
+</li>
+<li>修改cnblogs.el脚本里面的.Cnblogs路径，将其路径设置在你的github仓库里面。
+</li>
+<li>每次同步之后记得push到github上去进行同步。
+</li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-9\" class=\"outline-2\">
+<h2 id=\"sec-9\"><span class=\"section-number-2\">9</span> 版本问题</h2>
+<div class=\"outline-text-2\" id=\"text-9\">
+
+<p>  注意在使用时最新版本可能在发布出去的表格显示上有一些问题。我用的是Emacs23.2 + org7.9.2没有问题。而用Emacs24.2 + org7.9.2有一些排版上的问题。
+</p>
+
+</div>
+
+</div>
+
+<div id=\"outline-container-10\" class=\"outline-2\">
+<h2 id=\"sec-10\"><span class=\"section-number-2\">10</span> 代码高亮效果测试</h2>
+<div class=\"outline-text-2\" id=\"text-10\">
+
+
+  <div class=\"cnblogs_Highlighter\">
+  <pre class=\"brush:bash\">
+
+[root@ ~] cat
+</pre>
+</div>
+
+</div>
+
+</div>
+
+<div id=\"outline-container-11\" class=\"outline-2\">
+<h2 id=\"sec-11\"><span class=\"section-number-2\">11</span> 最近截图github上仓库情况</h2>
+<div class=\"outline-text-2\" id=\"text-11\">
+
+<p>这里面保存我的一些笔记：
+  <img src=\"http://images.cnitblog.com/blog/482532/201212/31185153-ad212f14a99c4bf985772f98f9a8a9f9.png\" width=800 alt=\"http://images.cnitblog.com/blog/482532/201212/31185154-56b7c10d6988477c83dc38978315ff3a.png\" />
+</p>
+
+
+</div>
 </div>
 </div>
 
@@ -298,4 +341,4 @@ org-mode中有以下几种：
 </div>
 </body>
 </html>
-") ("title" . "用emacs写cnblogs博客。") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/23/2830048.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/23/2830048.html") ("postid" . 2830048) ("source") ("mt_excerpt" . "study emacs cnblogs") ("mt_keywords" . "Emacs,org-mode,cnblogs"))
+") ("title" . "用emacs写cnblogs博客。") ("categories" "[随笔分类]Emacs") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2012/12/23/2830048.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2012/12/23/2830048.html") ("postid" . "2830048") ("source") ("userid" . "-2"))

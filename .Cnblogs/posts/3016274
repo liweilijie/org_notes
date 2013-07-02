@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>有关重定向</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"有关重定向\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2013-04-12 Fri\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"有关重定向操作\"/>
+<meta name=\"keywords\" content=\"shell dup\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -129,7 +129,15 @@ for the JavaScript code in this tag.
 <div id=\"text-table-of-contents\">
 <ul>
 <li><a href=\"#sec-1\">1 文件描述符处理</a></li>
-<li><a href=\"#sec-2\">2 1&gt; result* 里的 <b>1</b> 其实没有必要，供输出重定向的默认文件描述符是标准输出：也就是文件描述符1.</a></li>
+<li><a href=\"#sec-2\">2 exec 改变i/o</a></li>
+<li><a href=\"#sec-3\">3 Using exec</a>
+<ul>
+<li><a href=\"#sec-3-1\">3.1 Example 16-1. Redirecting stdin using exec</a></li>
+<li><a href=\"#sec-3-2\">3.2 Example 16-2. Redirecting stdout using exec</a></li>
+<li><a href=\"#sec-3-3\">3.3 Example 16-3. Redirecting both stdin and stdout in the same script with exec</a></li>
+<li><a href=\"#sec-3-4\">3.4 Example 16-4. Avoiding a subshell</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -158,15 +166,9 @@ make 1> results 2> /dev/null
 </pre>
 </div>
 
-</div>
-
-</div>
-
-<div id=\"outline-container-2\" class=\"outline-2\">
-<h2 id=\"sec-2\"><span class=\"section-number-2\">2</span> 1&gt; result* 里的 <b>1</b> 其实没有必要，供输出重定向的默认文件描述符是标准输出：也就是文件描述符1.</h2>
-<div class=\"outline-text-2\" id=\"text-2\">
-
-
+<p>
+注意： <b>1&gt; result</b> 里的 <b>1</b> 其实没有必要，供输出重定向的默认文件描述符是标准输出：也就是 <b>文件描述符1</b> .
+</p>
 <p>
 更进一步：
 </p>
@@ -191,6 +193,305 @@ make > result 2>&1
 </p>
 
 </div>
+
+</div>
+
+<div id=\"outline-container-2\" class=\"outline-2\">
+<h2 id=\"sec-2\"><span class=\"section-number-2\">2</span> exec 改变i/o</h2>
+<div class=\"outline-text-2\" id=\"text-2\">
+
+
+<p>
+在使用exec时，如果只有I/O重定向而没有任何参数时，exec会改变shell的文件描述符：
+</p>
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+exec 2> /tmp/$0.log #重定向shell本身的标准错误输出
+
+exec 3< /some/file  #打开新文件描述符3
+...
+read name rank serno <&3 #从该文件读取
+
+</pre>
+</div>
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-3\" class=\"outline-2\">
+<h2 id=\"sec-3\"><span class=\"section-number-2\">3</span> Using exec</h2>
+<div class=\"outline-text-2\" id=\"text-3\">
+
+
+<p>
+An exec &lt;filename command redirects stdin to a file. From that point on, all stdin comes from
+that file, rather than its normal source (usually keyboard input). This provides a method of
+reading a file line by line and possibly parsing each line of input using sed and/or awk.
+</p>
+
+</div>
+
+<div id=\"outline-container-3-1\" class=\"outline-3\">
+<h3 id=\"sec-3-1\"><span class=\"section-number-3\">3.1</span> Example 16-1. Redirecting stdin using exec</h3>
+<div class=\"outline-text-3\" id=\"text-3-1\">
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+#!/bin/bash
+# Redirecting stdin using 'exec'.
+
+
+exec 6<&0          # Link file descriptor #6 with stdin.
+                   # Saves stdin.
+
+exec < data-file   # stdin replaced by file \"data-file\"
+
+read a1            # Reads first line of file \"data-file\".
+read a2            # Reads second line of file \"data-file.\"
+
+echo
+echo \"Following lines read from file.\"
+echo \"-------------------------------\"
+echo $a1
+echo $a2
+
+echo; echo; echo
+
+exec 0<&6 6<&-
+#  Now restore stdin from fd #6, where it had been saved,
+#+ and close fd #6 ( 6<&- ) to free it for other processes to use.
+#
+# <&6 6<&-    also works.
+
+echo -n \"Enter data  \"
+read b1  # Now \"read\" functions as expected, reading from normal stdin.
+echo \"Input read from stdin.\"
+echo \"----------------------\"
+echo \"b1 = $b1\"
+
+echo
+
+exit 0
+
+</pre>
+</div>
+
+
+
+<p>
+Similarly, an exec &gt;filename command redirects stdout to a designated file. 
+</p>
+<p>
+This sends all command output that would normally go to stdout to that file.
+</p>
+
+</div>
+
+</div>
+
+<div id=\"outline-container-3-2\" class=\"outline-3\">
+<h3 id=\"sec-3-2\"><span class=\"section-number-3\">3.2</span> Example 16-2. Redirecting stdout using exec</h3>
+<div class=\"outline-text-3\" id=\"text-3-2\">
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+#!/bin/bash
+# reassign-stdout.sh
+
+LOGFILE=logfile.txt
+
+exec 6>&1           # Link file descriptor #6 with stdout.
+                    # Saves stdout.
+
+exec > $LOGFILE     # stdout replaced with file \"logfile.txt\".
+
+# ----------------------------------------------------------- #
+# All output from commands in this block sent to file $LOGFILE.
+
+echo -n \"Logfile: \"
+date
+echo \"-------------------------------------\"
+echo
+
+echo \"Output of \\\"ls -al\\\" command\"
+echo
+ls -al
+echo; echo
+echo \"Output of \\\"df\\\" command\"
+echo
+df
+
+# ----------------------------------------------------------- #
+
+exec 1>&6 6>&-      # Restore stdout and close file descriptor #6.
+
+echo
+echo \"== stdout now restored to default == \"
+echo
+ls -al
+echo
+
+exit 0
+
+
+</pre>
+</div>
+
+
+
+</div>
+
+</div>
+
+<div id=\"outline-container-3-3\" class=\"outline-3\">
+<h3 id=\"sec-3-3\"><span class=\"section-number-3\">3.3</span> Example 16-3. Redirecting both stdin and stdout in the same script with exec</h3>
+<div class=\"outline-text-3\" id=\"text-3-3\">
+
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+#!/bin/bash
+# upperconv.sh
+# Converts a specified input file to uppercase.
+
+E_FILE_ACCESS=70
+E_WRONG_ARGS=71
+
+if [ ! -r \"$1\" ]     # Is specified input file readable?
+then
+  echo \"Can't read from input file!\"
+  echo \"Usage: $0 input-file output-file\"
+  exit $E_FILE_ACCESS
+fi                   #  Will exit with same error
+                     #+ even if input file ($1) not specified (why?).
+
+if [ -z \"$2\" ]
+then
+  echo \"Need to specify output file.\"
+  echo \"Usage: $0 input-file output-file\"
+  exit $E_WRONG_ARGS
+fi
+
+exec 4<&0
+exec < $1            # Will read from input file.
+
+exec 7>&1
+exec > $2            # Will write to output file.
+                     # Assumes output file writable (add check?).
+
+# -----------------------------------------------
+    cat - | tr a-z A-Z   # Uppercase conversion.
+#   ^^^^^                # Reads from stdin.
+#           ^^^^^^^^^^   # Writes to stdout.
+# However, both stdin and stdout were redirected.
+# -----------------------------------------------
+
+exec 1>&7 7>&-       # Restore stout.
+exec 0<&4 4<&-       # Restore stdin.
+
+# After restoration, the following line prints to stdout as expected.
+echo \"File \\\"$1\\\" written to \\\"$2\\\" as uppercase conversion.\"
+
+exit 0
+
+</pre>
+</div>
+
+
+
+<p>
+I/O redirection is a clever way of avoiding the dreaded inaccessible variables within a
+subshell problem.
+</p>
+</div>
+
+</div>
+
+<div id=\"outline-container-3-4\" class=\"outline-3\">
+<h3 id=\"sec-3-4\"><span class=\"section-number-3\">3.4</span> Example 16-4. Avoiding a subshell</h3>
+<div class=\"outline-text-3\" id=\"text-3-4\">
+
+
+
+
+<div class=\"cnblogs_Highlighter\">
+<pre class=\"brush:bash\">
+
+#!/bin/bash
+# avoid-subshell.sh
+# Suggested by Matthew Walker.
+
+Lines=0
+
+echo
+
+cat myfile.txt | while read line;
+                 do {
+                   echo $line
+                   (( Lines++ ));  #  Incremented values of this variable
+                                   #+ inaccessible outside loop.
+                                   #  Subshell problem.
+                 }
+                 done
+
+echo \"Number of lines read = $Lines\"     # 0
+                                         # Wrong!
+
+echo \"------------------------\"
+
+exec 3<> myfile.txt
+while read line <&3
+do {
+  echo \"$line\"
+  (( Lines++ ));                   #  Incremented values of this variable
+                                   #+ accessible outside loop.
+                                   #  No subshell, no problem.
+}
+done
+exec 3>&-
+
+echo \"Number of lines read = $Lines\"     # 8
+
+echo
+
+exit 0
+
+# Lines below not seen by script.
+
+$ cat myfile.txt
+
+Line 1.
+Line 2.
+Line 3.
+Line 4.
+Line 5.
+Line 6.
+Line 7.
+Line 8.
+
+</pre>
+</div>
+
+
+<p>
+from <a href=\"http://www.linuxtopia.org/online_books/advanced_bash_scripting_guide/x13082.html\">http://www.linuxtopia.org/online_books/advanced_bash_scripting_guide/x13082.html</a>
+</p></div>
+</div>
 </div>
 </div>
 
@@ -203,4 +504,4 @@ make > result 2>&1
 </div>
 </body>
 </html>
-") ("title" . "有关重定向") ("categories" "[随笔分类]shell") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/04/12/3016274.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/04/12/3016274.html") ("postid" . 3016274) ("source") ("mt_excerpt" . "有关重定向操作") ("mt_keywords" . "shell dup"))
+") ("title" . "有关重定向") ("categories" "[随笔分类]shell") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/04/12/3016274.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/04/12/3016274.html") ("postid" . "3016274") ("source") ("userid" . "-2"))

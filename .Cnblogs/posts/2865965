@@ -5,13 +5,13 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">
 <head>
 <title>ftp by libcurl</title>
-
-
-
-
-
-
-
+<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"/>
+<meta name=\"title\" content=\"ftp by libcurl\"/>
+<meta name=\"generator\" content=\"Org-mode\"/>
+<meta name=\"generated\" content=\"2013-01-18 FRI\"/>
+<meta name=\"author\" content=\"liweilijie\"/>
+<meta name=\"description\" content=\"ftp by libcurl\"/>
+<meta name=\"keywords\" content=\"ftp\"/>
 <style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
   html { font-family: Times, serif; font-size: 12pt; }
@@ -61,52 +61,7 @@
                                  font-weight:bold; }
   /*]]>*/-->
 </style>
-<script type=\"text/javascript\">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = \"code-highlighted\";
-     elem.className   = \"code-highlighted\";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 
 </head>
 <body>
@@ -213,42 +168,42 @@ FTP是仅基于TCP的服务，不支持UDP。 与众不同的是FTP使用2个端
     端口而不是服务器的。当我们用被动FTP时我们会看到相反的现象。我们再来关注PORT命令的格式。就象你在下面的例子看到的一样，它
     是一个由六个被逗号隔开的数字组成的序列。前四个表示IP地址，后两个组成了用于数据连接的端口号。用第五个数乘以256再加上第六
     个数就得到了实际的端口号。下面例子中端口号就是( (14*256) + 178) = 3762。我们可以用netstat来验证这个端口信息。
-</p></li>
+</p>
+
+
+        <div class=\"cnblogs_Highlighter\">
+        <pre class=\"brush:bash\">
+
+            testbox1: {/home/p-t/slacker/public_html} % ftp -d testbox2
+            Connected to testbox2.slacksite.com.
+            220 testbox2.slacksite.com FTP server ready.
+            Name (testbox2:slacker): slacker
+            ---> USER slacker
+            331 Password required for slacker.
+            Password: TmpPass
+            ---> PASS XXXX
+            230 User slacker logged in.
+            ---> SYST
+            215 UNIX Type: L8
+            Remote system type is UNIX.
+            Using binary mode to transfer files.
+            ftp> ls
+            ftp: setsockopt (ignored): Permission denied
+            ---> PORT 192,168,150,80,14,178
+            200 PORT command successful.
+            ---> LIST
+            150 Opening ASCII mode data connection for file list.
+            drwx------   3 slacker    users         104 Jul 27 01:45 public_html
+            226 Transfer complete.
+            ftp> quit
+            ---> QUIT
+            221 Goodbye.
+
+        </pre>
+        </div>
+</li>
 </ol>
 
-
-
-
-<div class=\"cnblogs_Highlighter\">
-<pre class=\"brush:bash\">
-
-    testbox1: {/home/p-t/slacker/public_html} % ftp -d testbox2
-    Connected to testbox2.slacksite.com.
-    220 testbox2.slacksite.com FTP server ready.
-    Name (testbox2:slacker): slacker
-    ---> USER slacker
-    331 Password required for slacker.
-    Password: TmpPass
-    ---> PASS XXXX
-    230 User slacker logged in.
-    ---> SYST
-    215 UNIX Type: L8
-    Remote system type is UNIX.
-    Using binary mode to transfer files.
-    ftp> ls
-    ftp: setsockopt (ignored): Permission denied
-    ---> PORT 192,168,150,80,14,178
-    200 PORT command successful.
-    ---> LIST
-    150 Opening ASCII mode data connection for file list.
-    drwx------   3 slacker    users         104 Jul 27 01:45 public_html
-    226 Transfer complete.
-    ftp> quit
-    ---> QUIT
-    221 Goodbye.
-
-</pre>
-</div>
 
 
 </div>
@@ -301,7 +256,7 @@ FTP是仅基于TCP的服务，不支持UDP。 与众不同的是FTP使用2个端
         ，Solaris提供的FTP命令行工具就不支持被动模式，需要第三方的FTP客户端，比如ncftp。
 </p>
 <p>
-        随着WWW的广泛流行，许多人习惯用web浏览器作为FTP客户端。大多数浏览器只在访问<a href=\"ftp://这样的URL时才支持被动模式。这到底\">ftp://这样的URL时才支持被动模式。这到底</a>
+        随着WWW的广泛流行，许多人习惯用web浏览器作为FTP客户端。大多数浏览器只在访问 *<a href=\"ftp://\">ftp://</a>* 这样的URL时才支持被动模式。这到底
         是好还是坏取决于服务器和防火墙的配置。
 </p>
 <p>
@@ -324,38 +279,38 @@ FTP是仅基于TCP的服务，不支持UDP。 与众不同的是FTP使用2个端
 
 
 
-<div class=\"cnblogs_Highlighter\">
-<pre class=\"brush:bash\">
+             <div class=\"cnblogs_Highlighter\">
+             <pre class=\"brush:bash\">
 
-        testbox1: {/home/p-t/slacker/public_html} % ftp -d testbox2
-        Connected to testbox2.slacksite.com.
-        220 testbox2.slacksite.com FTP server ready.
-        Name (testbox2:slacker): slacker
-        ---> USER slacker
-        331 Password required for slacker.
-        Password: TmpPass
-        ---> PASS XXXX
-        230 User slacker logged in.
-        ---> SYST
-        215 UNIX Type: L8
-        Remote system type is UNIX.
-        Using binary mode to transfer files.
-        ftp> passive
-        Passive mode on.
-        ftp> ls
-        ftp: setsockopt (ignored): Permission denied
-        ---> PASV
-        227 Entering Passive Mode (192,168,150,90,195,149).
-        ---> LIST
-        150 Opening ASCII mode data connection for file list
-        drwx------   3 slacker    users         104 Jul 27 01:45 public_html
-        226 Transfer complete.
-        ftp>; quit
-        ---> QUIT
-        221 Goodbye.
+                     testbox1: {/home/p-t/slacker/public_html} % ftp -d testbox2
+                     Connected to testbox2.slacksite.com.
+                     220 testbox2.slacksite.com FTP server ready.
+                     Name (testbox2:slacker): slacker
+                     ---> USER slacker
+                     331 Password required for slacker.
+                     Password: TmpPass
+                     ---> PASS XXXX
+                     230 User slacker logged in.
+                     ---> SYST
+                     215 UNIX Type: L8
+                     Remote system type is UNIX.
+                     Using binary mode to transfer files.
+                     ftp> passive
+                     Passive mode on.
+                     ftp> ls
+                     ftp: setsockopt (ignored): Permission denied
+                     ---> PASV
+                     227 Entering Passive Mode (192,168,150,90,195,149).
+                     ---> LIST
+                     150 Opening ASCII mode data connection for file list
+                     drwx------   3 slacker    users         104 Jul 27 01:45 public_html
+                     226 Transfer complete.
+                     ftp>; quit
+                     ---> QUIT
+                     221 Goodbye.
 
-</pre>
-</div>
+             </pre>
+             </div>
 
 
 
@@ -432,4 +387,4 @@ FTP是仅基于TCP的服务，不支持UDP。 与众不同的是FTP使用2个端
 </div>
 </body>
 </html>
-") ("title" . "ftp by libcurl") ("categories" "[随笔分类]C") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/01/18/2865965.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/01/18/2865965.html") ("postid" . 2865965) ("source") ("mt_excerpt" . "ftp by libcurl") ("mt_keywords" . "ftp"))
+") ("title" . "ftp by libcurl") ("categories" "[随笔分类]C") ("enclosure" ("length" . 0)) ("link" . "http://www.cnblogs.com/liweilijie/archive/2013/01/18/2865965.html") ("permalink" . "http://www.cnblogs.com/liweilijie/archive/2013/01/18/2865965.html") ("postid" . "2865965") ("source") ("userid" . "-2"))
