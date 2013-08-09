@@ -1,0 +1,28 @@
+#+TITLE:     25岁
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-07-08 Mon
+#+DESCRIPTION: 25岁
+#+KEYWORDS: life
+#+CATEGORIES: life
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+* 25岁
+   
+  25岁，在我心里是一个很奇怪的年龄。什么都不太顺利！感觉很不爽啊。
+
+
+* 20130708
+  今天开始自己需要有所改变，不然时不待我，机不待我啊！
+   1, 放弃clash of clans，最近跟同事玩这个游戏上瘾了。很难想像一个25岁的自己虽然还喜欢玩这类游戏。自己不再玩了。
+   2, 回家少看电影，电视剧了。多休息多锻炼身体。多学点知识。
+   3, 计划一下未来30岁之前自己应该做的一些事情。

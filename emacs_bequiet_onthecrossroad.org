@@ -1,0 +1,34 @@
+#+TITLE:     Be quiet
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-08-02 Fri
+#+DESCRIPTION: 只是想静下心来。
+#+KEYWORDS: life
+#+CATEGORIES: life
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+* Be quiet
+
+  最近心情有点不太好，各方面原因。主要是25岁是个转折点。太多的转折点了。让我有些躁动与不安！
+  
+  1, 来公司三年了，合同满期了。工资不如意！
+  
+  2, 家里两位女生，她们每周需要进货，搬货。体力劳动啊。每周都指望着我能不加班，家里只有我一个劳力！可干我们这一行的，有很多该死的潜规则。有事没事都得加班。
+
+  3, 在公司学到的东西也越来越少。自我提升有点困难！
+ 
+  4, 这个年龄感觉有点老了。干这一行朋友也比较少。除了领导就是同事。圈子太窄。
+ 
+  5, 公司感觉很压抑！不像以前了！
+
+
+  我需要静下心来，找回自己。找到方向。

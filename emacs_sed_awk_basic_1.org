@@ -16,15 +16,15 @@
 #+XSLT:
 #
 * sed awk 基础知识
- 
+
 *awk* 起源于 *sed* 和 *grep* , 而不是ed
 
 但是ed很古老也很经典.这里特意地学习一下 *ed* 编辑器.
 
 
-** ed 
+** ed
 
-1. ed 的替换命令是 *s* : 
+1. ed 的替换命令是 *s* :
     #+BEGIN_HTML
     <div class="cnblogs_Highlighter">
     <pre class="brush:bash">
@@ -124,7 +124,7 @@ sed -f sedsrc list
 </pre>
 </div>
 #+END_HTML
-   
+
 *** 保存输出
 #+BEGIN_HTML
 <div class="cnblogs_Highlighter">
@@ -136,7 +136,7 @@ sed -f sedsrc list > newlist
 </pre>
 </div>
 #+END_HTML
-    
+
 *** 防止输入行的自动显示
 sed的默认操作是输出每个输入行, *-n* 选项可以阻止自动输出,当指定该选项时,每个要生成输出的指令都必须包含打印命令 *p* .
 
@@ -207,5 +207,76 @@ sed -f nameState list | awk -F, '{print $4 ", " $0}'
 </pre>
 </div>
 #+END_HTML
-   
+
+
+
+
+* 平时常用
+
+** 去掉 ^M
+
+   为什么去掉它，因为有的同事在windows下开发代码，跟我合并代码时就会存在这种问题，于是用一条sed命令即可搞定.
+
+   #+BEGIN_HTML
+   <div class="cnblogs_Highlighter">
+   <pre class="brush:bash">
+
+   #!/bin/bash
+   sed -i -e 's/^M//g' *.[ch]
+
+   </pre>
+   </div>
+   #+END_HTML
+
+
+
+    Type the following command (to get ^M type CTRL+V followed by CTRL+M):
+
+    #+BEGIN_HTML
+    <div class="cnblogs_Highlighter">
+    <pre class="brush:bash">
+
+    #!/bin/bash
+    sed -e '/^M/d' input
+    sed -e '/^M/d' input > output
+    # gnu sed
+    sed -i -e '/^M/d' input
+
+    #The substitute command can be used as follows too:
+
+    sed -e 's/^M//g' input
+    sed -e 's/^M//g' input > output
+    # gnu sed
+    sed -i -e 's/^M//g' input
+    # replace line feed with FOO
+    sed -i -e 's/^M/FOO/g' input
+
+    #tested with GNU sed
+    sed -e '/^M/d' -i -r $(find . -type f)
+
+    </pre>
+    </div>
+    #+END_HTML
+
+
+** 在文件的最后插入一行
+
+    #+BEGIN_HTML
+    <div class="cnblogs_Highlighter">
+    <pre class="brush:bash">
+
+    #!/bin/bash
+
+    # 直接重定向到最后一行
+    echo "内容" >> file
+
+    # 利用a命令插入到最后一行
+    sed -i '$a 内容' >> file
+
+    # 利用i命令插入到最后一行的前一行
+    sed -i '$i 内容' >> file 
+
+    </pre>
+    </div>
+    #+END_HTML
 

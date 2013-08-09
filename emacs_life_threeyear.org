@@ -1,0 +1,45 @@
+#+TITLE:     三年
+#+AUTHOR:    liweilijie
+#+EMAIL:     liweilijie@gmail.com
+#+DATE:      2013-07-18 Thu
+#+DESCRIPTION: 工作三年记
+#+KEYWORDS: life
+#+CATEGORIES: life
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   /liweilijie
+#+LINK_HOME: /liweilijie
+#+XSLT:
+#
+
+* 三年
+    三年前毕业，三年前7月26号入职。过几天就三年了，怕到哪天没时间写日志。今天抽空想写点什么
+
+
+    
+* 人生的一个十字路口
+
+    本命年刚过，25岁的年龄有人说是个尴尬的阶段。也是决定一个人未来的很重要的阶段。
+
+    而自己走在这个十字路口时，是直行随着人流一直往前走；
+     
+    还是开着导航，盲目地随从导航前进的方向驶去；
+  
+    抑或在路口停一停，认真想想向左，向右，直行，还是掉头。
+
+    ……
+
+    比起以往的路口，在这个路口徘徊的自己仿佛失去了一些毅力与勇气。
+
+    走的路口多了，在这个路口也不敢大胆地涉足人际更少的路；
+  
+    但是又不想选择人际多的路，因为这样自己会消失在芸芸人海之中，最后找不到回家的路。
+
+
+    …… 
+
+

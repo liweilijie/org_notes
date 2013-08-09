@@ -429,3 +429,61 @@ mkfs.ext3 /dev/sdb1
 </div>
 #+END_HTML
   
+* man ascii
+
+  显示ascii码表。我很常用的。
+
+
+* !$
+
+   !$ 是一个特殊的环境变量，它代表了上一个命令的最后一个字符串。
+
+
+* cd -
+    回到上一次的目录。
+
+* '<ESC> .' or 'ALT+.'
+   热键 eac+. 或者 alt+. 可以把上次命令行的参数给复制出来。
+
+
+* ^old^new
+   替换前一条命令里面的部分字符串。也可以用 !!:gs/old/new
+
+    #+BEGIN_HTML
+    <div class="cnblogs_Highlighter">
+    <pre class="brush:bash">
+
+    #!/bin/bash
+    [root@liwei org_notes]# echo "liweilijie"
+    liweilijie
+    [root@liwei org_notes]# ^l^L
+    echo "Liweilijie"
+    Liweilijie
+    [root@liwei org_notes]# !!:gs/l/L
+    echo "LiweiLijie"
+    LiweiLijie
+    [root@liwei org_notes]#
+
+    </pre>
+    </div>
+    #+END_HTML
+
+* du -s *| sort -n | tail
+  
+ 列出当前目录里最大的10个文件。
+
+* date -d @123432342
+  
+  时间转化。
+
+
+* > file.txt
+
+  创建一个空文件。
+
+* mtr baidu.com
+   mtr命令比traceroute要好。
+
+* curl ifconfig.me
+  当你的机器在内网的时候，可以通过这个命令查看外网的IP。   
+
